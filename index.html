@@ -636,7 +636,7 @@
       line-height:1.5;
     }
 
-    /* NAV */
+    /* НИЖНЕЕ МЕНЮ */
 
     .bottom-nav {
       position:fixed;
@@ -689,6 +689,7 @@
 <main class="app">
 
   <!-- ШАПКА -->
+
   <header id="mainHeader" class="topbar">
 
     <div class="avatar"></div>
@@ -704,6 +705,7 @@
 
 
   <!-- ГЛАВНАЯ -->
+
   <section id="homeScreen" class="screen active">
 
     <section class="hero">
@@ -750,10 +752,7 @@
           НОВИНКИ
         </h2>
 
-        <button
-          class="view-all"
-          onclick="openCatalog()"
-        >
+        <button class="view-all" onclick="openCatalog()">
           Смотреть все →
         </button>
 
@@ -762,10 +761,7 @@
 
       <div class="books-grid">
 
-        <article
-          class="book-card"
-          onclick="openNaslednik()"
-        >
+        <article class="book-card" onclick="openNaslednik()">
 
           <div class="book-cover">
             <img
@@ -882,6 +878,7 @@
 
 
   <!-- КАТАЛОГ -->
+
   <section id="catalogScreen" class="screen">
 
     <section class="catalog-hero">
@@ -922,10 +919,7 @@
 
       <div class="catalog-grid">
 
-        <article
-          class="book-card"
-          onclick="openNaslednik()"
-        >
+        <article class="book-card" onclick="openNaslednik()">
 
           <div class="book-cover">
             <img src="наследник.jpeg" alt="Наследник">
@@ -977,14 +971,12 @@
 
 
   <!-- СТРАНИЦА НАСЛЕДНИКА -->
+
   <section id="naslednikScreen" class="screen">
 
     <header class="book-page-header">
 
-      <button
-        class="back-btn"
-        onclick="goBack()"
-      >
+      <button class="back-btn" onclick="goBack()">
         ←
       </button>
 
@@ -1106,6 +1098,7 @@
           Я — девушка, которой никогда не было места в его мире.
         </p>
 
+
         <div
           id="annotationExtra"
           class="annotation-extra"
@@ -1157,13 +1150,13 @@
 
       <div class="book-actions">
 
-        <a
+        <button
           class="download-btn"
-          href="Софи Траверс - Наследник.epub"
-          download
+          type="button"
+          onclick="downloadNaslednik()"
         >
           ↓ СКАЧАТЬ КНИГУ
-        </a>
+        </button>
 
 
         <button
@@ -1182,11 +1175,13 @@
 
 
   <!-- ИЗБРАННОЕ -->
+
   <section id="favoritesScreen" class="screen">
 
     <section class="catalog-hero">
 
       <div>
+
         <h1>
           ИЗБРАННОЕ
         </h1>
@@ -1194,6 +1189,7 @@
         <p>
           Твои сохранённые истории
         </p>
+
       </div>
 
       <img
@@ -1253,6 +1249,7 @@
 
 
 <script>
+
   const screens = {
     home: document.getElementById("homeScreen"),
     catalog: document.getElementById("catalogScreen"),
@@ -1260,36 +1257,58 @@
     favorites: document.getElementById("favoritesScreen")
   };
 
-  const mainHeader = document.getElementById("mainHeader");
-  const bottomNav = document.getElementById("bottomNav");
+
+  const mainHeader =
+    document.getElementById("mainHeader");
+
+  const bottomNav =
+    document.getElementById("bottomNav");
+
 
   let previousScreen = "home";
 
+
   function hideScreens() {
+
     Object.values(screens).forEach(screen => {
       screen.classList.remove("active");
     });
+
   }
 
+
   function setNav(active) {
+
     document
       .querySelectorAll(".nav-item")
       .forEach(item => item.classList.remove("active"));
 
+
     if (active === "home") {
-      document.getElementById("homeNav").classList.add("active");
+      document
+        .getElementById("homeNav")
+        .classList.add("active");
     }
+
 
     if (active === "catalog") {
-      document.getElementById("catalogNav").classList.add("active");
+      document
+        .getElementById("catalogNav")
+        .classList.add("active");
     }
+
 
     if (active === "favorites") {
-      document.getElementById("favoritesNav").classList.add("active");
+      document
+        .getElementById("favoritesNav")
+        .classList.add("active");
     }
+
   }
 
+
   function openHome() {
+
     hideScreens();
 
     screens.home.classList.add("active");
@@ -1302,9 +1321,12 @@
     previousScreen = "home";
 
     window.scrollTo(0,0);
+
   }
 
+
   function openCatalog() {
+
     hideScreens();
 
     screens.catalog.classList.add("active");
@@ -1317,9 +1339,12 @@
     previousScreen = "catalog";
 
     window.scrollTo(0,0);
+
   }
 
+
   function openNaslednik() {
+
     previousScreen =
       screens.catalog.classList.contains("active")
         ? "catalog"
@@ -1335,17 +1360,23 @@
     updateFavoriteButton();
 
     window.scrollTo(0,0);
+
   }
 
+
   function goBack() {
+
     if (previousScreen === "catalog") {
       openCatalog();
     } else {
       openHome();
     }
+
   }
 
+
   function toggleAnnotation() {
+
     const extra =
       document.getElementById("annotationExtra");
 
@@ -1354,42 +1385,68 @@
 
     extra.classList.toggle("show");
 
+
     if (extra.classList.contains("show")) {
+
       button.textContent = "Скрыть ↑";
+
     } else {
+
       button.textContent = "Показать полностью ↓";
+
     }
+
   }
+
 
   function isFavorite() {
+
     return localStorage.getItem("naslednikFavorite") === "true";
+
   }
 
+
   function toggleFavorite() {
+
     localStorage.setItem(
       "naslednikFavorite",
       isFavorite() ? "false" : "true"
     );
 
     updateFavoriteButton();
+
   }
 
+
   function updateFavoriteButton() {
+
     const button =
       document.getElementById("favoriteButton");
 
     if (!button) return;
 
+
     if (isFavorite()) {
+
       button.classList.add("saved");
-      button.textContent = "♥ В ИЗБРАННОМ";
+
+      button.textContent =
+        "♥ В ИЗБРАННОМ";
+
     } else {
+
       button.classList.remove("saved");
-      button.textContent = "♡ В ИЗБРАННОЕ";
+
+      button.textContent =
+        "♡ В ИЗБРАННОЕ";
+
     }
+
   }
 
+
   function openFavorites() {
+
     hideScreens();
 
     screens.favorites.classList.add("active");
@@ -1404,14 +1461,20 @@
     previousScreen = "favorites";
 
     window.scrollTo(0,0);
+
   }
 
+
   function renderFavorites() {
+
     const container =
       document.getElementById("favoritesContent");
 
+
     if (isFavorite()) {
+
       container.innerHTML = `
+
         <div class="catalog-grid">
 
           <article
@@ -1420,24 +1483,40 @@
           >
 
             <div class="book-cover">
+
               <img
                 src="наследник.jpeg"
                 alt="Наследник"
               >
+
             </div>
 
             <div class="book-details">
-              <h3>Наследник</h3>
-              <p>Софи Траверс</p>
-              <span class="tag">СОХРАНЕНО</span>
+
+              <h3>
+                Наследник
+              </h3>
+
+              <p>
+                Софи Траверс
+              </p>
+
+              <span class="tag">
+                СОХРАНЕНО
+              </span>
+
             </div>
 
           </article>
 
         </div>
+
       `;
+
     } else {
+
       container.innerHTML = `
+
         <div class="favorites-empty">
 
           <img
@@ -1455,18 +1534,50 @@
           </p>
 
         </div>
+
       `;
+
     }
+
   }
 
-  const tg = window.Telegram?.WebApp;
+
+  /* СКАЧИВАНИЕ НАСЛЕДНИКА */
+
+  function downloadNaslednik() {
+
+    const fileUrl =
+      "https://anastasiyudina283-spec.github.io/anastasi-book-library/" +
+      encodeURIComponent("Софи Траверс - Наследник.epub");
+
+
+    if (window.Telegram?.WebApp) {
+
+      window.Telegram.WebApp.openLink(fileUrl);
+
+    } else {
+
+      window.open(fileUrl, "_blank");
+
+    }
+
+  }
+
+
+  const tg =
+    window.Telegram?.WebApp;
+
 
   if (tg) {
+
     tg.ready();
     tg.expand();
+
   }
 
+
   updateFavoriteButton();
+
 </script>
 
 </body>
