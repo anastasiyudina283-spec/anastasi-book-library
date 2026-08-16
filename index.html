@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
   <title>Библиотека Анастейши с книгами</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,519 +14,464 @@
 
   <style>
     :root {
-      --bg: #fbf5ef;
-      --panel: #fffaf7;
-      --text: #30211f;
-      --pink: #d98592;
-      --pink-dark: #bd5d72;
-      --pink-soft: #f6dfdf;
-      --line: #ead8ce;
-      --muted: #ad998e;
+      --bg:#fbf5ef;
+      --panel:#fffaf7;
+      --text:#30211f;
+      --pink:#d98592;
+      --pink-dark:#bd5d72;
+      --pink-soft:#f6dfdf;
+      --line:#ead8ce;
+      --muted:#ad998e;
+      --shadow:0 8px 24px rgba(88,55,47,.07);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing:border-box; }
 
     html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
-      background: var(--bg);
+      margin:0;
+      padding:0;
+      width:100%;
+      min-height:100%;
+      background:var(--bg);
     }
 
     body {
-      color: var(--text);
-      font-family: "Montserrat", Arial, sans-serif;
-      overflow-x: hidden;
+      color:var(--text);
+      font-family:"Montserrat",Arial,sans-serif;
+      overflow-x:hidden;
     }
 
-    button, input {
-      font: inherit;
+    button,input {
+      font:inherit;
     }
 
     button {
-      border: 0;
-      padding: 0;
-      background: none;
-      color: inherit;
-      cursor: pointer;
+      border:0;
+      padding:0;
+      background:none;
+      color:inherit;
+      cursor:pointer;
     }
 
     .app {
-      width: 100%;
-      max-width: 430px;
-      min-height: 100vh;
-      margin: 0 auto;
-      padding-bottom: 90px;
-      background: var(--bg);
+      width:100%;
+      max-width:430px;
+      min-height:100vh;
+      margin:0 auto;
+      padding-bottom:90px;
+      background:var(--bg);
     }
 
-    /* ---------- ШАПКА ---------- */
+    .screen { display:none; }
+    .screen.active { display:block; }
+
+    /* ШАПКА */
 
     .topbar {
-      height: 76px;
-      padding: 11px 18px;
-      display: grid;
-      grid-template-columns: 42px 1fr 42px;
-      align-items: center;
-      border-bottom: 1px solid var(--line);
-      background: var(--panel);
+      height:76px;
+      padding:11px 18px;
+      display:grid;
+      grid-template-columns:42px 1fr 42px;
+      align-items:center;
+      border-bottom:1px solid var(--line);
+      background:var(--panel);
     }
 
     .avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: #eed8ca;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      background:#eed8ca;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
 
     .avatar::after {
-      content: "";
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: #ba7b62;
+      content:"";
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      background:#ba7b62;
     }
 
-    .brand {
-      text-align: center;
-    }
+    .brand { text-align:center; }
 
     .brand-heart {
-      color: var(--pink-dark);
-      font-size: 13px;
-      line-height: 1;
-      margin-bottom: 5px;
+      color:var(--pink-dark);
+      font-size:13px;
+      line-height:1;
+      margin-bottom:5px;
     }
 
     .brand-name {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 18px;
-      letter-spacing: 5px;
-      line-height: 1;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:18px;
+      letter-spacing:5px;
+      line-height:1;
     }
 
     .top-heart {
-      text-align: right;
-      color: var(--pink-dark);
-      font-size: 31px;
-      line-height: 1;
-      font-family: Arial, sans-serif;
+      text-align:right;
+      color:var(--pink-dark);
+      font-size:31px;
+      font-family:Arial,sans-serif;
     }
 
-    /* ---------- ГЛАВНЫЙ БЛОК ---------- */
+    /* ГЛАВНАЯ */
 
     .hero {
-      position: relative;
-      height: 245px;
-      padding: 44px 18px 0;
+      position:relative;
+      height:245px;
+      padding:44px 18px 0;
     }
 
     .hero-copy {
-      position: relative;
-      z-index: 2;
-      width: 255px;
+      position:relative;
+      z-index:2;
+      width:255px;
     }
 
     .hero-title {
-      margin: 0;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-weight: 500;
-      font-size: 38px;
-      line-height: 0.92;
-      letter-spacing: -0.7px;
+      margin:0;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-weight:500;
+      font-size:38px;
+      line-height:.92;
+      letter-spacing:-.7px;
     }
 
     .hero-title span {
-      display: block;
-      white-space: nowrap;
+      display:block;
+      white-space:nowrap;
     }
 
-    .hero-title .pink {
-      color: var(--pink);
-    }
+    .hero-title .pink { color:var(--pink); }
 
     .hero-subtitle {
-      margin-top: 19px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1.7px;
-      white-space: nowrap;
+      margin-top:19px;
+      display:flex;
+      align-items:center;
+      gap:7px;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:1.7px;
+      white-space:nowrap;
     }
 
     .hero-subtitle .heart {
-      color: var(--pink);
-      font-size: 10px;
+      color:var(--pink);
+      font-size:10px;
     }
 
-    /*
-      КОТИК СПЕЦИАЛЬНО НЕ ЛЕЗЕТ НА ТЕКСТ:
-      текст слева, кот справа и ниже.
-    */
-
     .hero-cat {
-  position: absolute;
-  z-index: 3;
-  width: 155px;
-  height: auto;
-  right: 18px;
-  bottom: 18px;
-  display: block;
-  object-fit: contain;
-  pointer-events: none;
+      position:absolute;
+      z-index:3;
+      width:155px;
+      right:18px;
+      bottom:18px;
+      display:block;
     }
 
     .spark {
-      position: absolute;
-      color: var(--pink);
-      z-index: 4;
-      pointer-events: none;
+      position:absolute;
+      color:var(--pink);
+      z-index:4;
     }
 
-    .spark-1 {
-      top: 55px;
-      right: 151px;
-      font-size: 12px;
-    }
+    .spark-1 { top:55px; right:151px; }
+    .spark-2 { top:79px; right:10px; }
+    .spark-3 { bottom:62px; right:10px; font-size:9px; }
 
-    .spark-2 {
-      top: 79px;
-      right: 10px;
-      font-size: 15px;
-    }
-
-    .spark-3 {
-      bottom: 62px;
-      right: 10px;
-      font-size: 9px;
-    }
-
-    /* ---------- ПОИСК ---------- */
+    /* ПОИСК */
 
     .search-section {
-      padding: 0 18px;
+      padding:0 18px;
     }
 
     .search-box {
-      height: 58px;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      background: var(--panel);
-      box-shadow: 0 10px 25px rgba(88, 55, 47, 0.06);
+      height:58px;
+      padding:0 20px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:var(--panel);
+      box-shadow:var(--shadow);
     }
 
     .search-icon {
-      position: relative;
-      width: 19px;
-      height: 19px;
-      flex: 0 0 19px;
-      border: 2px solid var(--muted);
-      border-radius: 50%;
+      position:relative;
+      width:19px;
+      height:19px;
+      flex:0 0 19px;
+      border:2px solid var(--muted);
+      border-radius:50%;
     }
 
     .search-icon::after {
-      content: "";
-      position: absolute;
-      width: 8px;
-      height: 2px;
-      right: -6px;
-      bottom: -3px;
-      background: var(--muted);
-      transform: rotate(45deg);
-      border-radius: 5px;
+      content:"";
+      position:absolute;
+      width:8px;
+      height:2px;
+      right:-6px;
+      bottom:-3px;
+      background:var(--muted);
+      transform:rotate(45deg);
+      border-radius:5px;
     }
 
     .search-box input {
-      width: 100%;
-      border: 0;
-      outline: 0;
-      background: transparent;
-      color: var(--text);
-      font-size: 14px;
+      width:100%;
+      border:0;
+      outline:0;
+      background:transparent;
+      color:var(--text);
+      font-size:14px;
     }
 
     .search-box input::placeholder {
-      color: #ad998e;
+      color:#ad998e;
     }
 
-    /* ---------- НОВИНКИ ---------- */
+    /* СЕКЦИИ */
 
-    .new-section {
-      padding: 34px 18px 0;
+    .section {
+      padding:34px 18px 0;
     }
 
     .section-header {
-      margin-bottom: 17px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      margin-bottom:17px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
 
     .section-title {
-      margin: 0;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 24px;
-      font-weight: 500;
-      letter-spacing: 2px;
+      margin:0;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:24px;
+      font-weight:500;
+      letter-spacing:2px;
     }
 
     .view-all {
-      color: var(--pink-dark);
-      font-size: 11px;
+      color:var(--pink-dark);
+      font-size:11px;
     }
 
+    /* КНИГИ */
+
     .books-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 9px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:9px;
+    }
+
+    .catalog-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      padding-bottom:25px;
     }
 
     .book-card {
-      min-width: 0;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      background: var(--panel);
-      box-shadow: 0 7px 18px rgba(88, 55, 47, 0.05);
+      min-width:0;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:13px;
+      background:var(--panel);
+      box-shadow:var(--shadow);
     }
 
     .book-cover {
-      width: 100%;
-      aspect-ratio: 0.69;
-      padding: 12px 6px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      text-align: center;
-      font-family: "Cormorant Garamond", Georgia, serif;
+      width:100%;
+      aspect-ratio:2 / 3;
+      overflow:hidden;
+      background:#eee;
     }
 
-    .cover-one {
-      background: linear-gradient(145deg, #e0a2aa, #c87984);
-    }
-
-    .cover-two {
-      background: linear-gradient(145deg, #efc0bb, #da9499);
-    }
-
-    .cover-three {
-      color: #fff8f4;
-      background: linear-gradient(145deg, #ad5965, #74303b);
-    }
-
-    .cover-star {
-      font-size: 9px;
-      opacity: 0.65;
-    }
-
-    .cover-title {
-      margin: auto 0;
-      font-size: 15px;
-      line-height: 1.02;
-      font-weight: 600;
-    }
-
-    .cover-author {
-      font-size: 8px;
-      line-height: 1.15;
-      letter-spacing: 0.4px;
+    .book-cover img {
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
     }
 
     .book-details {
-      min-height: 124px;
-      padding: 10px 9px 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      min-height:122px;
+      padding:10px 9px 12px;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
     }
 
     .book-details h3 {
-      margin: 0;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 1.05;
+      margin:0;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:16px;
+      font-weight:600;
+      line-height:1.05;
     }
 
     .book-details p {
-      margin: 6px 0 10px;
-      color: var(--pink-dark);
-      font-size: 8px;
-      line-height: 1.3;
+      margin:6px 0 10px;
+      color:var(--pink-dark);
+      font-size:8px;
+      line-height:1.3;
     }
 
     .tag {
-      margin-top: auto;
-      padding: 5px 7px;
-      border-radius: 20px;
-      background: var(--pink-soft);
-      color: #9c4859;
-      font-size: 7px;
+      margin-top:auto;
+      padding:5px 7px;
+      border-radius:20px;
+      background:var(--pink-soft);
+      color:#9c4859;
+      font-size:7px;
     }
 
-    /* ---------- БЛОК ИЗБРАННОГО ---------- */
+    /* БАННЕР */
 
     .favorite-card {
-      margin: 24px 18px 0;
-      min-height: 96px;
-      padding: 14px;
-      display: grid;
-      grid-template-columns: 56px 1fr 24px;
-      align-items: center;
-      gap: 12px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: var(--panel);
+      margin:24px 18px 0;
+      min-height:96px;
+      padding:14px;
+      display:grid;
+      grid-template-columns:56px 1fr 24px;
+      align-items:center;
+      gap:12px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:var(--panel);
     }
 
     .favorite-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f6e1df;
-      color: var(--pink-dark);
-      font-size: 24px;
+      width:56px;
+      height:56px;
+      border-radius:13px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#f6e1df;
+      color:var(--pink-dark);
+      font-size:24px;
     }
 
     .favorite-text h3 {
-      margin: 0 0 5px;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 17px;
-      line-height: 1.05;
-      font-weight: 600;
+      margin:0 0 5px;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:17px;
+      line-height:1.05;
     }
 
     .favorite-text p {
-      margin: 0;
-      color: #5c4945;
-      font-size: 9px;
-      line-height: 1.4;
+      margin:0;
+      color:#5c4945;
+      font-size:9px;
+      line-height:1.4;
     }
 
-    .favorite-arrow {
-      font-size: 23px;
+    /* КАТАЛОГ */
+
+    .catalog-hero {
+      padding:30px 18px 16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
     }
 
-    /* ---------- НИЖНЕЕ МЕНЮ ---------- */
+    .catalog-hero h1 {
+      margin:0;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:37px;
+      font-weight:500;
+      line-height:.9;
+    }
+
+    .catalog-hero p {
+      margin:9px 0 0;
+      color:var(--muted);
+      font-size:10px;
+    }
+
+    .catalog-cat {
+      width:100px;
+      height:auto;
+    }
+
+    /* NAV */
 
     .bottom-nav {
-      position: fixed;
-      left: 50%;
-      bottom: 0;
-      z-index: 100;
-      width: 100%;
-      max-width: 430px;
-      height: 78px;
-      transform: translateX(-50%);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line);
-      background: rgba(255, 250, 247, 0.97);
-      backdrop-filter: blur(10px);
+      position:fixed;
+      left:50%;
+      bottom:0;
+      z-index:100;
+      width:100%;
+      max-width:430px;
+      height:78px;
+      transform:translateX(-50%);
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      border-top:1px solid var(--line);
+      background:rgba(255,250,247,.97);
+      backdrop-filter:blur(10px);
     }
 
     .nav-item {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      font-size: 10px;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:4px;
+      font-size:10px;
     }
 
     .nav-icon {
-      font-family: Arial, sans-serif;
-      font-size: 24px;
-      line-height: 1;
+      font-family:Arial,sans-serif;
+      font-size:24px;
     }
 
     .nav-item.active {
-      color: var(--pink-dark);
+      color:var(--pink-dark);
     }
 
     .nav-item.active::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 68px;
-      height: 2px;
-      background: var(--pink-dark);
-    }
-
-    /* ---------- МАЛЕНЬКИЕ ЭКРАНЫ ---------- */
-
-    @media (max-width: 370px) {
-
-      .hero {
-        height: 230px;
-        padding-top: 40px;
-      }
-
-      .hero-copy {
-        width: 225px;
-      }
-
-      .hero-title {
-        font-size: 34px;
-      }
-
-      .hero-cat {
-        width: 126px;
-        right: 5px;
-      }
-
-      .hero-subtitle {
-        font-size: 9px;
-        letter-spacing: 1.3px;
-      }
-
-      .cover-title {
-        font-size: 13px;
-      }
+      content:"";
+      position:absolute;
+      top:0;
+      width:68px;
+      height:2px;
+      background:var(--pink-dark);
     }
   </style>
 </head>
 
 <body>
 
-  <main class="app">
+<main class="app">
 
-    <header class="topbar">
+  <header class="topbar">
+    <div class="avatar"></div>
 
-      <div class="avatar"></div>
+    <div class="brand">
+      <div class="brand-heart">♡</div>
+      <div class="brand-name">БИБЛИОТЕКА</div>
+    </div>
 
-      <div class="brand">
-        <div class="brand-heart">♡</div>
-        <div class="brand-name">БИБЛИОТЕКА</div>
-      </div>
+    <button class="top-heart">♡</button>
+  </header>
 
-      <button class="top-heart">♡</button>
 
-    </header>
+  <!-- ГЛАВНАЯ -->
 
+  <section id="homeScreen" class="screen active">
 
     <section class="hero">
 
       <div class="hero-copy">
-
         <h1 class="hero-title">
           <span>АНАСТЕЙШИ</span>
           <span class="pink">С КНИГАМИ</span>
@@ -536,50 +482,30 @@
           <span>ДЛЯ МОИХ КОШЕЧЕК</span>
           <span class="heart">♥</span>
         </div>
-
       </div>
 
       <span class="spark spark-1">✦</span>
       <span class="spark spark-2">✧</span>
       <span class="spark spark-3">♥</span>
 
-      <img
-        class="hero-cat"
-        src="cat-main.png"
-        alt="Котик библиотеки"
-      >
+      <img class="hero-cat" src="cat-main.png" alt="Котик библиотеки">
 
     </section>
 
 
     <section class="search-section">
-
       <div class="search-box">
-
         <span class="search-icon"></span>
-
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="Найти книгу или автора"
-          autocomplete="off"
-        >
-
+        <input type="search" placeholder="Найти книгу или автора">
       </div>
-
     </section>
 
 
-    <section class="new-section">
+    <section class="section">
 
       <div class="section-header">
-
         <h2 class="section-title">НОВИНКИ</h2>
-
-        <button class="view-all">
-          Смотреть все →
-        </button>
-
+        <button class="view-all" onclick="openCatalog()">Смотреть все →</button>
       </div>
 
 
@@ -587,35 +513,14 @@
 
         <article class="book-card">
 
-          <div class="book-cover cover-one">
-
-            <span class="cover-star">✦</span>
-
-            <div class="cover-title">
-              СОТКАНА<br>
-              ИЗ ТЕНЕЙ
-            </div>
-
-            <div class="cover-author">
-              КАРИСА<br>
-              БРОУДЕН
-            </div>
-
+          <div class="book-cover">
+            <img src="naslednik.jpeg" alt="Наследник">
           </div>
 
           <div class="book-details">
-
-            <h3>
-              Соткана<br>
-              из теней
-            </h3>
-
-            <p>Кариса Броуден</p>
-
-            <span class="tag">
-              НОВИНКА
-            </span>
-
+            <h3>Наследник</h3>
+            <p>Софи Траверс</p>
+            <span class="tag">НОВИНКА</span>
           </div>
 
         </article>
@@ -623,34 +528,14 @@
 
         <article class="book-card">
 
-          <div class="book-cover cover-two">
-
-            <span class="cover-star">✦</span>
-
-            <div class="cover-title">
-              ВЕСЬ ЭТОТ<br>
-              СВЕТ
-            </div>
-
-            <div class="cover-author">
-              САРА<br>
-              РОУЗАН
-            </div>
-
+          <div class="book-cover">
+            <img src="zabeg-ne-po-pravilam.jpeg" alt="Забег не по правилам">
           </div>
 
           <div class="book-details">
-
-            <h3>
-              Весь этот свет
-            </h3>
-
-            <p>Сара Роузан</p>
-
-            <span class="tag">
-              РОМАНТИКА
-            </span>
-
+            <h3>Забег не по правилам</h3>
+            <p>Элси Сильвер</p>
+            <span class="tag">РОМАНТИКА</span>
           </div>
 
         </article>
@@ -658,37 +543,14 @@
 
         <article class="book-card">
 
-          <div class="book-cover cover-three">
-
-            <span class="cover-star">✦</span>
-
-            <div class="cover-title">
-              ИГРА<br>
-              НАСЛЕДНИКОВ
-            </div>
-
-            <div class="cover-author">
-              ДЖЕННИФЕР<br>
-              ЛИНН БАРНС
-            </div>
-
+          <div class="book-cover">
+            <img src="mesto-dlya-lyubvi.jpeg" alt="Место для любви">
           </div>
 
           <div class="book-details">
-
-            <h3>
-              Игра<br>
-              наследников
-            </h3>
-
-            <p>
-              Дженнифер Линн Барнс
-            </p>
-
-            <span class="tag">
-              БЕСТСЕЛЛЕР
-            </span>
-
+            <h3>Место для любви</h3>
+            <p>Крис Эндрюс</p>
+            <span class="tag">НОВИНКА</span>
           </div>
 
         </article>
@@ -700,83 +562,149 @@
 
     <section class="favorite-card">
 
-      <div class="favorite-icon">
-        ▤
-      </div>
+      <div class="favorite-icon">▤</div>
 
       <div class="favorite-text">
-
-        <h3>
-          Твои любимые истории<br>
-          в одном месте
-        </h3>
-
-        <p>
-          Добавляй в избранное и возвращайся снова ♡
-        </p>
-
+        <h3>Твои любимые истории<br>в одном месте</h3>
+        <p>Добавляй в избранное и возвращайся снова ♡</p>
       </div>
 
-      <div class="favorite-arrow">
-        →
+      <div>→</div>
+
+    </section>
+
+  </section>
+
+
+  <!-- КАТАЛОГ -->
+
+  <section id="catalogScreen" class="screen">
+
+    <section class="catalog-hero">
+
+      <div>
+        <h1>КАТАЛОГ<br>КНИГ</h1>
+        <p>Все истории в одном месте</p>
+      </div>
+
+      <img class="catalog-cat" src="cat-main.png" alt="Котик">
+
+    </section>
+
+
+    <section class="search-section">
+      <div class="search-box">
+        <span class="search-icon"></span>
+        <input type="search" placeholder="Найти книгу или автора">
+      </div>
+    </section>
+
+
+    <section class="section">
+
+      <div class="catalog-grid">
+
+        <article class="book-card">
+          <div class="book-cover">
+            <img src="naslednik.jpeg" alt="Наследник">
+          </div>
+
+          <div class="book-details">
+            <h3>Наследник</h3>
+            <p>Софи Траверс</p>
+            <span class="tag">НОВИНКА</span>
+          </div>
+        </article>
+
+
+        <article class="book-card">
+          <div class="book-cover">
+            <img src="zabeg-ne-po-pravilam.jpeg" alt="Забег не по правилам">
+          </div>
+
+          <div class="book-details">
+            <h3>Забег не по правилам</h3>
+            <p>Элси Сильвер</p>
+            <span class="tag">РОМАНТИКА</span>
+          </div>
+        </article>
+
+
+        <article class="book-card">
+          <div class="book-cover">
+            <img src="mesto-dlya-lyubvi.jpeg" alt="Место для любви">
+          </div>
+
+          <div class="book-details">
+            <h3>Место для любви</h3>
+            <p>Крис Эндрюс</p>
+            <span class="tag">НОВИНКА</span>
+          </div>
+        </article>
+
       </div>
 
     </section>
 
-  </main>
+  </section>
+
+</main>
 
 
-  <nav class="bottom-nav">
+<nav class="bottom-nav">
 
-    <button class="nav-item active">
+  <button id="homeNav" class="nav-item active" onclick="openHome()">
+    <span class="nav-icon">⌂</span>
+    <span>Главная</span>
+  </button>
 
-      <span class="nav-icon">
-        ⌂
-      </span>
+  <button id="catalogNav" class="nav-item" onclick="openCatalog()">
+    <span class="nav-icon">▦</span>
+    <span>Каталог</span>
+  </button>
 
-      <span>
-        Главная
-      </span>
+  <button class="nav-item">
+    <span class="nav-icon">♡</span>
+    <span>Избранное</span>
+  </button>
 
-    </button>
-
-
-    <button class="nav-item">
-
-      <span class="nav-icon">
-        ▦
-      </span>
-
-      <span>
-        Каталог
-      </span>
-
-    </button>
+</nav>
 
 
-    <button class="nav-item">
+<script>
+  const homeScreen = document.getElementById("homeScreen");
+  const catalogScreen = document.getElementById("catalogScreen");
 
-      <span class="nav-icon">
-        ♡
-      </span>
+  const homeNav = document.getElementById("homeNav");
+  const catalogNav = document.getElementById("catalogNav");
 
-      <span>
-        Избранное
-      </span>
+  function openHome() {
+    homeScreen.classList.add("active");
+    catalogScreen.classList.remove("active");
 
-    </button>
+    homeNav.classList.add("active");
+    catalogNav.classList.remove("active");
 
-  </nav>
+    window.scrollTo(0, 0);
+  }
 
+  function openCatalog() {
+    catalogScreen.classList.add("active");
+    homeScreen.classList.remove("active");
 
-  <script>
-    const tg = window.Telegram?.WebApp;
+    catalogNav.classList.add("active");
+    homeNav.classList.remove("active");
 
-    if (tg) {
-      tg.ready();
-      tg.expand();
-    }
-  </script>
+    window.scrollTo(0, 0);
+  }
+
+  const tg = window.Telegram?.WebApp;
+
+  if (tg) {
+    tg.ready();
+    tg.expand();
+  }
+</script>
 
 </body>
 </html>
