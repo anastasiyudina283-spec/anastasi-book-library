@@ -8,7 +8,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  >
 
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
@@ -25,9 +29,12 @@
       --shadow:0 8px 24px rgba(88,55,47,.07);
     }
 
-    * { box-sizing:border-box; }
+    * {
+      box-sizing:border-box;
+    }
 
-    html, body {
+    html,
+    body {
       margin:0;
       padding:0;
       width:100%;
@@ -41,7 +48,10 @@
       overflow-x:hidden;
     }
 
-    button,input { font:inherit; }
+    button,
+    input {
+      font:inherit;
+    }
 
     button {
       border:0;
@@ -60,8 +70,13 @@
       background:var(--bg);
     }
 
-    .screen { display:none; }
-    .screen.active { display:block; }
+    .screen {
+      display:none;
+    }
+
+    .screen.active {
+      display:block;
+    }
 
     /* ШАПКА */
 
@@ -93,7 +108,9 @@
       background:#ba7b62;
     }
 
-    .brand { text-align:center; }
+    .brand {
+      text-align:center;
+    }
 
     .brand-heart {
       color:var(--pink-dark);
@@ -144,7 +161,9 @@
       white-space:nowrap;
     }
 
-    .hero-title .pink { color:var(--pink); }
+    .hero-title .pink {
+      color:var(--pink);
+    }
 
     .hero-subtitle {
       margin-top:19px;
@@ -178,13 +197,27 @@
       z-index:4;
     }
 
-    .spark-1 { top:55px; right:151px; }
-    .spark-2 { top:79px; right:10px; }
-    .spark-3 { bottom:62px; right:10px; font-size:9px; }
+    .spark-1 {
+      top:55px;
+      right:151px;
+    }
+
+    .spark-2 {
+      top:79px;
+      right:10px;
+    }
+
+    .spark-3 {
+      bottom:62px;
+      right:10px;
+      font-size:9px;
+    }
 
     /* ПОИСК */
 
-    .search-section { padding:0 18px; }
+    .search-section {
+      padding:0 18px;
+    }
 
     .search-box {
       height:58px;
@@ -228,11 +261,15 @@
       font-size:14px;
     }
 
-    .search-box input::placeholder { color:#ad998e; }
+    .search-box input::placeholder {
+      color:#ad998e;
+    }
 
     /* СЕКЦИИ */
 
-    .section { padding:34px 18px 0; }
+    .section {
+      padding:34px 18px 0;
+    }
 
     .section-header {
       margin-bottom:17px;
@@ -276,6 +313,7 @@
       border-radius:13px;
       background:var(--panel);
       box-shadow:var(--shadow);
+      cursor:pointer;
     }
 
     .book-cover {
@@ -393,6 +431,211 @@
       height:auto;
     }
 
+    /* СТРАНИЦА КНИГИ */
+
+    .book-page-header {
+      height:72px;
+      padding:0 18px;
+      display:grid;
+      grid-template-columns:45px 1fr 45px;
+      align-items:center;
+    }
+
+    .back-btn {
+      color:var(--pink-dark);
+      font-size:30px;
+      text-align:left;
+    }
+
+    .book-page-title {
+      text-align:center;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:21px;
+      letter-spacing:5px;
+    }
+
+    .book-page-heart {
+      color:var(--pink-dark);
+      font-size:30px;
+      text-align:right;
+      font-family:Arial,sans-serif;
+    }
+
+    .book-hero {
+      padding:18px 18px 0;
+      display:grid;
+      grid-template-columns:150px 1fr;
+      gap:18px;
+      align-items:center;
+    }
+
+    .book-cover-wrap {
+      position:relative;
+      padding-left:20px;
+    }
+
+    .detail-cover {
+      position:relative;
+      z-index:3;
+      width:130px;
+      border-radius:10px;
+      display:block;
+      box-shadow:0 12px 28px rgba(74,35,31,.13);
+    }
+
+    .peek-cat {
+      position:absolute;
+      z-index:2;
+      width:83px;
+      left:-22px;
+      top:43px;
+    }
+
+    .book-main-info h1 {
+      margin:0;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:32px;
+      font-weight:500;
+      line-height:.95;
+    }
+
+    .book-main-info .author {
+      margin-top:7px;
+      color:var(--pink);
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:19px;
+      letter-spacing:1.5px;
+    }
+
+    .meta {
+      margin-top:20px;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:9px;
+    }
+
+    .meta-pill {
+      padding:8px 11px;
+      border-radius:20px;
+      background:#fae8e5;
+      color:#7f3a42;
+      font-size:10px;
+    }
+
+    .info-card {
+      margin:22px 18px 0;
+      padding:18px;
+      border:1px solid var(--line);
+      border-radius:17px;
+      background:var(--panel);
+      box-shadow:0 6px 18px rgba(88,55,47,.035);
+    }
+
+    .info-card h2 {
+      margin:0 0 15px;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:20px;
+      font-weight:500;
+      letter-spacing:1.5px;
+    }
+
+    .trope-list {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .trope {
+      padding:7px 10px;
+      border-radius:20px;
+      background:#fae8e5;
+      color:#934550;
+      font-size:9px;
+    }
+
+    .annotation {
+      font-size:11px;
+      line-height:1.65;
+    }
+
+    .annotation p {
+      margin:0 0 12px;
+    }
+
+    .annotation-extra {
+      display:none;
+    }
+
+    .annotation-extra.show {
+      display:block;
+    }
+
+    .show-more {
+      margin-top:3px;
+      color:var(--pink-dark);
+      font-size:10px;
+    }
+
+    .book-actions {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .download-btn,
+    .favorite-btn {
+      min-height:54px;
+      border-radius:14px;
+      font-size:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+    }
+
+    .download-btn {
+      color:white;
+      background:linear-gradient(135deg,#c84f65,#de7585);
+      text-decoration:none;
+    }
+
+    .favorite-btn {
+      color:var(--pink-dark);
+      border:1px solid var(--pink);
+      background:transparent;
+    }
+
+    .favorite-btn.saved {
+      color:white;
+      background:var(--pink-dark);
+    }
+
+    /* ИЗБРАННОЕ */
+
+    .favorites-empty {
+      padding:60px 30px;
+      text-align:center;
+    }
+
+    .favorites-empty img {
+      width:130px;
+    }
+
+    .favorites-empty h2 {
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:27px;
+      font-weight:500;
+      margin:20px 0 8px;
+    }
+
+    .favorites-empty p {
+      font-size:10px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
     /* NAV */
 
     .bottom-nav {
@@ -426,7 +669,9 @@
       font-size:24px;
     }
 
-    .nav-item.active { color:var(--pink-dark); }
+    .nav-item.active {
+      color:var(--pink-dark);
+    }
 
     .nav-item.active::before {
       content:"";
@@ -443,7 +688,9 @@
 
 <main class="app">
 
-  <header class="topbar">
+  <!-- ШАПКА -->
+  <header id="mainHeader" class="topbar">
+
     <div class="avatar"></div>
 
     <div class="brand">
@@ -451,16 +698,18 @@
       <div class="brand-name">БИБЛИОТЕКА</div>
     </div>
 
-    <button class="top-heart">♡</button>
+    <button class="top-heart" onclick="openFavorites()">♡</button>
+
   </header>
 
-  <!-- ГЛАВНАЯ -->
 
+  <!-- ГЛАВНАЯ -->
   <section id="homeScreen" class="screen active">
 
     <section class="hero">
 
       <div class="hero-copy">
+
         <h1 class="hero-title">
           <span>АНАСТЕЙШИ</span>
           <span class="pink">С КНИГАМИ</span>
@@ -471,114 +720,213 @@
           <span>ДЛЯ МОИХ КОШЕЧЕК</span>
           <span class="heart">♥</span>
         </div>
+
       </div>
 
       <span class="spark spark-1">✦</span>
       <span class="spark spark-2">✧</span>
       <span class="spark spark-3">♥</span>
 
-      <img class="hero-cat" src="cat-main.png" alt="Котик библиотеки">
+      <img class="hero-cat" src="cat-main.png" alt="Котик">
 
     </section>
 
+
     <section class="search-section">
+
       <div class="search-box">
         <span class="search-icon"></span>
         <input type="search" placeholder="Найти книгу или автора">
       </div>
+
     </section>
+
 
     <section class="section">
 
       <div class="section-header">
-        <h2 class="section-title">НОВИНКИ</h2>
-        <button class="view-all" onclick="openCatalog()">Смотреть все →</button>
+
+        <h2 class="section-title">
+          НОВИНКИ
+        </h2>
+
+        <button
+          class="view-all"
+          onclick="openCatalog()"
+        >
+          Смотреть все →
+        </button>
+
       </div>
+
 
       <div class="books-grid">
 
-        <article class="book-card">
+        <article
+          class="book-card"
+          onclick="openNaslednik()"
+        >
+
           <div class="book-cover">
-            <img src="наследник.jpeg" alt="Наследник">
+            <img
+              src="наследник.jpeg"
+              alt="Наследник"
+            >
           </div>
 
           <div class="book-details">
-            <h3>Наследник</h3>
-            <p>Софи Траверс</p>
-            <span class="tag">НОВИНКА</span>
+
+            <h3>
+              Наследник
+            </h3>
+
+            <p>
+              Софи Траверс
+            </p>
+
+            <span class="tag">
+              НОВИНКА
+            </span>
+
           </div>
+
         </article>
 
+
         <article class="book-card">
+
           <div class="book-cover">
-            <img src="забег.jpeg" alt="Забег не по правилам">
+            <img
+              src="забег.jpeg"
+              alt="Забег не по правилам"
+            >
           </div>
 
           <div class="book-details">
-            <h3>Забег не по правилам</h3>
-            <p>Элси Сильвер</p>
-            <span class="tag">РОМАНТИКА</span>
+
+            <h3>
+              Забег не по правилам
+            </h3>
+
+            <p>
+              Элси Сильвер
+            </p>
+
+            <span class="tag">
+              РОМАНТИКА
+            </span>
+
           </div>
+
         </article>
 
+
         <article class="book-card">
+
           <div class="book-cover">
-            <img src="место.jpeg" alt="Место для любви">
+            <img
+              src="место.jpeg"
+              alt="Место для любви"
+            >
           </div>
 
           <div class="book-details">
-            <h3>Место для любви</h3>
-            <p>Крис Эндрюс</p>
-            <span class="tag">НОВИНКА</span>
+
+            <h3>
+              Место для любви
+            </h3>
+
+            <p>
+              Крис Эндрюс
+            </p>
+
+            <span class="tag">
+              НОВИНКА
+            </span>
+
           </div>
+
         </article>
 
       </div>
 
     </section>
 
+
     <section class="favorite-card">
 
-      <div class="favorite-icon">▤</div>
-
-      <div class="favorite-text">
-        <h3>Твои любимые истории<br>в одном месте</h3>
-        <p>Добавляй в избранное и возвращайся снова ♡</p>
+      <div class="favorite-icon">
+        ▤
       </div>
 
-      <div>→</div>
+      <div class="favorite-text">
+
+        <h3>
+          Твои любимые истории<br>
+          в одном месте
+        </h3>
+
+        <p>
+          Добавляй в избранное и возвращайся снова ♡
+        </p>
+
+      </div>
+
+      <div>
+        →
+      </div>
 
     </section>
 
   </section>
 
-  <!-- КАТАЛОГ -->
 
+  <!-- КАТАЛОГ -->
   <section id="catalogScreen" class="screen">
 
     <section class="catalog-hero">
 
       <div>
-        <h1>КАТАЛОГ<br>КНИГ</h1>
-        <p>Все истории в одном месте</p>
+
+        <h1>
+          КАТАЛОГ<br>
+          КНИГ
+        </h1>
+
+        <p>
+          Все истории в одном месте
+        </p>
+
       </div>
 
-      <img class="catalog-cat" src="cat-main.png" alt="Котик">
+      <img
+        class="catalog-cat"
+        src="cat-main.png"
+        alt="Котик"
+      >
 
     </section>
 
+
     <section class="search-section">
+
       <div class="search-box">
         <span class="search-icon"></span>
         <input type="search" placeholder="Найти книгу или автора">
       </div>
+
     </section>
+
 
     <section class="section">
 
       <div class="catalog-grid">
 
-        <article class="book-card">
+        <article
+          class="book-card"
+          onclick="openNaslednik()"
+        >
+
           <div class="book-cover">
             <img src="наследник.jpeg" alt="Наследник">
           </div>
@@ -588,9 +936,12 @@
             <p>Софи Траверс</p>
             <span class="tag">НОВИНКА</span>
           </div>
+
         </article>
 
+
         <article class="book-card">
+
           <div class="book-cover">
             <img src="забег.jpeg" alt="Забег не по правилам">
           </div>
@@ -600,9 +951,12 @@
             <p>Элси Сильвер</p>
             <span class="tag">РОМАНТИКА</span>
           </div>
+
         </article>
 
+
         <article class="book-card">
+
           <div class="book-cover">
             <img src="место.jpeg" alt="Место для любви">
           </div>
@@ -612,6 +966,7 @@
             <p>Крис Эндрюс</p>
             <span class="tag">НОВИНКА</span>
           </div>
+
         </article>
 
       </div>
@@ -620,52 +975,488 @@
 
   </section>
 
+
+  <!-- СТРАНИЦА НАСЛЕДНИКА -->
+  <section id="naslednikScreen" class="screen">
+
+    <header class="book-page-header">
+
+      <button
+        class="back-btn"
+        onclick="goBack()"
+      >
+        ←
+      </button>
+
+      <div class="book-page-title">
+        КНИГА
+      </div>
+
+      <button
+        class="book-page-heart"
+        onclick="toggleFavorite()"
+      >
+        ♡
+      </button>
+
+    </header>
+
+
+    <section class="book-hero">
+
+      <div class="book-cover-wrap">
+
+        <img
+          class="peek-cat"
+          src="cat-book.png"
+          alt="Котик"
+        >
+
+        <img
+          class="detail-cover"
+          src="наследник.jpeg"
+          alt="Наследник"
+        >
+
+      </div>
+
+
+      <div class="book-main-info">
+
+        <h1>
+          НАСЛЕДНИК
+        </h1>
+
+        <div class="author">
+          СОФИ ТРАВЕРС
+        </div>
+
+        <div class="meta">
+
+          <span class="meta-pill">
+            ♕ Серия: Королевская гавань
+          </span>
+
+          <span class="meta-pill">
+            ♡ Книга: 1
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="info-card">
+
+      <h2>
+        ТРОПЫ ✦
+      </h2>
+
+      <div class="trope-list">
+
+        <span class="trope">
+          брак по принуждению
+        </span>
+
+        <span class="trope">
+          враждующие семьи
+        </span>
+
+        <span class="trope">
+          от врагов к влюбленным
+        </span>
+
+        <span class="trope">
+          сильная жгг
+        </span>
+
+        <span class="trope">
+          собственнический мгг
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <section class="info-card">
+
+      <h2>
+        АННОТАЦИЯ ✦
+      </h2>
+
+      <div class="annotation">
+
+        <p>
+          Две враждующие семьи. Брак между их наследниками.
+        </p>
+
+        <p>
+          На публике — любовь.<br>
+          Наедине — война.
+        </p>
+
+        <p>
+          Эйден Принц — высокомерный наследник семьи с многовековым состоянием, которая уничтожила мою. У него ореховые глаза и острые скулы, он золотой мальчик высшего общества.
+        </p>
+
+        <p>
+          Я — девушка, которой никогда не было места в его мире.
+        </p>
+
+        <div
+          id="annotationExtra"
+          class="annotation-extra"
+        >
+
+          <p>
+            В шестнадцать я вылила на его туфли газировку. Он велел мне слизать её.
+          </p>
+
+          <p>
+            В восемнадцать я узнала правду — семья Эйдена отняла у моей всё. Я поклялась, что заставлю каждого, кто насмехался над нами, поплатиться.
+          </p>
+
+          <p>
+            В тридцать у меня появляется шанс вернуть всё, что украла семья Эйдена… но для этого я должна выйти за него замуж.
+          </p>
+
+          <p>
+            На публике мы — идеальная пара. Но наедине? Мы играем в опасную игру — тот, кто первым почувствует желание, проиграет.
+          </p>
+
+          <p>
+            Я не уступлю Эйдену ни на шаг… пока не увижу, кто он на самом деле за своей холодной маской.
+          </p>
+
+          <p>
+            Он сделает всё, чтобы защитить меня.<br>
+            Его прикосновения обжигают меня.<br>
+            Его мир не принимает меня. Моя семья не принимает его.
+          </p>
+
+          <p>
+            Мы обещали развестись, как только выполним сделку… и каждый из нас потеряет всё, если влюбится.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <button
+        id="showMoreBtn"
+        class="show-more"
+        onclick="toggleAnnotation()"
+      >
+        Показать полностью ↓
+      </button>
+
+
+      <div class="book-actions">
+
+        <a
+          class="download-btn"
+          href="Софи Траверс - Наследник.epub"
+          download
+        >
+          ↓ СКАЧАТЬ КНИГУ
+        </a>
+
+
+        <button
+          id="favoriteButton"
+          class="favorite-btn"
+          onclick="toggleFavorite()"
+        >
+          ♡ В ИЗБРАННОЕ
+        </button>
+
+      </div>
+
+    </section>
+
+  </section>
+
+
+  <!-- ИЗБРАННОЕ -->
+  <section id="favoritesScreen" class="screen">
+
+    <section class="catalog-hero">
+
+      <div>
+        <h1>
+          ИЗБРАННОЕ
+        </h1>
+
+        <p>
+          Твои сохранённые истории
+        </p>
+      </div>
+
+      <img
+        class="catalog-cat"
+        src="cat-main.png"
+        alt="Котик"
+      >
+
+    </section>
+
+
+    <div
+      id="favoritesContent"
+      class="section"
+    ></div>
+
+  </section>
+
 </main>
 
-<nav class="bottom-nav">
 
-  <button id="homeNav" class="nav-item active" onclick="openHome()">
+<nav
+  id="bottomNav"
+  class="bottom-nav"
+>
+
+  <button
+    id="homeNav"
+    class="nav-item active"
+    onclick="openHome()"
+  >
     <span class="nav-icon">⌂</span>
     <span>Главная</span>
   </button>
 
-  <button id="catalogNav" class="nav-item" onclick="openCatalog()">
+
+  <button
+    id="catalogNav"
+    class="nav-item"
+    onclick="openCatalog()"
+  >
     <span class="nav-icon">▦</span>
     <span>Каталог</span>
   </button>
 
-  <button class="nav-item">
+
+  <button
+    id="favoritesNav"
+    class="nav-item"
+    onclick="openFavorites()"
+  >
     <span class="nav-icon">♡</span>
     <span>Избранное</span>
   </button>
 
 </nav>
 
-<script>
-  const homeScreen = document.getElementById("homeScreen");
-  const catalogScreen = document.getElementById("catalogScreen");
 
-  const homeNav = document.getElementById("homeNav");
-  const catalogNav = document.getElementById("catalogNav");
+<script>
+  const screens = {
+    home: document.getElementById("homeScreen"),
+    catalog: document.getElementById("catalogScreen"),
+    book: document.getElementById("naslednikScreen"),
+    favorites: document.getElementById("favoritesScreen")
+  };
+
+  const mainHeader = document.getElementById("mainHeader");
+  const bottomNav = document.getElementById("bottomNav");
+
+  let previousScreen = "home";
+
+  function hideScreens() {
+    Object.values(screens).forEach(screen => {
+      screen.classList.remove("active");
+    });
+  }
+
+  function setNav(active) {
+    document
+      .querySelectorAll(".nav-item")
+      .forEach(item => item.classList.remove("active"));
+
+    if (active === "home") {
+      document.getElementById("homeNav").classList.add("active");
+    }
+
+    if (active === "catalog") {
+      document.getElementById("catalogNav").classList.add("active");
+    }
+
+    if (active === "favorites") {
+      document.getElementById("favoritesNav").classList.add("active");
+    }
+  }
 
   function openHome() {
-    homeScreen.classList.add("active");
-    catalogScreen.classList.remove("active");
+    hideScreens();
 
-    homeNav.classList.add("active");
-    catalogNav.classList.remove("active");
+    screens.home.classList.add("active");
 
-    window.scrollTo(0, 0);
+    mainHeader.style.display = "grid";
+    bottomNav.style.display = "grid";
+
+    setNav("home");
+
+    previousScreen = "home";
+
+    window.scrollTo(0,0);
   }
 
   function openCatalog() {
-    catalogScreen.classList.add("active");
-    homeScreen.classList.remove("active");
+    hideScreens();
 
-    catalogNav.classList.add("active");
-    homeNav.classList.remove("active");
+    screens.catalog.classList.add("active");
 
-    window.scrollTo(0, 0);
+    mainHeader.style.display = "grid";
+    bottomNav.style.display = "grid";
+
+    setNav("catalog");
+
+    previousScreen = "catalog";
+
+    window.scrollTo(0,0);
+  }
+
+  function openNaslednik() {
+    previousScreen =
+      screens.catalog.classList.contains("active")
+        ? "catalog"
+        : "home";
+
+    hideScreens();
+
+    screens.book.classList.add("active");
+
+    mainHeader.style.display = "none";
+    bottomNav.style.display = "grid";
+
+    updateFavoriteButton();
+
+    window.scrollTo(0,0);
+  }
+
+  function goBack() {
+    if (previousScreen === "catalog") {
+      openCatalog();
+    } else {
+      openHome();
+    }
+  }
+
+  function toggleAnnotation() {
+    const extra =
+      document.getElementById("annotationExtra");
+
+    const button =
+      document.getElementById("showMoreBtn");
+
+    extra.classList.toggle("show");
+
+    if (extra.classList.contains("show")) {
+      button.textContent = "Скрыть ↑";
+    } else {
+      button.textContent = "Показать полностью ↓";
+    }
+  }
+
+  function isFavorite() {
+    return localStorage.getItem("naslednikFavorite") === "true";
+  }
+
+  function toggleFavorite() {
+    localStorage.setItem(
+      "naslednikFavorite",
+      isFavorite() ? "false" : "true"
+    );
+
+    updateFavoriteButton();
+  }
+
+  function updateFavoriteButton() {
+    const button =
+      document.getElementById("favoriteButton");
+
+    if (!button) return;
+
+    if (isFavorite()) {
+      button.classList.add("saved");
+      button.textContent = "♥ В ИЗБРАННОМ";
+    } else {
+      button.classList.remove("saved");
+      button.textContent = "♡ В ИЗБРАННОЕ";
+    }
+  }
+
+  function openFavorites() {
+    hideScreens();
+
+    screens.favorites.classList.add("active");
+
+    mainHeader.style.display = "grid";
+    bottomNav.style.display = "grid";
+
+    setNav("favorites");
+
+    renderFavorites();
+
+    previousScreen = "favorites";
+
+    window.scrollTo(0,0);
+  }
+
+  function renderFavorites() {
+    const container =
+      document.getElementById("favoritesContent");
+
+    if (isFavorite()) {
+      container.innerHTML = `
+        <div class="catalog-grid">
+
+          <article
+            class="book-card"
+            onclick="openNaslednik()"
+          >
+
+            <div class="book-cover">
+              <img
+                src="наследник.jpeg"
+                alt="Наследник"
+              >
+            </div>
+
+            <div class="book-details">
+              <h3>Наследник</h3>
+              <p>Софи Траверс</p>
+              <span class="tag">СОХРАНЕНО</span>
+            </div>
+
+          </article>
+
+        </div>
+      `;
+    } else {
+      container.innerHTML = `
+        <div class="favorites-empty">
+
+          <img
+            src="cat-main.png"
+            alt="Котик"
+          >
+
+          <h2>
+            Здесь пока пусто
+          </h2>
+
+          <p>
+            Добавляй любимые книги в избранное,<br>
+            и они появятся здесь ♡
+          </p>
+
+        </div>
+      `;
+    }
   }
 
   const tg = window.Telegram?.WebApp;
@@ -674,6 +1465,8 @@
     tg.ready();
     tg.expand();
   }
+
+  updateFavoriteButton();
 </script>
 
 </body>
