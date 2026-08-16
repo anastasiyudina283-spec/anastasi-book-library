@@ -1,14 +1,18 @@
 :root {
-  --bg: #fbf4ed;
-  --panel: #fffaf6;
-  --text: #32221f;
-  --pink: #d98694;
-  --pink-dark: #bb5b70;
-  --pink-soft: #f7dede;
-  --line: #ead6ca;
-  --muted: #ad978b;
-  --shadow: 0 10px 28px rgba(84, 55, 48, 0.07);
+  --bg: #fbf5ef;
+  --panel: #fffaf7;
+  --text: #30211f;
+  --pink: #d98592;
+  --pink-dark: #bd5d72;
+  --pink-soft: #f6dfdf;
+  --line: #ead8ce;
+  --muted: #ad998e;
+  --shadow: 0 10px 26px rgba(89, 57, 48, 0.07);
 }
+
+/* =========================
+   БАЗА
+========================= */
 
 * {
   box-sizing: border-box;
@@ -24,9 +28,9 @@ body {
 }
 
 body {
+  overflow-x: hidden;
   color: var(--text);
   font-family: "Montserrat", Arial, sans-serif;
-  overflow-x: hidden;
 }
 
 button,
@@ -36,9 +40,10 @@ input {
 
 button {
   border: 0;
+  padding: 0;
   background: transparent;
   color: inherit;
-  padding: 0;
+  cursor: pointer;
 }
 
 .page-shell {
@@ -50,6 +55,7 @@ button {
 .app {
   width: 100%;
   max-width: 460px;
+  min-height: 100vh;
   margin: 0 auto;
   padding-bottom: 105px;
   background: var(--bg);
@@ -61,34 +67,38 @@ button {
 ========================= */
 
 .topbar {
+  width: 100%;
   height: 82px;
-  padding: 14px 22px;
+
+  padding: 13px 20px;
 
   display: grid;
-  grid-template-columns: 44px 1fr 44px;
+  grid-template-columns: 42px 1fr 42px;
   align-items: center;
 
-  background: rgba(255, 250, 246, 0.98);
+  background: rgba(255, 250, 247, 0.98);
   border-bottom: 1px solid var(--line);
 }
 
 .profile {
   width: 40px;
   height: 40px;
+
   border-radius: 50%;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: #f0dbce;
+  background: #f0d9cc;
 }
 
 .profile-inner {
   width: 15px;
   height: 15px;
+
   border-radius: 50%;
-  background: #b97961;
+  background: #bb7d63;
 }
 
 .topbar-center {
@@ -96,7 +106,6 @@ button {
 }
 
 .mini-book {
-  height: 16px;
   margin-bottom: 3px;
 
   color: var(--pink-dark);
@@ -107,6 +116,7 @@ button {
 .topbar-title {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 19px;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: 6px;
 }
@@ -122,39 +132,43 @@ button {
 
 
 /* =========================
-   ГЛАВНЫЙ БЛОК
+   HERO
 ========================= */
 
 .hero {
-  position: relative;
+  width: 100%;
+  min-height: 300px;
 
-  min-height: 310px;
-  padding: 58px 20px 18px;
+  padding: 42px 20px 16px;
 
   display: grid;
-  grid-template-columns: 1.12fr 0.88fr;
+  grid-template-columns: minmax(0, 1fr) 155px;
+  gap: 3px;
+
   align-items: end;
 }
 
 .hero-copy {
+  min-width: 0;
+  padding-bottom: 26px;
   position: relative;
   z-index: 3;
-  padding-bottom: 22px;
 }
 
 .hero h1 {
   margin: 0;
 
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 48px;
+  font-size: 40px;
   font-weight: 500;
-  line-height: 0.91;
-  letter-spacing: -1px;
+  line-height: 0.94;
+  letter-spacing: -0.5px;
 }
 
 .hero-dark,
 .hero-pink {
   display: block;
+  white-space: nowrap;
 }
 
 .hero-dark {
@@ -166,56 +180,57 @@ button {
 }
 
 .hero-subtitle {
-  margin-top: 23px;
+  margin-top: 21px;
 
   display: flex;
   align-items: center;
-  gap: 9px;
-
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: 2.5px;
+  gap: 7px;
 
   white-space: nowrap;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.9px;
 }
 
 .hero-subtitle .heart {
   color: var(--pink);
-  font-size: 12px;
+  font-size: 11px;
 }
 
 
-/* КОТИК */
+/* =========================
+   КОТИК
+========================= */
 
 .hero-cat {
-  position: relative;
-  z-index: 2;
+  width: 155px;
+  height: 218px;
 
-  height: 225px;
+  position: relative;
 
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+
+  overflow: visible;
 }
 
 .hero-cat img {
-  position: absolute;
-  right: -17px;
-  bottom: 0;
-
-  width: 225px;
-  max-width: none;
+  width: 155px;
+  max-width: 155px;
   height: auto;
 
   display: block;
   object-fit: contain;
+
+  transform: translateX(5px);
 }
 
 .sparkle {
   position: absolute;
-  z-index: 4;
+  z-index: 5;
 
   color: var(--pink);
   pointer-events: none;
@@ -223,17 +238,20 @@ button {
 
 .sparkle-one {
   left: 0;
-  top: 26px;
+  top: 48px;
+  font-size: 13px;
 }
 
 .sparkle-two {
-  right: 2px;
-  top: 49px;
+  right: 1px;
+  top: 62px;
+  font-size: 15px;
 }
 
 .sparkle-three {
-  right: 5px;
-  bottom: 62px;
+  right: 8px;
+  bottom: 51px;
+  font-size: 11px;
 }
 
 
@@ -242,22 +260,23 @@ button {
 ========================= */
 
 .search-section {
+  width: 100%;
   padding: 0 20px;
 }
 
 .search-box {
   width: 100%;
-  height: 60px;
+  height: 58px;
+
+  padding: 0 20px;
 
   display: flex;
   align-items: center;
   gap: 14px;
 
-  padding: 0 21px;
-
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 31px;
+  border-radius: 30px;
 
   box-shadow: var(--shadow);
 }
@@ -267,6 +286,7 @@ button {
 
   width: 19px;
   height: 19px;
+
   flex: 0 0 19px;
 
   border: 2px solid var(--muted);
@@ -284,7 +304,8 @@ button {
   height: 2px;
 
   background: var(--muted);
-  border-radius: 10px;
+  border-radius: 3px;
+
   transform: rotate(45deg);
 }
 
@@ -292,7 +313,8 @@ button {
   width: 100%;
 
   border: 0;
-  outline: none;
+  outline: 0;
+
   background: transparent;
 
   color: var(--text);
@@ -300,7 +322,7 @@ button {
 }
 
 .search-box input::placeholder {
-  color: #ad988d;
+  color: #ad998e;
 }
 
 
@@ -309,7 +331,7 @@ button {
 ========================= */
 
 .books-section {
-  padding: 36px 20px 0;
+  padding: 35px 20px 0;
 }
 
 .section-heading {
@@ -326,16 +348,19 @@ button {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 25px;
   font-weight: 500;
+  line-height: 1;
   letter-spacing: 2px;
 }
 
 .view-all {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
 
   color: var(--pink-dark);
+
   font-size: 12px;
+  white-space: nowrap;
 }
 
 .view-all span {
@@ -344,44 +369,35 @@ button {
 
 
 /* =========================
-   КНИГИ
+   КАРТОЧКИ КНИГ
 ========================= */
 
 .books-row {
   width: 100%;
 
-  display: flex;
-  gap: 12px;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  padding-bottom: 10px;
-
-  scrollbar-width: none;
-}
-
-.books-row::-webkit-scrollbar {
-  display: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .book-card {
-  flex: 0 0 132px;
-  width: 132px;
+  width: 100%;
+  min-width: 0;
 
   overflow: hidden;
 
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 13px;
 
   box-shadow: var(--shadow);
 }
 
 .book-cover {
-  height: 190px;
+  width: 100%;
+  aspect-ratio: 0.69;
 
-  padding: 13px 10px;
+  padding: 13px 8px;
 
   display: flex;
   flex-direction: column;
@@ -389,21 +405,30 @@ button {
   justify-content: space-between;
 
   overflow: hidden;
-  text-align: center;
 
+  text-align: center;
   font-family: "Cormorant Garamond", Georgia, serif;
 }
 
 .cover-one {
-  background: linear-gradient(145deg, #e3a3aa, #c97984);
+  color: #382322;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(255,255,255,.24), transparent 22%),
+    linear-gradient(145deg, #dfa0a8, #c57983);
 }
 
 .cover-two {
-  background: linear-gradient(145deg, #efc2bd, #da9499);
+  color: #382322;
+  background:
+    radial-gradient(circle at 75% 15%, rgba(255,255,255,.28), transparent 20%),
+    linear-gradient(145deg, #efc2bc, #da969b);
 }
 
 .cover-three {
-  background: linear-gradient(145deg, #a95460, #75303b);
+  color: #fff8f4;
+  background:
+    radial-gradient(circle at 30% 18%, rgba(255,255,255,.12), transparent 20%),
+    linear-gradient(145deg, #ab5865, #74303b);
 }
 
 .cover-decoration {
@@ -414,24 +439,28 @@ button {
 .cover-title {
   margin: auto 0;
 
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 1.03;
+  line-height: 1.04;
+
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .cover-author {
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1.1;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.4px;
 }
 
 .cover-light {
-  color: #fff7f4;
+  color: #fff8f4;
 }
 
 .book-card-body {
-  min-height: 145px;
-  padding: 12px;
+  min-height: 135px;
+
+  padding: 11px 10px 13px;
 
   display: flex;
   flex-direction: column;
@@ -442,16 +471,17 @@ button {
   margin: 0;
 
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1.06;
 }
 
 .book-card-body p {
-  margin: 7px 0 12px;
+  margin: 6px 0 11px;
 
   color: var(--pink-dark);
-  font-size: 10px;
+
+  font-size: 9px;
   line-height: 1.3;
 }
 
@@ -460,32 +490,33 @@ button {
 
   display: inline-block;
 
-  padding: 5px 8px;
+  padding: 5px 7px;
 
   background: var(--pink-soft);
   border-radius: 999px;
 
-  color: #994858;
+  color: #9d495a;
 
-  font-size: 8px;
+  font-size: 7px;
   line-height: 1;
 }
 
 
 /* =========================
-   БАННЕР
+   БАННЕР ИЗБРАННОГО
 ========================= */
 
 .favorite-banner {
   margin: 25px 20px 0;
-  padding: 16px;
+  padding: 15px;
 
-  min-height: 105px;
+  min-height: 102px;
 
   display: grid;
-  grid-template-columns: 65px 1fr 26px;
+  grid-template-columns: 62px 1fr 24px;
+  gap: 12px;
+
   align-items: center;
-  gap: 13px;
 
   background: var(--panel);
   border: 1px solid var(--line);
@@ -495,32 +526,33 @@ button {
 }
 
 .favorite-books-icon {
-  width: 62px;
-  height: 62px;
+  width: 60px;
+  height: 60px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  border-radius: 14px;
   background: #f7e2df;
-  border-radius: 15px;
 }
 
 .mini-stack {
   position: relative;
-  width: 40px;
-  height: 36px;
+
+  width: 38px;
+  height: 34px;
 }
 
 .mini-stack span {
   position: absolute;
   left: 1px;
 
-  width: 38px;
-  height: 9px;
+  width: 36px;
+  height: 8px;
 
   background: #efb8ba;
-  border: 1.3px solid var(--pink-dark);
+  border: 1.2px solid var(--pink-dark);
   border-radius: 3px;
 }
 
@@ -530,20 +562,20 @@ button {
 }
 
 .mini-stack span:nth-child(2) {
-  top: 13px;
+  top: 12px;
   transform: rotate(3deg);
 }
 
 .mini-stack span:nth-child(3) {
-  top: 24px;
+  top: 22px;
   transform: rotate(-2deg);
 }
 
 .favorite-copy h3 {
-  margin: 0 0 6px;
+  margin: 0 0 5px;
 
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.05;
 }
@@ -551,13 +583,15 @@ button {
 .favorite-copy p {
   margin: 0;
 
-  color: #5b4946;
-  font-size: 10px;
+  color: #5d4b47;
+
+  font-size: 9px;
   line-height: 1.4;
 }
 
 .favorite-arrow {
-  font-size: 27px;
+  font-size: 25px;
+  line-height: 1;
 }
 
 .bottom-space {
@@ -566,7 +600,7 @@ button {
 
 
 /* =========================
-   НИЖНЯЯ НАВИГАЦИЯ
+   НИЖНЕЕ МЕНЮ
 ========================= */
 
 .bottom-nav {
@@ -575,6 +609,7 @@ button {
 
   left: 50%;
   bottom: 0;
+
   transform: translateX(-50%);
 
   width: 100%;
@@ -584,7 +619,7 @@ button {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 
-  background: rgba(255, 250, 246, 0.97);
+  background: rgba(255, 250, 247, 0.97);
   border-top: 1px solid var(--line);
 
   backdrop-filter: blur(12px);
@@ -599,6 +634,8 @@ button {
   align-items: center;
   justify-content: center;
   gap: 5px;
+
+  color: #382a27;
 
   font-size: 10px;
 }
@@ -619,7 +656,7 @@ button {
   position: absolute;
   top: 0;
 
-  width: 72px;
+  width: 70px;
   height: 2px;
 
   background: var(--pink-dark);
@@ -627,7 +664,7 @@ button {
 
 
 /* =========================
-   ТЕЛЕФОН
+   МОБИЛЬНЫЙ ЭКРАН
 ========================= */
 
 @media (max-width: 390px) {
@@ -636,24 +673,43 @@ button {
     max-width: 100%;
   }
 
-  .hero {
-    min-height: 290px;
+  .topbar {
     padding-left: 17px;
     padding-right: 17px;
   }
 
-  .hero h1 {
-    font-size: 42px;
+  .hero {
+    min-height: 282px;
+
+    padding:
+      36px
+      17px
+      14px;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      140px;
   }
 
-  .hero-cat img {
-    width: 200px;
-    right: -18px;
+  .hero h1 {
+    font-size: 36px;
   }
 
   .hero-subtitle {
-    font-size: 12px;
-    letter-spacing: 2px;
+    margin-top: 18px;
+
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-cat {
+    width: 140px;
+    height: 200px;
+  }
+
+  .hero-cat img {
+    width: 140px;
+    max-width: 140px;
   }
 
   .search-section,
@@ -667,124 +723,32 @@ button {
     margin-right: 17px;
   }
 
-  .book-card {
-    flex-basis: 126px;
-    width: 126px;
-  }
-}
-/* ===== ФИНАЛЬНАЯ ПРАВКА HERO ===== */
-
-.hero {
-  position: relative;
-  display: block;
-  min-height: 300px;
-  padding: 58px 20px 20px;
-}
-
-.hero-copy {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  padding-bottom: 0;
-}
-
-.hero h1 {
-  margin: 0;
-  width: 270px;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 42px;
-  font-weight: 500;
-  line-height: 0.92;
-  letter-spacing: -0.7px;
-}
-
-.hero-dark,
-.hero-pink {
-  display: block;
-  white-space: nowrap;
-}
-
-.hero-subtitle {
-  margin-top: 22px;
-  width: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 2.2px;
-  white-space: nowrap;
-}
-
-.hero-cat {
-  position: absolute;
-  z-index: 2;
-  right: 8px;
-  top: 102px;
-  width: 155px;
-  height: auto;
-  display: block;
-}
-
-.hero-cat img {
-  position: static;
-  width: 155px;
-  max-width: 155px;
-  height: auto;
-  display: block;
-  transform: none;
-}
-
-.sparkle-one {
-  top: -12px;
-  left: -5px;
-}
-
-.sparkle-two {
-  top: 16px;
-  right: -1px;
-}
-
-.sparkle-three {
-  right: 6px;
-  bottom: 48px;
-}
-
-.search-section {
-  position: relative;
-  z-index: 5;
-  margin-top: 0;
-}
-
-/* Телефоны */
-
-@media (max-width: 390px) {
-  .hero {
-    min-height: 280px;
-    padding: 50px 17px 18px;
+  .books-row {
+    gap: 8px;
   }
 
-  .hero h1 {
-    width: 245px;
-    font-size: 38px;
+  .cover-title {
+    font-size: 14px;
   }
 
-  .hero-subtitle {
-    width: 225px;
-    font-size: 11px;
-    letter-spacing: 1.8px;
+  .book-card-body h3 {
+    font-size: 15px;
+  }
+}
+
+
+/* =========================
+   ДЕСКТОПНЫЙ ПРОСМОТР
+========================= */
+
+@media (min-width: 700px) {
+
+  body {
+    display: flex;
+    justify-content: center;
   }
 
-  .hero-cat {
-    width: 140px;
-    right: 5px;
-    top: 98px;
-  }
-
-  .hero-cat img {
-    width: 140px;
-    max-width: 140px;
+  .page-shell {
+    max-width: 460px;
   }
 }
