@@ -672,3 +672,119 @@ button {
     width: 126px;
   }
 }
+/* ===== ФИНАЛЬНАЯ ПРАВКА HERO ===== */
+
+.hero {
+  position: relative;
+  display: block;
+  min-height: 300px;
+  padding: 58px 20px 20px;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding-bottom: 0;
+}
+
+.hero h1 {
+  margin: 0;
+  width: 270px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 0.92;
+  letter-spacing: -0.7px;
+}
+
+.hero-dark,
+.hero-pink {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero-subtitle {
+  margin-top: 22px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  white-space: nowrap;
+}
+
+.hero-cat {
+  position: absolute;
+  z-index: 2;
+  right: 8px;
+  top: 102px;
+  width: 155px;
+  height: auto;
+  display: block;
+}
+
+.hero-cat img {
+  position: static;
+  width: 155px;
+  max-width: 155px;
+  height: auto;
+  display: block;
+  transform: none;
+}
+
+.sparkle-one {
+  top: -12px;
+  left: -5px;
+}
+
+.sparkle-two {
+  top: 16px;
+  right: -1px;
+}
+
+.sparkle-three {
+  right: 6px;
+  bottom: 48px;
+}
+
+.search-section {
+  position: relative;
+  z-index: 5;
+  margin-top: 0;
+}
+
+/* Телефоны */
+
+@media (max-width: 390px) {
+  .hero {
+    min-height: 280px;
+    padding: 50px 17px 18px;
+  }
+
+  .hero h1 {
+    width: 245px;
+    font-size: 38px;
+  }
+
+  .hero-subtitle {
+    width: 225px;
+    font-size: 11px;
+    letter-spacing: 1.8px;
+  }
+
+  .hero-cat {
+    width: 140px;
+    right: 5px;
+    top: 98px;
+  }
+
+  .hero-cat img {
+    width: 140px;
+    max-width: 140px;
+  }
+}
