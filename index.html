@@ -29,14 +29,15 @@
 
     html, body {
       margin: 0;
+      padding: 0;
       width: 100%;
       min-height: 100%;
       background: var(--bg);
     }
 
     body {
-      font-family: "Montserrat", Arial, sans-serif;
       color: var(--text);
+      font-family: "Montserrat", Arial, sans-serif;
       overflow-x: hidden;
     }
 
@@ -46,9 +47,10 @@
 
     button {
       border: 0;
+      padding: 0;
       background: none;
       color: inherit;
-      padding: 0;
+      cursor: pointer;
     }
 
     .app {
@@ -56,25 +58,25 @@
       max-width: 430px;
       min-height: 100vh;
       margin: 0 auto;
-      padding-bottom: 92px;
+      padding-bottom: 90px;
       background: var(--bg);
     }
 
-    /* ШАПКА */
+    /* ---------- ШАПКА ---------- */
 
     .topbar {
-      height: 78px;
-      padding: 12px 18px;
+      height: 76px;
+      padding: 11px 18px;
       display: grid;
       grid-template-columns: 42px 1fr 42px;
       align-items: center;
       border-bottom: 1px solid var(--line);
-      background: #fffaf7;
+      background: var(--panel);
     }
 
     .avatar {
-      width: 39px;
-      height: 39px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       background: #eed8ca;
       display: flex;
@@ -94,9 +96,10 @@
       text-align: center;
     }
 
-    .brand-icon {
+    .brand-heart {
       color: var(--pink-dark);
-      font-size: 14px;
+      font-size: 13px;
+      line-height: 1;
       margin-bottom: 5px;
     }
 
@@ -111,29 +114,31 @@
       text-align: right;
       color: var(--pink-dark);
       font-size: 31px;
-      font-family: Arial, sans-serif;
       line-height: 1;
+      font-family: Arial, sans-serif;
     }
 
-    /* HERO */
+    /* ---------- ГЛАВНЫЙ БЛОК ---------- */
 
     .hero {
       position: relative;
-      height: 280px;
-      padding: 48px 18px 0;
-      overflow: hidden;
+      height: 245px;
+      padding: 44px 18px 0;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      width: 255px;
     }
 
     .hero-title {
-      position: relative;
-      z-index: 2;
       margin: 0;
-      width: 250px;
       font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 38px;
-      line-height: .92;
       font-weight: 500;
-      letter-spacing: -.6px;
+      font-size: 38px;
+      line-height: 0.92;
+      letter-spacing: -0.7px;
     }
 
     .hero-title span {
@@ -146,77 +151,82 @@
     }
 
     .hero-subtitle {
-      position: relative;
-      z-index: 4;
-      width: 235px;
-      margin-top: 20px;
+      margin-top: 19px;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 7px;
-      white-space: nowrap;
       font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 11px;
       font-weight: 600;
-      font-size: 11px;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.7px;
+      white-space: nowrap;
     }
 
-    .hero-subtitle b {
+    .hero-subtitle .heart {
       color: var(--pink);
-      font-size: 11px;
+      font-size: 10px;
     }
 
-    .cat {
+    /*
+      КОТИК СПЕЦИАЛЬНО НЕ ЛЕЗЕТ НА ТЕКСТ:
+      текст слева, кот справа и ниже.
+    */
+
+    .hero-cat {
       position: absolute;
       z-index: 3;
-      width: 152px;
+      width: 142px;
       height: auto;
-      right: 7px;
-      bottom: 10px;
+      right: 9px;
+      bottom: 8px;
       display: block;
+      object-fit: contain;
     }
 
     .spark {
       position: absolute;
-      z-index: 4;
       color: var(--pink);
+      z-index: 4;
+      pointer-events: none;
     }
 
-    .spark.one {
+    .spark-1 {
+      top: 55px;
       right: 151px;
-      top: 62px;
+      font-size: 12px;
     }
 
-    .spark.two {
+    .spark-2 {
+      top: 79px;
       right: 10px;
-      top: 82px;
+      font-size: 15px;
     }
 
-    .spark.three {
-      right: 18px;
-      bottom: 68px;
-      font-size: 10px;
+    .spark-3 {
+      bottom: 62px;
+      right: 10px;
+      font-size: 9px;
     }
 
-    /* ПОИСК */
+    /* ---------- ПОИСК ---------- */
 
-    .search-wrap {
+    .search-section {
       padding: 0 18px;
     }
 
-    .search {
+    .search-box {
       height: 58px;
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      background: var(--panel);
+      padding: 0 20px;
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 0 20px;
-      box-shadow: 0 10px 25px rgba(88, 55, 47, .06);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--panel);
+      box-shadow: 0 10px 25px rgba(88, 55, 47, 0.06);
     }
 
-    .magnifier {
+    .search-icon {
       position: relative;
       width: 19px;
       height: 19px;
@@ -225,45 +235,45 @@
       border-radius: 50%;
     }
 
-    .magnifier::after {
+    .search-icon::after {
       content: "";
       position: absolute;
       width: 8px;
       height: 2px;
-      background: var(--muted);
       right: -6px;
       bottom: -3px;
+      background: var(--muted);
       transform: rotate(45deg);
       border-radius: 5px;
     }
 
-    .search input {
+    .search-box input {
       width: 100%;
       border: 0;
       outline: 0;
       background: transparent;
-      font-size: 14px;
       color: var(--text);
+      font-size: 14px;
     }
 
-    .search input::placeholder {
+    .search-box input::placeholder {
       color: #ad998e;
     }
 
-    /* НОВИНКИ */
+    /* ---------- НОВИНКИ ---------- */
 
-    .section {
-      padding: 35px 18px 0;
+    .new-section {
+      padding: 34px 18px 0;
     }
 
-    .section-head {
+    .section-header {
+      margin-bottom: 17px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 17px;
     }
 
-    .section-head h2 {
+    .section-title {
       margin: 0;
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 24px;
@@ -271,30 +281,30 @@
       letter-spacing: 2px;
     }
 
-    .section-head button {
+    .view-all {
       color: var(--pink-dark);
-      font-size: 12px;
+      font-size: 11px;
     }
 
-    .books {
+    .books-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 9px;
     }
 
-    .book {
+    .book-card {
       min-width: 0;
-      border-radius: 13px;
       overflow: hidden;
-      background: var(--panel);
       border: 1px solid var(--line);
-      box-shadow: 0 7px 18px rgba(88, 55, 47, .05);
+      border-radius: 13px;
+      background: var(--panel);
+      box-shadow: 0 7px 18px rgba(88, 55, 47, 0.05);
     }
 
-    .cover {
+    .book-cover {
       width: 100%;
-      aspect-ratio: .69;
-      padding: 12px 7px;
+      aspect-ratio: 0.69;
+      padding: 12px 6px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -303,46 +313,46 @@
       font-family: "Cormorant Garamond", Georgia, serif;
     }
 
-    .cover.one {
+    .cover-one {
       background: linear-gradient(145deg, #e0a2aa, #c87984);
     }
 
-    .cover.two {
+    .cover-two {
       background: linear-gradient(145deg, #efc0bb, #da9499);
     }
 
-    .cover.three {
+    .cover-three {
       color: #fff8f4;
       background: linear-gradient(145deg, #ad5965, #74303b);
     }
 
     .cover-star {
       font-size: 9px;
-      opacity: .65;
+      opacity: 0.65;
     }
 
     .cover-title {
       margin: auto 0;
       font-size: 15px;
-      line-height: 1.03;
+      line-height: 1.02;
       font-weight: 600;
     }
 
     .cover-author {
-      font-size: 9px;
-      line-height: 1.1;
-      letter-spacing: .4px;
+      font-size: 8px;
+      line-height: 1.15;
+      letter-spacing: 0.4px;
     }
 
-    .book-info {
-      min-height: 129px;
+    .book-details {
+      min-height: 124px;
       padding: 10px 9px 12px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
     }
 
-    .book-info h3 {
+    .book-details h3 {
       margin: 0;
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 16px;
@@ -350,30 +360,30 @@
       line-height: 1.05;
     }
 
-    .book-info p {
+    .book-details p {
       margin: 6px 0 10px;
+      color: var(--pink-dark);
       font-size: 8px;
       line-height: 1.3;
-      color: var(--pink-dark);
     }
 
     .tag {
       margin-top: auto;
+      padding: 5px 7px;
+      border-radius: 20px;
       background: var(--pink-soft);
       color: #9c4859;
-      border-radius: 20px;
-      padding: 5px 7px;
       font-size: 7px;
     }
 
-    /* БАННЕР */
+    /* ---------- БЛОК ИЗБРАННОГО ---------- */
 
-    .favorite {
+    .favorite-card {
       margin: 24px 18px 0;
-      min-height: 98px;
+      min-height: 96px;
       padding: 14px;
       display: grid;
-      grid-template-columns: 58px 1fr 24px;
+      grid-template-columns: 56px 1fr 24px;
       align-items: center;
       gap: 12px;
       border: 1px solid var(--line);
@@ -381,19 +391,19 @@
       background: var(--panel);
     }
 
-    .books-icon {
+    .favorite-icon {
       width: 56px;
       height: 56px;
       border-radius: 13px;
-      background: #f6e1df;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: #f6e1df;
       color: var(--pink-dark);
-      font-size: 25px;
+      font-size: 24px;
     }
 
-    .favorite h3 {
+    .favorite-text h3 {
       margin: 0 0 5px;
       font-family: "Cormorant Garamond", Georgia, serif;
       font-size: 17px;
@@ -401,36 +411,36 @@
       font-weight: 600;
     }
 
-    .favorite p {
+    .favorite-text p {
       margin: 0;
+      color: #5c4945;
       font-size: 9px;
       line-height: 1.4;
-      color: #5c4945;
     }
 
-    .arrow {
-      font-size: 24px;
+    .favorite-arrow {
+      font-size: 23px;
     }
 
-    /* НИЖНЕЕ МЕНЮ */
+    /* ---------- НИЖНЕЕ МЕНЮ ---------- */
 
     .bottom-nav {
       position: fixed;
       left: 50%;
       bottom: 0;
       z-index: 100;
-      transform: translateX(-50%);
       width: 100%;
       max-width: 430px;
       height: 78px;
+      transform: translateX(-50%);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      background: rgba(255,250,247,.97);
       border-top: 1px solid var(--line);
+      background: rgba(255, 250, 247, 0.97);
       backdrop-filter: blur(10px);
     }
 
-    .nav {
+    .nav-item {
       position: relative;
       display: flex;
       flex-direction: column;
@@ -442,15 +452,15 @@
 
     .nav-icon {
       font-family: Arial, sans-serif;
-      font-size: 25px;
+      font-size: 24px;
       line-height: 1;
     }
 
-    .nav.active {
+    .nav-item.active {
       color: var(--pink-dark);
     }
 
-    .nav.active::before {
+    .nav-item.active::before {
       content: "";
       position: absolute;
       top: 0;
@@ -459,19 +469,31 @@
       background: var(--pink-dark);
     }
 
+    /* ---------- МАЛЕНЬКИЕ ЭКРАНЫ ---------- */
+
     @media (max-width: 370px) {
-      .hero-title {
-        font-size: 34px;
+
+      .hero {
+        height: 230px;
+        padding-top: 40px;
+      }
+
+      .hero-copy {
         width: 225px;
       }
 
-      .cat {
-        width: 135px;
+      .hero-title {
+        font-size: 34px;
+      }
+
+      .hero-cat {
+        width: 126px;
+        right: 5px;
       }
 
       .hero-subtitle {
-        width: 215px;
         font-size: 9px;
+        letter-spacing: 1.3px;
       }
 
       .cover-title {
@@ -483,196 +505,277 @@
 
 <body>
 
-<main class="app">
+  <main class="app">
 
-  <header class="topbar">
-    <div class="avatar"></div>
+    <header class="topbar">
 
-    <div class="brand">
-      <div class="brand-icon">♡</div>
-      <div class="brand-name">БИБЛИОТЕКА</div>
-    </div>
+      <div class="avatar"></div>
 
-    <div class="top-heart">♡</div>
-  </header>
+      <div class="brand">
+        <div class="brand-heart">♡</div>
+        <div class="brand-name">БИБЛИОТЕКА</div>
+      </div>
 
+      <button class="top-heart">♡</button>
 
-  <section class="hero">
-
-    <h1 class="hero-title">
-      <span>АНАСТЕЙШИ</span>
-      <span class="pink">С КНИГАМИ</span>
-    </h1>
-
-    <div class="hero-subtitle">
-      <b>♥</b>
-      для моих кошечек
-      <b>♥</b>
-    </div>
-
-    <span class="spark one">✦</span>
-    <span class="spark two">✧</span>
-    <span class="spark three">♥</span>
-
-    <img class="cat" src="cat-main.png" alt="Котик библиотеки">
-
-  </section>
+    </header>
 
 
-  <section class="search-wrap">
+    <section class="hero">
 
-    <div class="search">
-      <span class="magnifier"></span>
+      <div class="hero-copy">
 
-      <input
-        type="search"
-        placeholder="Найти книгу или автора"
+        <h1 class="hero-title">
+          <span>АНАСТЕЙШИ</span>
+          <span class="pink">С КНИГАМИ</span>
+        </h1>
+
+        <div class="hero-subtitle">
+          <span class="heart">♥</span>
+          <span>ДЛЯ МОИХ КОШЕЧЕК</span>
+          <span class="heart">♥</span>
+        </div>
+
+      </div>
+
+      <span class="spark spark-1">✦</span>
+      <span class="spark spark-2">✧</span>
+      <span class="spark spark-3">♥</span>
+
+      <img
+        class="hero-cat"
+        src="cat-main.png"
+        alt="Котик библиотеки"
       >
-    </div>
 
-  </section>
-
-
-  <section class="section">
-
-    <div class="section-head">
-      <h2>НОВИНКИ</h2>
-      <button>Смотреть все →</button>
-    </div>
+    </section>
 
 
-    <div class="books">
+    <section class="search-section">
 
-      <article class="book">
+      <div class="search-box">
 
-        <div class="cover one">
-          <div class="cover-star">✦</div>
+        <span class="search-icon"></span>
 
-          <div class="cover-title">
-            СОТКАНА<br>
-            ИЗ ТЕНЕЙ
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Найти книгу или автора"
+          autocomplete="off"
+        >
+
+      </div>
+
+    </section>
+
+
+    <section class="new-section">
+
+      <div class="section-header">
+
+        <h2 class="section-title">НОВИНКИ</h2>
+
+        <button class="view-all">
+          Смотреть все →
+        </button>
+
+      </div>
+
+
+      <div class="books-grid">
+
+        <article class="book-card">
+
+          <div class="book-cover cover-one">
+
+            <span class="cover-star">✦</span>
+
+            <div class="cover-title">
+              СОТКАНА<br>
+              ИЗ ТЕНЕЙ
+            </div>
+
+            <div class="cover-author">
+              КАРИСА<br>
+              БРОУДЕН
+            </div>
+
           </div>
 
-          <div class="cover-author">
-            КАРИСА<br>
-            БРОУДЕН
-          </div>
-        </div>
+          <div class="book-details">
 
-        <div class="book-info">
-          <h3>Соткана<br>из теней</h3>
-          <p>Кариса Броуден</p>
-          <span class="tag">НОВИНКА</span>
-        </div>
+            <h3>
+              Соткана<br>
+              из теней
+            </h3>
 
-      </article>
+            <p>Кариса Броуден</p>
 
+            <span class="tag">
+              НОВИНКА
+            </span>
 
-      <article class="book">
-
-        <div class="cover two">
-          <div class="cover-star">✦</div>
-
-          <div class="cover-title">
-            ВЕСЬ ЭТОТ<br>
-            СВЕТ
           </div>
 
-          <div class="cover-author">
-            САРА<br>
-            РОУЗАН
-          </div>
-        </div>
-
-        <div class="book-info">
-          <h3>Весь этот свет</h3>
-          <p>Сара Роузан</p>
-          <span class="tag">РОМАНТИКА</span>
-        </div>
-
-      </article>
+        </article>
 
 
-      <article class="book">
+        <article class="book-card">
 
-        <div class="cover three">
-          <div class="cover-star">✦</div>
+          <div class="book-cover cover-two">
 
-          <div class="cover-title">
-            ИГРА<br>
-            НАСЛЕДНИКОВ
+            <span class="cover-star">✦</span>
+
+            <div class="cover-title">
+              ВЕСЬ ЭТОТ<br>
+              СВЕТ
+            </div>
+
+            <div class="cover-author">
+              САРА<br>
+              РОУЗАН
+            </div>
+
           </div>
 
-          <div class="cover-author">
-            ДЖЕННИФЕР<br>
-            ЛИНН БАРНС
+          <div class="book-details">
+
+            <h3>
+              Весь этот свет
+            </h3>
+
+            <p>Сара Роузан</p>
+
+            <span class="tag">
+              РОМАНТИКА
+            </span>
+
           </div>
-        </div>
 
-        <div class="book-info">
-          <h3>Игра<br>наследников</h3>
-          <p>Дженнифер Линн Барнс</p>
-          <span class="tag">БЕСТСЕЛЛЕР</span>
-        </div>
-
-      </article>
-
-    </div>
-
-  </section>
+        </article>
 
 
-  <section class="favorite">
+        <article class="book-card">
 
-    <div class="books-icon">▤</div>
+          <div class="book-cover cover-three">
 
-    <div>
-      <h3>
-        Твои любимые истории<br>
-        в одном месте
-      </h3>
+            <span class="cover-star">✦</span>
 
-      <p>
-        Добавляй в избранное<br>
-        и возвращайся снова ♡
-      </p>
-    </div>
+            <div class="cover-title">
+              ИГРА<br>
+              НАСЛЕДНИКОВ
+            </div>
 
-    <div class="arrow">→</div>
+            <div class="cover-author">
+              ДЖЕННИФЕР<br>
+              ЛИНН БАРНС
+            </div>
 
-  </section>
+          </div>
 
-</main>
+          <div class="book-details">
+
+            <h3>
+              Игра<br>
+              наследников
+            </h3>
+
+            <p>
+              Дженнифер Линн Барнс
+            </p>
+
+            <span class="tag">
+              БЕСТСЕЛЛЕР
+            </span>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
 
 
-<nav class="bottom-nav">
+    <section class="favorite-card">
 
-  <button class="nav active">
-    <span class="nav-icon">⌂</span>
-    Главная
-  </button>
+      <div class="favorite-icon">
+        ▤
+      </div>
 
-  <button class="nav">
-    <span class="nav-icon">▦</span>
-    Каталог
-  </button>
+      <div class="favorite-text">
 
-  <button class="nav">
-    <span class="nav-icon">♡</span>
-    Избранное
-  </button>
+        <h3>
+          Твои любимые истории<br>
+          в одном месте
+        </h3>
 
-</nav>
+        <p>
+          Добавляй в избранное и возвращайся снова ♡
+        </p>
+
+      </div>
+
+      <div class="favorite-arrow">
+        →
+      </div>
+
+    </section>
+
+  </main>
 
 
-<script>
-  const tg = window.Telegram?.WebApp;
+  <nav class="bottom-nav">
 
-  if (tg) {
-    tg.ready();
-    tg.expand();
-  }
-</script>
+    <button class="nav-item active">
+
+      <span class="nav-icon">
+        ⌂
+      </span>
+
+      <span>
+        Главная
+      </span>
+
+    </button>
+
+
+    <button class="nav-item">
+
+      <span class="nav-icon">
+        ▦
+      </span>
+
+      <span>
+        Каталог
+      </span>
+
+    </button>
+
+
+    <button class="nav-item">
+
+      <span class="nav-icon">
+        ♡
+      </span>
+
+      <span>
+        Избранное
+      </span>
+
+    </button>
+
+  </nav>
+
+
+  <script>
+    const tg = window.Telegram?.WebApp;
+
+    if (tg) {
+      tg.ready();
+      tg.expand();
+    }
+  </script>
 
 </body>
 </html>
