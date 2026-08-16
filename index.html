@@ -199,7 +199,7 @@
 
     .spark-1 {
       top:55px;
-      right:151px;
+      right:112px;
     }
 
     .spark-2 {
@@ -310,23 +310,7 @@
       cursor:pointer;
     }
 
-    .book-cover-shell {
-      position:relative;
-      padding-top:24px;
-    }
-
-    .card-peek-cat {
-      position:absolute;
-      z-index:3;
-      width:70px;
-      right:8px;
-      top:0;
-      pointer-events:none;
-    }
-
     .book-cover {
-      position:relative;
-      z-index:2;
       width:100%;
       aspect-ratio:2 / 3;
       overflow:hidden;
@@ -2249,14 +2233,11 @@
         onclick="openBook('${book.id}')"
       >
 
-        <div class="book-cover-shell">
-          <img class="card-peek-cat" src="cat-book.png" alt="" aria-hidden="true">
-          <div class="book-cover">
-            <img
-              src="${book.cover}"
-              alt="${book.title}"
-            >
-          </div>
+        <div class="book-cover">
+          <img
+            src="${book.cover}"
+            alt="${book.title}"
+          >
         </div>
 
         <div class="book-details">
