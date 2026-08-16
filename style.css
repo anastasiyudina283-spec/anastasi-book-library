@@ -108,9 +108,13 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  color: var(--muted);
-  font-family: Arial, sans-serif;
-  font-size: 12px;
+}
+
+.cat-placeholder img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  display: block;
 }
 
 .search-wrap {
