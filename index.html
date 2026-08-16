@@ -21,6 +21,7 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
   <style>
+
     :root {
       --bg:#fbf5ef;
       --panel:#fffaf7;
@@ -269,45 +270,7 @@
       color:#ad998e;
     }
 
-    /* ФИЛЬТРЫ */
-
-    .filters-wrap {
-      padding:18px 18px 0;
-      overflow:hidden;
-    }
-
-    .filters {
-      display:flex;
-      gap:8px;
-      overflow-x:auto;
-      padding-bottom:4px;
-      scrollbar-width:none;
-    }
-
-    .filters::-webkit-scrollbar {
-      display:none;
-    }
-
-    .filter-btn {
-      flex:0 0 auto;
-      min-height:34px;
-      padding:0 13px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:var(--panel);
-      color:#6f5550;
-      font-size:9px;
-      white-space:nowrap;
-      transition:.2s ease;
-    }
-
-    .filter-btn.active {
-      color:#fff;
-      border-color:var(--pink-dark);
-      background:var(--pink-dark);
-    }
-
-    /* СЕКЦИИ */
+    /* ОБЩИЕ СЕКЦИИ */
 
     .section {
       padding:34px 18px 0;
@@ -333,7 +296,7 @@
       font-size:11px;
     }
 
-    /* КАРТОЧКИ */
+    /* КНИГИ */
 
     .books-grid {
       display:grid;
@@ -404,33 +367,7 @@
       font-size:7px;
     }
 
-    /* ПУСТОЙ КАТАЛОГ */
-
-    .catalog-empty {
-      padding:32px 18px 18px;
-      text-align:center;
-    }
-
-    .catalog-empty img {
-      width:115px;
-      margin-bottom:12px;
-    }
-
-    .catalog-empty h3 {
-      margin:0 0 7px;
-      font-family:"Cormorant Garamond",Georgia,serif;
-      font-size:23px;
-      font-weight:500;
-    }
-
-    .catalog-empty p {
-      margin:0;
-      color:var(--muted);
-      font-size:9px;
-      line-height:1.5;
-    }
-
-    /* БАННЕР */
+    /* БАННЕР ИЗБРАННОГО */
 
     .favorite-card {
       margin:24px 18px 0;
@@ -475,10 +412,11 @@
     /* КАТАЛОГ */
 
     .catalog-hero {
-      padding:30px 18px 16px;
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
+      padding:28px 18px 10px;
+      display:grid;
+      grid-template-columns:1fr 130px;
+      gap:8px;
+      align-items:center;
     }
 
     .catalog-hero h1 {
@@ -490,14 +428,202 @@
     }
 
     .catalog-hero p {
-      margin:9px 0 0;
+      margin:10px 0 0;
       color:var(--muted);
       font-size:10px;
+      line-height:1.4;
     }
 
     .catalog-cat {
-      width:100px;
+      width:130px;
       height:auto;
+      justify-self:end;
+    }
+
+    /* ТРОПЫ / АВТОРЫ */
+
+    .catalog-tabs {
+      margin:18px 18px 0;
+      padding:4px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:4px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#f8e9e5;
+    }
+
+    .catalog-tab {
+      min-height:42px;
+      border-radius:12px;
+      color:#775653;
+      font-size:10px;
+      letter-spacing:.7px;
+    }
+
+    .catalog-tab.active {
+      color:white;
+      background:var(--pink-dark);
+      box-shadow:0 5px 12px rgba(171,74,93,.18);
+    }
+
+    /* КОНТЕНТ КАТАЛОГА */
+
+    .catalog-choice {
+      padding:22px 18px 0;
+    }
+
+    .choice-title {
+      margin:0 0 14px;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:21px;
+      font-weight:500;
+      letter-spacing:1px;
+    }
+
+    .choice-list {
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .choice-btn {
+      padding:10px 13px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:var(--panel);
+      color:#754f4c;
+      font-size:9px;
+      line-height:1.2;
+    }
+
+    .choice-btn.active {
+      color:white;
+      border-color:var(--pink-dark);
+      background:var(--pink-dark);
+    }
+
+    /* АВТОРЫ */
+
+    .author-list {
+      display:flex;
+      flex-direction:column;
+      gap:9px;
+    }
+
+    .author-btn,
+    .series-btn {
+      width:100%;
+      min-height:60px;
+      padding:13px 15px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+      text-align:left;
+      border:1px solid var(--line);
+      border-radius:15px;
+      background:var(--panel);
+      box-shadow:0 5px 16px rgba(88,55,47,.04);
+    }
+
+    .author-name,
+    .series-name {
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:18px;
+      font-weight:500;
+      line-height:1.1;
+    }
+
+    .author-arrow,
+    .series-arrow {
+      flex-shrink:0;
+      color:var(--pink-dark);
+      font-size:19px;
+    }
+
+    .catalog-back {
+      margin-bottom:15px;
+      color:var(--pink-dark);
+      font-size:10px;
+    }
+
+    .selected-author {
+      margin:0 0 7px;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:29px;
+      font-weight:500;
+      line-height:1;
+    }
+
+    .series-caption {
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:9px;
+      line-height:1.4;
+      letter-spacing:.5px;
+      text-transform:uppercase;
+    }
+
+    /* ПРИВЕТСТВИЕ КАТАЛОГА */
+
+    .catalog-welcome {
+      margin:25px 18px 0;
+      padding:20px 18px 22px;
+      text-align:center;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:var(--panel);
+      box-shadow:0 6px 18px rgba(88,55,47,.03);
+    }
+
+    .catalog-welcome img {
+      width:170px;
+      max-width:100%;
+      margin:0 auto 8px;
+      display:block;
+    }
+
+    .catalog-welcome h3 {
+      margin:0 0 7px;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:24px;
+      font-weight:500;
+    }
+
+    .catalog-welcome p {
+      margin:0;
+      color:#715b55;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:15px;
+      line-height:1.35;
+    }
+
+    /* ПУСТОЕ СОСТОЯНИЕ */
+
+    .catalog-empty {
+      padding:30px 18px;
+      text-align:center;
+    }
+
+    .catalog-empty img {
+      width:140px;
+      margin:0 auto 10px;
+      display:block;
+    }
+
+    .catalog-empty h3 {
+      margin:0 0 7px;
+      font-family:"Cormorant Garamond",Georgia,serif;
+      font-size:23px;
+      font-weight:500;
+    }
+
+    .catalog-empty p {
+      margin:0;
+      color:var(--muted);
+      font-size:9px;
+      line-height:1.5;
     }
 
     /* СТРАНИЦА КНИГИ */
@@ -749,14 +875,13 @@
       height:2px;
       background:var(--pink-dark);
     }
+
   </style>
 </head>
 
 <body>
 
 <main class="app">
-
-  <!-- ОБЩАЯ ШАПКА -->
 
   <header id="mainHeader" class="topbar">
 
@@ -779,10 +904,7 @@
 
   <!-- ГЛАВНАЯ -->
 
-  <section
-    id="homeScreen"
-    class="screen active"
-  >
+  <section id="homeScreen" class="screen active">
 
     <section class="hero">
 
@@ -889,10 +1011,7 @@
 
   <!-- КАТАЛОГ -->
 
-  <section
-    id="catalogScreen"
-    class="screen"
-  >
+  <section id="catalogScreen" class="screen">
 
     <section class="catalog-hero">
 
@@ -904,15 +1023,15 @@
         </h1>
 
         <p>
-          Выбирай историю под настроение
+          Что будем читать сегодня?
         </p>
 
       </div>
 
       <img
         class="catalog-cat"
-        src="cat-main.png"
-        alt="Котик"
+        src="cat-catalog.png"
+        alt="Котик каталога"
       >
 
     </section>
@@ -927,7 +1046,7 @@
         <input
           id="catalogSearch"
           type="search"
-          placeholder="Найти книгу или автора"
+          placeholder="Найти книгу, автора или серию"
         >
 
       </div>
@@ -935,67 +1054,60 @@
     </section>
 
 
-    <section class="filters-wrap">
+    <div class="catalog-tabs">
 
-      <div
-        id="catalogFilters"
-        class="filters"
+      <button
+        id="tropesTab"
+        class="catalog-tab active"
+        onclick="showTropesTab()"
+      >
+        ТРОПЫ
+      </button>
+
+      <button
+        id="authorsTab"
+        class="catalog-tab"
+        onclick="showAuthorsTab()"
+      >
+        АВТОРЫ
+      </button>
+
+    </div>
+
+
+    <div
+      id="catalogControls"
+      class="catalog-choice"
+    ></div>
+
+
+    <div
+      id="catalogWelcome"
+      class="catalog-welcome"
+    >
+
+      <img
+        src="cat-catalog.png"
+        alt="Котик каталога"
       >
 
-        <button
-          class="filter-btn active"
-          data-filter="all"
-          onclick="setCatalogFilter('all', this)"
-        >
-          Все
-        </button>
+      <h3>
+        Что тебе найти?
+      </h3>
 
-        <button
-          class="filter-btn"
-          data-filter="от врагов к влюбленным"
-          onclick="setCatalogFilter('от врагов к влюбленным', this)"
-        >
-          От врагов к влюбленным
-        </button>
+      <p>
+        Выбери троп или любимого автора —<br>
+        я найду тебе подходящую историю ♡
+      </p>
 
-        <button
-          class="filter-btn"
-          data-filter="маленький городок"
-          onclick="setCatalogFilter('маленький городок', this)"
-        >
-          Маленький городок
-        </button>
-
-        <button
-          class="filter-btn"
-          data-filter="фиктивные отношения"
-          onclick="setCatalogFilter('фиктивные отношения', this)"
-        >
-          Фиктивные отношения
-        </button>
-
-        <button
-          class="filter-btn"
-          data-filter="миллиардеры"
-          onclick="setCatalogFilter('миллиардеры', this)"
-        >
-          Миллиардеры
-        </button>
-
-        <button
-          class="filter-btn"
-          data-filter="роман на рабочем месте"
-          onclick="setCatalogFilter('роман на рабочем месте', this)"
-        >
-          Роман на рабочем месте
-        </button>
-
-      </div>
-
-    </section>
+    </div>
 
 
-    <section class="section">
+    <section
+      id="catalogResultsSection"
+      class="section"
+      style="display:none;"
+    >
 
       <div
         id="catalogBooks"
@@ -1009,17 +1121,16 @@
       >
 
         <img
-          src="cat-main.png"
-          alt="Котик"
+          src="cat-catalog.png"
+          alt="Котик каталога"
         >
 
         <h3>
-          Пока ничего нет
+          Здесь пока тихо…
         </h3>
 
         <p>
-          Здесь скоро появятся книги<br>
-          с этим тропом ♡
+          Но новые истории уже в пути ♡
         </p>
 
       </div>
@@ -1029,12 +1140,9 @@
   </section>
 
 
-  <!-- СТРАНИЦА КНИГИ -->
+  <!-- КНИГА -->
 
-  <section
-    id="bookScreen"
-    class="screen"
-  >
+  <section id="bookScreen" class="screen">
 
     <header class="book-page-header">
 
@@ -1172,10 +1280,7 @@
 
   <!-- ИЗБРАННОЕ -->
 
-  <section
-    id="favoritesScreen"
-    class="screen"
-  >
+  <section id="favoritesScreen" class="screen">
 
     <section class="catalog-hero">
 
@@ -1275,9 +1380,79 @@
 
 <script>
 
-  /* ========================================
-     ДАННЫЕ КНИГ
-  ======================================== */
+  /* =========================
+     СТРУКТУРА АВТОРОВ
+  ========================= */
+
+  const authors = {
+
+    "Софи Траверс": [
+      "Королевская гавань"
+    ],
+
+    "Оливия Хейл": [
+      "Игры миллиардеров",
+      "Миллиардеры Нью-Йорка",
+      "Одиночные книги"
+    ],
+
+    "Элси Сильвер": [
+      "Ранчо «Золотая лихорадка»"
+    ],
+
+    "К. Б. Тайлер": [
+      "Одиночные книги"
+    ],
+
+    "М. Памела": [
+      "Неожиданная любовь"
+    ],
+
+    "Пайпер Рейн": [
+      "Новогодний сборник"
+    ],
+
+    "Катарина Маура": [
+      "Под запретом"
+    ],
+
+    "Крис Эндрюс": [
+      "Сильвер Лейк Фолс"
+    ],
+
+    "Кристина Лорен": [
+      "Одиночные книги"
+    ],
+
+    "Лейни Лоусон": [
+      "Логово ковбоев"
+    ]
+
+  };
+
+
+  /* =========================
+     ОСНОВНЫЕ ТРОПЫ
+  ========================= */
+
+  const mainTropes = [
+
+    "от врагов к влюбленным",
+
+    "маленький городок",
+
+    "фиктивные отношения",
+
+    "миллиардеры",
+
+    "роман на рабочем месте"
+
+  ];
+
+
+  /* =========================
+     КНИГИ
+  ========================= */
 
   const books = {
 
@@ -1309,6 +1484,7 @@
       ],
 
       annotation:[
+
         "Две враждующие семьи. Брак между их наследниками.",
 
         "На публике — любовь.<br>Наедине — война.",
@@ -1330,6 +1506,7 @@
         "Он сделает всё, чтобы защитить меня.<br>Его прикосновения обжигают меня.<br>Его мир не принимает меня. Моя семья не принимает его.",
 
         "Мы обещали развестись, как только выполним сделку… и каждый из нас потеряет всё, если влюбится."
+
       ]
 
     },
@@ -1361,6 +1538,7 @@
       ],
 
       annotation:[
+
         "Он поцеловал младшую сестру своего лучшего друга, и мир замер.",
 
         "Той ночью они были двумя идеальными незнакомцами: угрюмый отшельник города и шикарная девушка в заднем углу бара. Пока это не перестало быть правдой.",
@@ -1380,6 +1558,7 @@
         "Её брат — единственная семья, которая у неё осталась, и, как бы грустно это ни звучало, он же — единственный друг Гриффина.",
 
         "Но он всё равно поцеловал её снова."
+
       ]
 
     },
@@ -1413,6 +1592,7 @@
       ],
 
       annotation:[
+
         "После того как её отношения рухнули в прямом эфире, Элиза Миллер сбегает в свой тихий домик на берегу озера, мечтая начать жизнь с чистого листа.",
 
         "Но о спокойствии приходится забыть, когда к ней вынужден подселиться Картер Роулингс — мрачный миллиардер с пронзительными серыми глазами и тяжёлым характером.",
@@ -1432,6 +1612,7 @@
         "Когда старые раны вновь дадут о себе знать, а тайны выйдут наружу, хватит ли им смелости рискнуть своими сердцами?",
 
         "Или время, проведённое в Силвер-Лейк-Фоллс, так и останется лишь мимолётным воспоминанием об одном лете?"
+
       ]
 
     }
@@ -1439,9 +1620,9 @@
   };
 
 
-  /* ========================================
-     ОСНОВНОЕ СОСТОЯНИЕ
-  ======================================== */
+  /* =========================
+     СОСТОЯНИЕ
+  ========================= */
 
   const screens = {
 
@@ -1472,14 +1653,16 @@
 
   let previousScreen = "home";
 
-  let currentCatalogFilter = "all";
+  let catalogMode = "tropes";
 
-  let currentCatalogSearch = "";
+  let selectedAuthor = null;
+
+  let selectedSeries = null;
 
 
-  /* ========================================
-     НАВИГАЦИЯ
-  ======================================== */
+  /* =========================
+     ОБЩАЯ НАВИГАЦИЯ
+  ========================= */
 
   function hideScreens() {
 
@@ -1506,29 +1689,15 @@
 
 
     if (active === "home") {
-
-      document
-        .getElementById("homeNav")
-        .classList.add("active");
-
+      document.getElementById("homeNav").classList.add("active");
     }
-
 
     if (active === "catalog") {
-
-      document
-        .getElementById("catalogNav")
-        .classList.add("active");
-
+      document.getElementById("catalogNav").classList.add("active");
     }
 
-
     if (active === "favorites") {
-
-      document
-        .getElementById("favoritesNav")
-        .classList.add("active");
-
+      document.getElementById("favoritesNav").classList.add("active");
     }
 
   }
@@ -1567,7 +1736,7 @@
 
     previousScreen = "catalog";
 
-    applyCatalogFilters();
+    resetCatalog();
 
     window.scrollTo(0,0);
 
@@ -1595,9 +1764,9 @@
   }
 
 
-  /* ========================================
-     КАРТОЧКИ
-  ======================================== */
+  /* =========================
+     КАРТОЧКА КНИГИ
+  ========================= */
 
   function createBookCard(book) {
 
@@ -1643,55 +1812,352 @@
 
   function renderHomeBooks() {
 
-    const container =
-      document.getElementById("homeBooks");
+    document
+      .getElementById("homeBooks")
+      .innerHTML =
+
+        Object
+          .values(books)
+          .map(createBookCard)
+          .join("");
+
+  }
 
 
-    container.innerHTML =
+  /* =========================
+     СБРОС КАТАЛОГА
+  ========================= */
+
+  function resetCatalog() {
+
+    selectedAuthor = null;
+
+    selectedSeries = null;
+
+    document
+      .getElementById("catalogSearch")
+      .value = "";
+
+    document
+      .getElementById("catalogWelcome")
+      .style.display = "block";
+
+    document
+      .getElementById("catalogResultsSection")
+      .style.display = "none";
+
+    document
+      .getElementById("catalogBooks")
+      .innerHTML = "";
+
+    if (catalogMode === "authors") {
+
+      renderAuthors();
+
+    } else {
+
+      renderTropes();
+
+    }
+
+  }
+
+
+  /* =========================
+     ТРОПЫ
+  ========================= */
+
+  function showTropesTab() {
+
+    catalogMode = "tropes";
+
+    selectedAuthor = null;
+
+    selectedSeries = null;
+
+    document
+      .getElementById("tropesTab")
+      .classList.add("active");
+
+    document
+      .getElementById("authorsTab")
+      .classList.remove("active");
+
+    document
+      .getElementById("catalogWelcome")
+      .style.display = "block";
+
+    document
+      .getElementById("catalogResultsSection")
+      .style.display = "none";
+
+    renderTropes();
+
+  }
+
+
+  function renderTropes() {
+
+    const controls =
+      document.getElementById("catalogControls");
+
+
+    controls.innerHTML = `
+
+      <h3 class="choice-title">
+        Выбери троп
+      </h3>
+
+      <div class="choice-list">
+
+        ${mainTropes.map(trope => `
+
+          <button
+            class="choice-btn"
+            onclick="selectTrope('${escapeQuote(trope)}')"
+          >
+            ${capitalizeFirst(trope)}
+          </button>
+
+        `).join("")}
+
+      </div>
+
+    `;
+
+  }
+
+
+  function selectTrope(trope) {
+
+    const matches =
+
       Object
         .values(books)
-        .map(createBookCard)
-        .join("");
+        .filter(book =>
 
-  }
+          book.tropes.some(
+            item =>
+              normalize(item) === normalize(trope)
+          )
 
-
-  /* ========================================
-     ФИЛЬТРЫ КАТАЛОГА
-  ======================================== */
-
-  function normalize(value) {
-
-    return value
-      .toLowerCase()
-      .trim();
-
-  }
-
-
-  function setCatalogFilter(filter, button) {
-
-    currentCatalogFilter = filter;
+        );
 
 
     document
-      .querySelectorAll(".filter-btn")
-      .forEach(item => {
-
-        item.classList.remove("active");
-
-      });
+      .getElementById("catalogWelcome")
+      .style.display = "none";
 
 
-    button.classList.add("active");
-
-
-    applyCatalogFilters();
+    showBookResults(matches);
 
   }
 
 
-  function applyCatalogFilters() {
+  /* =========================
+     АВТОРЫ
+  ========================= */
+
+  function showAuthorsTab() {
+
+    catalogMode = "authors";
+
+    selectedAuthor = null;
+
+    selectedSeries = null;
+
+
+    document
+      .getElementById("authorsTab")
+      .classList.add("active");
+
+
+    document
+      .getElementById("tropesTab")
+      .classList.remove("active");
+
+
+    document
+      .getElementById("catalogWelcome")
+      .style.display = "none";
+
+
+    document
+      .getElementById("catalogResultsSection")
+      .style.display = "none";
+
+
+    renderAuthors();
+
+  }
+
+
+  function renderAuthors() {
+
+    selectedAuthor = null;
+
+    selectedSeries = null;
+
+
+    document
+      .getElementById("catalogResultsSection")
+      .style.display = "none";
+
+
+    document
+      .getElementById("catalogControls")
+      .innerHTML = `
+
+        <h3 class="choice-title">
+          Выбери автора
+        </h3>
+
+        <div class="author-list">
+
+          ${Object.keys(authors).map(author => `
+
+            <button
+              class="author-btn"
+              onclick="selectAuthor('${escapeQuote(author)}')"
+            >
+
+              <span class="author-name">
+                ${author}
+              </span>
+
+              <span class="author-arrow">
+                →
+              </span>
+
+            </button>
+
+          `).join("")}
+
+        </div>
+
+      `;
+
+  }
+
+
+  function selectAuthor(author) {
+
+    selectedAuthor = author;
+
+    selectedSeries = null;
+
+
+    const seriesList =
+      authors[author] || [];
+
+
+    document
+      .getElementById("catalogControls")
+      .innerHTML = `
+
+        <button
+          class="catalog-back"
+          onclick="renderAuthors()"
+        >
+          ← Назад к авторам
+        </button>
+
+        <h3 class="selected-author">
+          ${author}
+        </h3>
+
+        <p class="series-caption">
+          Выбери серию
+        </p>
+
+        <div class="author-list">
+
+          ${seriesList.map(seriesName => `
+
+            <button
+              class="series-btn"
+              onclick="selectSeries('${escapeQuote(seriesName)}')"
+            >
+
+              <span class="series-name">
+                ${seriesName}
+              </span>
+
+              <span class="series-arrow">
+                →
+              </span>
+
+            </button>
+
+          `).join("")}
+
+        </div>
+
+      `;
+
+
+    document
+      .getElementById("catalogResultsSection")
+      .style.display = "none";
+
+  }
+
+
+  function selectSeries(seriesName) {
+
+    selectedSeries = seriesName;
+
+
+    const matches =
+
+      Object
+        .values(books)
+        .filter(book =>
+
+          book.author === selectedAuthor
+
+          &&
+
+          book.series === selectedSeries
+
+        );
+
+
+    document
+      .getElementById("catalogControls")
+      .innerHTML = `
+
+        <button
+          class="catalog-back"
+          onclick="selectAuthor('${escapeQuote(selectedAuthor)}')"
+        >
+          ← Назад к сериям
+        </button>
+
+        <h3 class="selected-author">
+          ${selectedAuthor}
+        </h3>
+
+        <p class="series-caption">
+          ${selectedSeries}
+        </p>
+
+      `;
+
+
+    showBookResults(matches);
+
+  }
+
+
+  /* =========================
+     РЕЗУЛЬТАТЫ
+  ========================= */
+
+  function showBookResults(bookList) {
+
+    const section =
+      document.getElementById("catalogResultsSection");
 
     const container =
       document.getElementById("catalogBooks");
@@ -1700,42 +2166,10 @@
       document.getElementById("catalogEmpty");
 
 
-    const search =
-      normalize(currentCatalogSearch);
+    section.style.display = "block";
 
 
-    const filteredBooks =
-      Object
-        .values(books)
-        .filter(book => {
-
-          const matchesSearch =
-
-            !search ||
-
-            normalize(book.title).includes(search) ||
-
-            normalize(book.author).includes(search);
-
-
-          const matchesFilter =
-
-            currentCatalogFilter === "all" ||
-
-            book.tropes.some(trope =>
-
-              normalize(trope) ===
-              normalize(currentCatalogFilter)
-
-            );
-
-
-          return matchesSearch && matchesFilter;
-
-        });
-
-
-    if (filteredBooks.length === 0) {
+    if (!bookList.length) {
 
       container.innerHTML = "";
 
@@ -1750,16 +2184,148 @@
 
 
     container.innerHTML =
-      filteredBooks
+
+      bookList
         .map(createBookCard)
         .join("");
 
   }
 
 
-  /* ========================================
+  /* =========================
+     ПОИСК В КАТАЛОГЕ
+  ========================= */
+
+  document
+    .getElementById("catalogSearch")
+    .addEventListener(
+      "input",
+      event => {
+
+        const query =
+          normalize(event.target.value);
+
+
+        if (!query) {
+
+          document
+            .getElementById("catalogResultsSection")
+            .style.display = "none";
+
+
+          if (catalogMode === "authors") {
+
+            renderAuthors();
+
+          } else {
+
+            document
+              .getElementById("catalogWelcome")
+              .style.display = "block";
+
+            renderTropes();
+
+          }
+
+          return;
+
+        }
+
+
+        const matches =
+
+          Object
+            .values(books)
+            .filter(book =>
+
+              normalize(book.title).includes(query)
+
+              ||
+
+              normalize(book.author).includes(query)
+
+              ||
+
+              normalize(book.series).includes(query)
+
+            );
+
+
+        document
+          .getElementById("catalogWelcome")
+          .style.display = "none";
+
+
+        document
+          .getElementById("catalogControls")
+          .innerHTML = `
+
+            <h3 class="choice-title">
+              Результаты поиска
+            </h3>
+
+          `;
+
+
+        showBookResults(matches);
+
+      }
+    );
+
+
+  /* =========================
+     ПОИСК НА ГЛАВНОЙ
+  ========================= */
+
+  document
+    .getElementById("homeSearch")
+    .addEventListener(
+      "input",
+      event => {
+
+        const query =
+          normalize(event.target.value);
+
+
+        if (!query) {
+
+          renderHomeBooks();
+
+          return;
+
+        }
+
+
+        const matches =
+
+          Object
+            .values(books)
+            .filter(book =>
+
+              normalize(book.title).includes(query)
+
+              ||
+
+              normalize(book.author).includes(query)
+
+            );
+
+
+        document
+          .getElementById("homeBooks")
+          .innerHTML =
+
+            matches
+              .map(createBookCard)
+              .join("");
+
+      }
+    );
+
+
+  /* =========================
      СТРАНИЦА КНИГИ
-  ======================================== */
+  ========================= */
 
   function openBook(bookId) {
 
@@ -1772,13 +2338,17 @@
 
       previousScreen = "catalog";
 
-    } else if (
+    }
+
+    else if (
       screens.favorites.classList.contains("active")
     ) {
 
       previousScreen = "favorites";
 
-    } else {
+    }
+
+    else {
 
       previousScreen = "home";
 
@@ -1906,13 +2476,15 @@
 
       openCatalog();
 
-    } else if (
-      previousScreen === "favorites"
-    ) {
+    }
+
+    else if (previousScreen === "favorites") {
 
       openFavorites();
 
-    } else {
+    }
+
+    else {
 
       openHome();
 
@@ -1938,22 +2510,22 @@
       extra.classList.contains("show")
     ) {
 
-      button.textContent =
-        "Скрыть ↑";
+      button.textContent = "Скрыть ↑";
 
-    } else {
+    }
 
-      button.textContent =
-        "Показать полностью ↓";
+    else {
+
+      button.textContent = "Показать полностью ↓";
 
     }
 
   }
 
 
-  /* ========================================
+  /* =========================
      СКАЧИВАНИЕ
-  ======================================== */
+  ========================= */
 
   function downloadCurrentBook() {
 
@@ -1966,7 +2538,9 @@
 
     const fileUrl =
 
-      "https://anastasiyudina283-spec.github.io/anastasi-book-library/" +
+      "https://anastasiyudina283-spec.github.io/anastasi-book-library/"
+
+      +
 
       encodeURIComponent(book.file);
 
@@ -1980,7 +2554,9 @@
         .WebApp
         .openLink(fileUrl);
 
-    } else {
+    }
+
+    else {
 
       window.open(
         fileUrl,
@@ -1992,19 +2568,27 @@
   }
 
 
-  /* ========================================
+  /* =========================
      ИЗБРАННОЕ
-  ======================================== */
+  ========================= */
 
   function getFavorites() {
 
     try {
 
       return JSON.parse(
-        localStorage.getItem("bookFavorites") || "[]"
+
+        localStorage.getItem("bookFavorites")
+
+        ||
+
+        "[]"
+
       );
 
-    } catch {
+    }
+
+    catch {
 
       return [];
 
@@ -2016,8 +2600,11 @@
   function saveFavorites(favorites) {
 
     localStorage.setItem(
+
       "bookFavorites",
+
       JSON.stringify(favorites)
+
     );
 
   }
@@ -2049,7 +2636,9 @@
           id => id !== currentBookId
         );
 
-    } else {
+    }
+
+    else {
 
       favorites.push(currentBookId);
 
@@ -2057,7 +2646,6 @@
 
 
     saveFavorites(favorites);
-
 
     updateFavoriteButton();
 
@@ -2089,7 +2677,9 @@
       topHeart.textContent =
         "♥";
 
-    } else {
+    }
+
+    else {
 
       button.classList.remove("saved");
 
@@ -2138,10 +2728,14 @@
 
       favorites
 
-        .filter(id => books[id])
+        .filter(id =>
+          books[id]
+        )
 
         .map(id =>
-          createBookCard(books[id])
+          createBookCard(
+            books[id]
+          )
         )
 
         .join("");
@@ -2149,82 +2743,44 @@
   }
 
 
-  /* ========================================
-     ПОИСК
-  ======================================== */
+  /* =========================
+     ВСПОМОГАТЕЛЬНОЕ
+  ========================= */
 
-  document
-    .getElementById("catalogSearch")
-    .addEventListener(
-      "input",
-      event => {
+  function normalize(value) {
 
-        currentCatalogSearch =
-          event.target.value;
+    return String(value)
+      .toLowerCase()
+      .trim();
 
-        applyCatalogFilters();
-
-      }
-    );
+  }
 
 
-  document
-    .getElementById("homeSearch")
-    .addEventListener(
-      "input",
-      event => {
+  function capitalizeFirst(value) {
 
-        const query =
-          normalize(event.target.value);
+    return value
+      .charAt(0)
+      .toUpperCase()
 
+      +
 
-        const container =
-          document.getElementById("homeBooks");
+      value.slice(1);
 
-
-        if (!query) {
-
-          renderHomeBooks();
-
-          return;
-
-        }
+  }
 
 
-        const filtered =
+  function escapeQuote(value) {
 
-          Object
-            .values(books)
-            .filter(book => {
+    return String(value)
+      .replace(/\\/g, "\\\\")
+      .replace(/'/g, "\\'");
 
-              return (
-
-                normalize(book.title)
-                  .includes(query)
-
-                ||
-
-                normalize(book.author)
-                  .includes(query)
-
-              );
-
-            });
+  }
 
 
-        container.innerHTML =
-
-          filtered
-            .map(createBookCard)
-            .join("");
-
-      }
-    );
-
-
-  /* ========================================
+  /* =========================
      TELEGRAM
-  ======================================== */
+  ========================= */
 
   const tg =
     window.Telegram?.WebApp;
@@ -2239,13 +2795,13 @@
   }
 
 
-  /* ========================================
-     ЗАПУСК
-  ======================================== */
+  /* =========================
+     СТАРТ
+  ========================= */
 
   renderHomeBooks();
 
-  applyCatalogFilters();
+  renderTropes();
 
 </script>
 
