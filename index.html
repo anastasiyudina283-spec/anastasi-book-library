@@ -21,7 +21,6 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
   <style>
-
     :root {
       --bg:#fbf5ef;
       --panel:#fffaf7;
@@ -83,8 +82,6 @@
       display:block;
     }
 
-    /* ШАПКА */
-
     .topbar {
       height:76px;
       padding:11px 18px;
@@ -137,8 +134,6 @@
       font-size:31px;
       font-family:Arial,sans-serif;
     }
-
-    /* ГЛАВНАЯ */
 
     .hero {
       position:relative;
@@ -218,8 +213,6 @@
       font-size:9px;
     }
 
-    /* ПОИСК */
-
     .search-section {
       padding:0 18px;
     }
@@ -270,8 +263,6 @@
       color:#ad998e;
     }
 
-    /* ОБЩИЕ СЕКЦИИ */
-
     .section {
       padding:34px 18px 0;
     }
@@ -295,8 +286,6 @@
       color:var(--pink-dark);
       font-size:11px;
     }
-
-    /* КНИГИ */
 
     .books-grid {
       display:grid;
@@ -367,8 +356,6 @@
       font-size:7px;
     }
 
-    /* БАННЕР ИЗБРАННОГО */
-
     .favorite-card {
       margin:24px 18px 0;
       min-height:96px;
@@ -409,8 +396,6 @@
       line-height:1.4;
     }
 
-    /* КАТАЛОГ */
-
     .catalog-hero {
       padding:28px 18px 10px;
       display:grid;
@@ -440,8 +425,6 @@
       justify-self:end;
     }
 
-    /* ТРОПЫ / АВТОРЫ */
-
     .catalog-tabs {
       margin:18px 18px 0;
       padding:4px;
@@ -466,8 +449,6 @@
       background:var(--pink-dark);
       box-shadow:0 5px 12px rgba(171,74,93,.18);
     }
-
-    /* КОНТЕНТ КАТАЛОГА */
 
     .catalog-choice {
       padding:22px 18px 0;
@@ -496,14 +477,6 @@
       font-size:9px;
       line-height:1.2;
     }
-
-    .choice-btn.active {
-      color:white;
-      border-color:var(--pink-dark);
-      background:var(--pink-dark);
-    }
-
-    /* АВТОРЫ */
 
     .author-list {
       display:flex;
@@ -565,8 +538,6 @@
       text-transform:uppercase;
     }
 
-    /* ПРИВЕТСТВИЕ КАТАЛОГА */
-
     .catalog-welcome {
       margin:25px 18px 0;
       padding:20px 18px 22px;
@@ -599,8 +570,6 @@
       line-height:1.35;
     }
 
-    /* ПУСТОЕ СОСТОЯНИЕ */
-
     .catalog-empty {
       padding:30px 18px;
       text-align:center;
@@ -625,8 +594,6 @@
       font-size:9px;
       line-height:1.5;
     }
-
-    /* СТРАНИЦА КНИГИ */
 
     .book-page-header {
       height:72px;
@@ -779,7 +746,12 @@
       margin-top:18px;
     }
 
+    .book-actions.has-bonus {
+      grid-template-columns:1fr;
+    }
+
     .download-btn,
+    .bonus-btn,
     .favorite-btn {
       min-height:54px;
       border-radius:14px;
@@ -795,6 +767,12 @@
       background:linear-gradient(135deg,#c84f65,#de7585);
     }
 
+    .bonus-btn {
+      color:#8f4453;
+      border:1px solid #e3a2ac;
+      background:#fae7e7;
+    }
+
     .favorite-btn {
       color:var(--pink-dark);
       border:1px solid var(--pink);
@@ -805,8 +783,6 @@
       color:white;
       background:var(--pink-dark);
     }
-
-    /* ИЗБРАННОЕ */
 
     .favorites-empty {
       padding:60px 30px;
@@ -829,8 +805,6 @@
       color:var(--muted);
       line-height:1.5;
     }
-
-    /* НИЖНЕЕ МЕНЮ */
 
     .bottom-nav {
       position:fixed;
@@ -875,7 +849,6 @@
       height:2px;
       background:var(--pink-dark);
     }
-
   </style>
 </head>
 
@@ -892,17 +865,10 @@
       <div class="brand-name">БИБЛИОТЕКА</div>
     </div>
 
-    <button
-      class="top-heart"
-      onclick="openFavorites()"
-    >
-      ♡
-    </button>
+    <button class="top-heart" onclick="openFavorites()">♡</button>
 
   </header>
 
-
-  <!-- ГЛАВНАЯ -->
 
   <section id="homeScreen" class="screen active">
 
@@ -927,120 +893,63 @@
       <span class="spark spark-2">✧</span>
       <span class="spark spark-3">♥</span>
 
-      <img
-        class="hero-cat"
-        src="cat-main.png"
-        alt="Котик"
-      >
+      <img class="hero-cat" src="cat-main.png" alt="Котик">
 
     </section>
-
 
     <section class="search-section">
-
       <div class="search-box">
-
         <span class="search-icon"></span>
-
-        <input
-          id="homeSearch"
-          type="search"
-          placeholder="Найти книгу или автора"
-        >
-
+        <input id="homeSearch" type="search" placeholder="Найти книгу или автора">
       </div>
-
     </section>
-
 
     <section class="section">
 
       <div class="section-header">
+        <h2 class="section-title">НОВИНКИ</h2>
 
-        <h2 class="section-title">
-          НОВИНКИ
-        </h2>
-
-        <button
-          class="view-all"
-          onclick="openCatalog()"
-        >
+        <button class="view-all" onclick="openCatalog()">
           Смотреть все →
         </button>
-
       </div>
 
-      <div
-        id="homeBooks"
-        class="books-grid"
-      ></div>
+      <div id="homeBooks" class="books-grid"></div>
 
     </section>
 
+    <section class="favorite-card" onclick="openFavorites()">
 
-    <section
-      class="favorite-card"
-      onclick="openFavorites()"
-    >
-
-      <div class="favorite-icon">
-        ▤
-      </div>
+      <div class="favorite-icon">▤</div>
 
       <div class="favorite-text">
-
-        <h3>
-          Твои любимые истории<br>
-          в одном месте
-        </h3>
-
-        <p>
-          Добавляй в избранное и возвращайся снова ♡
-        </p>
-
+        <h3>Твои любимые истории<br>в одном месте</h3>
+        <p>Добавляй в избранное и возвращайся снова ♡</p>
       </div>
 
-      <div>
-        →
-      </div>
+      <div>→</div>
 
     </section>
 
   </section>
 
 
-  <!-- КАТАЛОГ -->
-
   <section id="catalogScreen" class="screen">
 
     <section class="catalog-hero">
 
       <div>
-
-        <h1>
-          КАТАЛОГ<br>
-          КНИГ
-        </h1>
-
-        <p>
-          Что будем читать сегодня?
-        </p>
-
+        <h1>КАТАЛОГ<br>КНИГ</h1>
+        <p>Что будем читать сегодня?</p>
       </div>
 
-      <img
-        class="catalog-cat"
-        src="cat-catalog.png"
-        alt="Котик каталога"
-      >
+      <img class="catalog-cat" src="cat-catalog.png" alt="Котик каталога">
 
     </section>
-
 
     <section class="search-section">
 
       <div class="search-box">
-
         <span class="search-icon"></span>
 
         <input
@@ -1048,11 +957,9 @@
           type="search"
           placeholder="Найти книгу, автора или серию"
         >
-
       </div>
 
     </section>
-
 
     <div class="catalog-tabs">
 
@@ -1074,26 +981,13 @@
 
     </div>
 
+    <div id="catalogControls" class="catalog-choice"></div>
 
-    <div
-      id="catalogControls"
-      class="catalog-choice"
-    ></div>
+    <div id="catalogWelcome" class="catalog-welcome">
 
+      <img src="cat-catalog.png" alt="Котик каталога">
 
-    <div
-      id="catalogWelcome"
-      class="catalog-welcome"
-    >
-
-      <img
-        src="cat-catalog.png"
-        alt="Котик каталога"
-      >
-
-      <h3>
-        Что тебе найти?
-      </h3>
+      <h3>Что тебе найти?</h3>
 
       <p>
         Выбери троп или любимого автора —<br>
@@ -1102,17 +996,13 @@
 
     </div>
 
-
     <section
       id="catalogResultsSection"
       class="section"
       style="display:none;"
     >
 
-      <div
-        id="catalogBooks"
-        class="catalog-grid"
-      ></div>
+      <div id="catalogBooks" class="catalog-grid"></div>
 
       <div
         id="catalogEmpty"
@@ -1120,18 +1010,11 @@
         style="display:none;"
       >
 
-        <img
-          src="cat-catalog.png"
-          alt="Котик каталога"
-        >
+        <img src="cat-catalog.png" alt="Котик каталога">
 
-        <h3>
-          Здесь пока тихо…
-        </h3>
+        <h3>Здесь пока тихо…</h3>
 
-        <p>
-          Но новые истории уже в пути ♡
-        </p>
+        <p>Но новые истории уже в пути ♡</p>
 
       </div>
 
@@ -1140,22 +1023,13 @@
   </section>
 
 
-  <!-- КНИГА -->
-
   <section id="bookScreen" class="screen">
 
     <header class="book-page-header">
 
-      <button
-        class="back-btn"
-        onclick="goBack()"
-      >
-        ←
-      </button>
+      <button class="back-btn" onclick="goBack()">←</button>
 
-      <div class="book-page-title">
-        КНИГА
-      </div>
+      <div class="book-page-title">КНИГА</div>
 
       <button
         id="topBookHeart"
@@ -1172,41 +1046,23 @@
 
       <div class="book-cover-wrap">
 
-        <img
-          class="peek-cat"
-          src="cat-book.png"
-          alt="Котик"
-        >
+        <img class="peek-cat" src="cat-book.png" alt="Котик">
 
-        <img
-          id="detailCover"
-          class="detail-cover"
-          alt=""
-        >
+        <img id="detailCover" class="detail-cover" alt="">
 
       </div>
-
 
       <div class="book-main-info">
 
         <h1 id="detailTitle"></h1>
 
-        <div
-          id="detailAuthor"
-          class="author"
-        ></div>
+        <div id="detailAuthor" class="author"></div>
 
         <div class="meta">
 
-          <span
-            id="detailSeries"
-            class="meta-pill"
-          ></span>
+          <span id="detailSeries" class="meta-pill"></span>
 
-          <span
-            id="detailNumber"
-            class="meta-pill"
-          ></span>
+          <span id="detailNumber" class="meta-pill"></span>
 
         </div>
 
@@ -1217,28 +1073,18 @@
 
     <section class="info-card">
 
-      <h2>
-        ТРОПЫ ✦
-      </h2>
+      <h2>ТРОПЫ ✦</h2>
 
-      <div
-        id="detailTropes"
-        class="trope-list"
-      ></div>
+      <div id="detailTropes" class="trope-list"></div>
 
     </section>
 
 
     <section class="info-card">
 
-      <h2>
-        АННОТАЦИЯ ✦
-      </h2>
+      <h2>АННОТАЦИЯ ✦</h2>
 
-      <div
-        id="annotationVisible"
-        class="annotation"
-      ></div>
+      <div id="annotationVisible" class="annotation"></div>
 
       <div
         id="annotationExtra"
@@ -1253,14 +1099,22 @@
         Показать полностью ↓
       </button>
 
-
-      <div class="book-actions">
+      <div id="bookActions" class="book-actions">
 
         <button
           class="download-btn"
           onclick="downloadCurrentBook()"
         >
           ↓ СКАЧАТЬ КНИГУ
+        </button>
+
+        <button
+          id="bonusButton"
+          class="bonus-btn"
+          onclick="downloadCurrentBonus()"
+          style="display:none;"
+        >
+          ✦ СКАЧАТЬ БОНУС
         </button>
 
         <button
@@ -1278,39 +1132,22 @@
   </section>
 
 
-  <!-- ИЗБРАННОЕ -->
-
   <section id="favoritesScreen" class="screen">
 
     <section class="catalog-hero">
 
       <div>
-
-        <h1>
-          ИЗБРАННОЕ
-        </h1>
-
-        <p>
-          Твои сохранённые истории
-        </p>
-
+        <h1>ИЗБРАННОЕ</h1>
+        <p>Твои сохранённые истории</p>
       </div>
 
-      <img
-        class="catalog-cat"
-        src="cat-main.png"
-        alt="Котик"
-      >
+      <img class="catalog-cat" src="cat-main.png" alt="Котик">
 
     </section>
 
-
     <section class="section">
 
-      <div
-        id="favoritesContent"
-        class="catalog-grid"
-      ></div>
+      <div id="favoritesContent" class="catalog-grid"></div>
 
       <div
         id="favoritesEmpty"
@@ -1318,14 +1155,9 @@
         style="display:none;"
       >
 
-        <img
-          src="cat-main.png"
-          alt="Котик"
-        >
+        <img src="cat-main.png" alt="Котик">
 
-        <h2>
-          Здесь пока пусто
-        </h2>
+        <h2>Здесь пока пусто</h2>
 
         <p>
           Добавляй любимые книги в избранное,<br>
@@ -1341,36 +1173,19 @@
 </main>
 
 
-<nav
-  id="bottomNav"
-  class="bottom-nav"
->
+<nav id="bottomNav" class="bottom-nav">
 
-  <button
-    id="homeNav"
-    class="nav-item active"
-    onclick="openHome()"
-  >
+  <button id="homeNav" class="nav-item active" onclick="openHome()">
     <span class="nav-icon">⌂</span>
     <span>Главная</span>
   </button>
 
-
-  <button
-    id="catalogNav"
-    class="nav-item"
-    onclick="openCatalog()"
-  >
+  <button id="catalogNav" class="nav-item" onclick="openCatalog()">
     <span class="nav-icon">▦</span>
     <span>Каталог</span>
   </button>
 
-
-  <button
-    id="favoritesNav"
-    class="nav-item"
-    onclick="openFavorites()"
-  >
+  <button id="favoritesNav" class="nav-item" onclick="openFavorites()">
     <span class="nav-icon">♡</span>
     <span>Избранное</span>
   </button>
@@ -1379,10 +1194,6 @@
 
 
 <script>
-
-  /* =========================
-     СТРУКТУРА АВТОРОВ
-  ========================= */
 
   const authors = {
 
@@ -1431,47 +1242,26 @@
   };
 
 
-  /* =========================
-     ОСНОВНЫЕ ТРОПЫ
-  ========================= */
-
   const mainTropes = [
-
     "от врагов к влюбленным",
-
     "маленький городок",
-
     "фиктивные отношения",
-
     "миллиардеры",
-
     "роман на рабочем месте"
-
   ];
 
-
-  /* =========================
-     КНИГИ
-  ========================= */
 
   const books = {
 
     naslednik: {
 
       id:"naslednik",
-
       title:"Наследник",
-
       author:"Софи Траверс",
-
       series:"Королевская гавань",
-
       number:"1",
-
       cover:"наследник.jpeg",
-
       file:"Софи Траверс - Наследник.epub",
-
       tag:"НОВИНКА",
 
       tropes:[
@@ -1484,29 +1274,88 @@
       ],
 
       annotation:[
-
         "Две враждующие семьи. Брак между их наследниками.",
-
         "На публике — любовь.<br>Наедине — война.",
-
         "Эйден Принц — высокомерный наследник семьи с многовековым состоянием, которая уничтожила мою. У него ореховые глаза и острые скулы, он золотой мальчик высшего общества.",
-
         "Я — девушка, которой никогда не было места в его мире.",
-
         "В шестнадцать я вылила на его туфли газировку. Он велел мне слизать её.",
-
         "В восемнадцать я узнала правду — семья Эйдена отняла у моей всё. Я поклялась, что заставлю каждого, кто насмехался над нами, поплатиться.",
-
         "В тридцать у меня появляется шанс вернуть всё, что украла семья Эйдена… но для этого я должна выйти за него замуж.",
-
         "На публике мы — идеальная пара. Но наедине? Мы играем в опасную игру — тот, кто первым почувствует желание, проиграет.",
-
         "Я не уступлю Эйдену ни на шаг… пока не увижу, кто он на самом деле за своей холодной маской.",
-
         "Он сделает всё, чтобы защитить меня.<br>Его прикосновения обжигают меня.<br>Его мир не принимает меня. Моя семья не принимает его.",
-
         "Мы обещали развестись, как только выполним сделку… и каждый из нас потеряет всё, если влюбится."
+      ]
 
+    },
+
+
+    igraVpritvorstvo: {
+
+      id:"igraVpritvorstvo",
+      title:"Игра в притворство",
+      author:"Оливия Хейл",
+      series:"Игры миллиардеров",
+      number:"1",
+      cover:"igra-v-pritvorstvo.png",
+      file:"igra-v-pritvorstvo.epub",
+      tag:"НОВИНКА",
+
+      tropes:[
+        "вынужденная близость",
+        "фиктивные отношения",
+        "лучший друг брата",
+        "неопытная жгг",
+        "slow burn",
+        "миллиардеры"
+      ],
+
+      annotation:[
+        "Вест Кэллоуэй — богатый, высокомерный лучший друг моего брата. А теперь мы притворяемся парой на публике… пока он дает мне частные уроки свиданий.",
+        "Когда из-за преследователя мне пришлось покинуть свою квартиру, мой брат настоял, чтобы я переехала в безопасное место — в легендарное поместье его лучшего друга.",
+        "Оказаться под одной крышей с высоким, красивым и невыносимым мужчиной, в которого у меня когда-то была дурацкая детская влюбленность, в то время как я ему никогда не нравилась.",
+        "Но затем Вест предлагает притвориться парой, чтобы послать четкий сигнал моему сталкеру: <strong>я занята и хорошо защищена.</strong> Я соглашаюсь, но с одним условием… он поможет мне потренироваться в настоящих свиданиях.",
+        "Я не умею знакомиться, а Вест не верит в любовь. Это идеально. И мы уже тайком отрабатываем всё на практике.",
+        "Свидания. Поцелуи. Совместные ночи в одной постели. Главное правило? Мой брат не должен ничего узнать.",
+        "Вест узнает, что мне нравится, дарит подарки, хвалит меня и учит не быть удобной для всех.",
+        "Возможно, я решусь попросить его помочь мне и с другим моим «первым разом»…",
+        "Но тот взгляд, которым он смотрит на меня сейчас? Это не часть урока. И когда он прикасается ко мне, кажется, будто он и сам забыл, что всё это — лишь игра."
+      ]
+
+    },
+
+
+    pariNaBrak: {
+
+      id:"pariNaBrak",
+      title:"Пари на брак",
+      author:"Оливия Хейл",
+      series:"Игры миллиардеров",
+      number:"2",
+      cover:"pari-na-brak.png",
+      file:"pari-na-brak.epub",
+      bonusFile:"pari-na-brak-bonus.epub",
+      tag:"НОВИНКА",
+
+      tropes:[
+        "фиктивные отношения",
+        "от врагов к влюбленным",
+        "защищающий мгг",
+        "сильная жгг",
+        "одна кровать",
+        "исцеление через любовь",
+        "миллиардеры"
+      ],
+
+      annotation:[
+        "Раф Монклер — беспощадный миллиардер, который вот-вот уничтожит мою компанию. Единственный способ его остановить? Стать его женой и притвориться, что люблю мужчину, которого ненавижу.",
+        "Он высок, обаятелен и говорит на трёх языках. Но там, где я ценю мастерство, он ради прибыли закрывает вековые мастерские. И я не позволю сделать то же самое с моим модным домом.",
+        "Я надену его гигантское кольцо и проведу лето на вилле на озере Комо — но я намерена свести его с ума. Мой план: пить шампанское, купаться в фонтане и воровать его рубашки. Пусть сходит с ума.",
+        "Проблема в том, что Раф не отступает — он повышает ставки.",
+        "Вот мы уже делим постель и целуемся на публике. Я дразню его откровенными нарядами, проверяя на прочность.",
+        "Пока он не ломается… И я понимаю, что Раф Монклэр, теряющий контроль, куда опаснее того, кто всё просчитывает каждый шаг.",
+        "Он держит меня во время панических атак и сражается в моих войнах, как в своих. А просыпаясь ночью от кошмаров, молчит…",
+        "Всё стало игрой. Но если он ставил на то, что сможет контролировать этот брак, то проиграл: я оказалась единственной вещью, которую он не планировал так сильно желать."
       ]
 
     },
@@ -1515,19 +1364,12 @@
     zabeg: {
 
       id:"zabeg",
-
       title:"Забег не по правилам",
-
       author:"Элси Сильвер",
-
       series:"Ранчо «Золотая лихорадка»",
-
       number:"4",
-
       cover:"забег.jpeg",
-
       file:"Элси Сильвер - Забег не по правилам.epub",
-
       tag:"НОВИНКА",
 
       tropes:[
@@ -1538,27 +1380,16 @@
       ],
 
       annotation:[
-
         "Он поцеловал младшую сестру своего лучшего друга, и мир замер.",
-
         "Той ночью они были двумя идеальными незнакомцами: угрюмый отшельник города и шикарная девушка в заднем углу бара. Пока это не перестало быть правдой.",
-
         "Потому что Надя Далка — не просто какая-то там девушка. Она та единственная, кого Гриффин Синклер не может иметь. Она младше его на четырнадцать лет и совершенно недоступна.",
-
         "После их запретного поцелуя Гриффин планирует держаться подальше, но вселенная продолжает сталкивать их вместе.",
-
         "Это похоже на какую-то космическую шутку — дать ему попробовать нечто настолько электризующее, настолько настоящее, то, что вернуло его к жизни. Потому что он может смотреть, но не может прикоснуться к ней снова.",
-
         "Но с её греховными изгибами, беззаботным смехом и скрытой дикой натурой Гриффин подсел на каждую её частичку.",
-
         "А когда она обращает на него свои томные глаза — такие полные тоски, такие свободные от осуждения? Что ж, он всегда считал себя сильным мужчиной, но ради неё он слаб.",
-
         "Поддаться их влечению было бы предательством. Жизнь Гриффина более чем запутана, а у Нади весь мир у ног.",
-
         "Её брат — единственная семья, которая у неё осталась, и, как бы грустно это ни звучало, он же — единственный друг Гриффина.",
-
         "Но он всё равно поцеловал её снова."
-
       ]
 
     },
@@ -1567,19 +1398,12 @@
     mesto: {
 
       id:"mesto",
-
       title:"Место для любви",
-
       author:"Крис Эндрюс",
-
       series:"Сильвер Лейк Фолс",
-
       number:"1",
-
       cover:"место.jpeg",
-
       file:"Крис Эндрюс - Место для любви.epub",
-
       tag:"НОВИНКА",
 
       tropes:[
@@ -1592,27 +1416,16 @@
       ],
 
       annotation:[
-
         "После того как её отношения рухнули в прямом эфире, Элиза Миллер сбегает в свой тихий домик на берегу озера, мечтая начать жизнь с чистого листа.",
-
         "Но о спокойствии приходится забыть, когда к ней вынужден подселиться Картер Роулингс — мрачный миллиардер с пронзительными серыми глазами и тяжёлым характером.",
-
         "Картер вовсе не собирался приезжать в Силвер-Лейк-Фоллс, и уж тем более ему не нужна была соседка по дому.",
-
         "После опасного для жизни происшествия мать заставляет его взять трёхмесячный отпуск от работы, и теперь успешный генеральный директор технологической компании вынужден жить под одной крышей с Элизой — раздражающе доброй рыжеволосой девушкой, которая рушит привычный порядок его идеально организованной жизни.",
-
         "Они сходятся лишь в одном: совместное проживание — временная мера.",
-
         "Но дни сменяются неделями, и неприязнь постепенно уступает место взаимному притяжению.",
-
         "Картер больше не может устоять перед её смехом и тем, как рядом с ней забывает о бесконечных совещаниях и работе.",
-
         "Однако, когда между ними наконец зарождается доверие, прошлое Элизы и неугасающие карьерные амбиции Картера грозят разрушить всё, что они успели обрести.",
-
         "Когда старые раны вновь дадут о себе знать, а тайны выйдут наружу, хватит ли им смелости рискнуть своими сердцами?",
-
         "Или время, проведённое в Силвер-Лейк-Фоллс, так и останется лишь мимолётным воспоминанием об одном лете?"
-
       ]
 
     }
@@ -1620,73 +1433,40 @@
   };
 
 
-  /* =========================
-     СОСТОЯНИЕ
-  ========================= */
-
   const screens = {
-
-    home:
-      document.getElementById("homeScreen"),
-
-    catalog:
-      document.getElementById("catalogScreen"),
-
-    book:
-      document.getElementById("bookScreen"),
-
-    favorites:
-      document.getElementById("favoritesScreen")
-
+    home:document.getElementById("homeScreen"),
+    catalog:document.getElementById("catalogScreen"),
+    book:document.getElementById("bookScreen"),
+    favorites:document.getElementById("favoritesScreen")
   };
-
 
   const mainHeader =
     document.getElementById("mainHeader");
 
-
   const bottomNav =
     document.getElementById("bottomNav");
 
-
   let currentBookId = null;
-
   let previousScreen = "home";
-
   let catalogMode = "tropes";
-
   let selectedAuthor = null;
-
   let selectedSeries = null;
 
 
-  /* =========================
-     ОБЩАЯ НАВИГАЦИЯ
-  ========================= */
-
   function hideScreens() {
 
-    Object
-      .values(screens)
-      .forEach(screen => {
-
-        screen.classList.remove("active");
-
-      });
+    Object.values(screens).forEach(screen => {
+      screen.classList.remove("active");
+    });
 
   }
 
 
   function setNav(active) {
 
-    document
-      .querySelectorAll(".nav-item")
-      .forEach(item => {
-
-        item.classList.remove("active");
-
-      });
-
+    document.querySelectorAll(".nav-item").forEach(item => {
+      item.classList.remove("active");
+    });
 
     if (active === "home") {
       document.getElementById("homeNav").classList.add("active");
@@ -1710,7 +1490,6 @@
     screens.home.classList.add("active");
 
     mainHeader.style.display = "grid";
-
     bottomNav.style.display = "grid";
 
     setNav("home");
@@ -1729,7 +1508,6 @@
     screens.catalog.classList.add("active");
 
     mainHeader.style.display = "grid";
-
     bottomNav.style.display = "grid";
 
     setNav("catalog");
@@ -1750,7 +1528,6 @@
     screens.favorites.classList.add("active");
 
     mainHeader.style.display = "grid";
-
     bottomNav.style.display = "grid";
 
     setNav("favorites");
@@ -1764,38 +1541,26 @@
   }
 
 
-  /* =========================
-     КАРТОЧКА КНИГИ
-  ========================= */
-
   function createBookCard(book) {
 
     return `
-
       <article
         class="book-card"
         onclick="openBook('${book.id}')"
       >
 
         <div class="book-cover">
-
           <img
             src="${book.cover}"
             alt="${book.title}"
           >
-
         </div>
-
 
         <div class="book-details">
 
-          <h3>
-            ${book.title}
-          </h3>
+          <h3>${book.title}</h3>
 
-          <p>
-            ${book.author}
-          </p>
+          <p>${book.author}</p>
 
           <span class="tag">
             ${book.tag}
@@ -1804,7 +1569,6 @@
         </div>
 
       </article>
-
     `;
 
   }
@@ -1812,84 +1576,55 @@
 
   function renderHomeBooks() {
 
-    document
-      .getElementById("homeBooks")
-      .innerHTML =
+    const newestBooks = [
+      books.naslednik,
+      books.zabeg,
+      books.mesto
+    ];
 
-        Object
-          .values(books)
-          .map(createBookCard)
-          .join("");
+    document.getElementById("homeBooks").innerHTML =
+      newestBooks
+        .map(createBookCard)
+        .join("");
 
   }
 
-
-  /* =========================
-     СБРОС КАТАЛОГА
-  ========================= */
 
   function resetCatalog() {
 
     selectedAuthor = null;
-
     selectedSeries = null;
 
-    document
-      .getElementById("catalogSearch")
-      .value = "";
+    document.getElementById("catalogSearch").value = "";
 
-    document
-      .getElementById("catalogWelcome")
-      .style.display = "block";
+    document.getElementById("catalogWelcome").style.display = "block";
 
-    document
-      .getElementById("catalogResultsSection")
-      .style.display = "none";
+    document.getElementById("catalogResultsSection").style.display = "none";
 
-    document
-      .getElementById("catalogBooks")
-      .innerHTML = "";
+    document.getElementById("catalogBooks").innerHTML = "";
 
     if (catalogMode === "authors") {
-
       renderAuthors();
-
     } else {
-
       renderTropes();
-
     }
 
   }
 
-
-  /* =========================
-     ТРОПЫ
-  ========================= */
 
   function showTropesTab() {
 
     catalogMode = "tropes";
 
     selectedAuthor = null;
-
     selectedSeries = null;
 
-    document
-      .getElementById("tropesTab")
-      .classList.add("active");
+    document.getElementById("tropesTab").classList.add("active");
+    document.getElementById("authorsTab").classList.remove("active");
 
-    document
-      .getElementById("authorsTab")
-      .classList.remove("active");
+    document.getElementById("catalogWelcome").style.display = "block";
 
-    document
-      .getElementById("catalogWelcome")
-      .style.display = "block";
-
-    document
-      .getElementById("catalogResultsSection")
-      .style.display = "none";
+    document.getElementById("catalogResultsSection").style.display = "none";
 
     renderTropes();
 
@@ -1898,11 +1633,7 @@
 
   function renderTropes() {
 
-    const controls =
-      document.getElementById("catalogControls");
-
-
-    controls.innerHTML = `
+    document.getElementById("catalogControls").innerHTML = `
 
       <h3 class="choice-title">
         Выбери троп
@@ -1931,61 +1662,34 @@
   function selectTrope(trope) {
 
     const matches =
+      Object.values(books).filter(book =>
 
-      Object
-        .values(books)
-        .filter(book =>
+        book.tropes.some(item =>
+          normalize(item) === normalize(trope)
+        )
 
-          book.tropes.some(
-            item =>
-              normalize(item) === normalize(trope)
-          )
+      );
 
-        );
-
-
-    document
-      .getElementById("catalogWelcome")
-      .style.display = "none";
-
+    document.getElementById("catalogWelcome").style.display = "none";
 
     showBookResults(matches);
 
   }
 
 
-  /* =========================
-     АВТОРЫ
-  ========================= */
-
   function showAuthorsTab() {
 
     catalogMode = "authors";
 
     selectedAuthor = null;
-
     selectedSeries = null;
 
+    document.getElementById("authorsTab").classList.add("active");
+    document.getElementById("tropesTab").classList.remove("active");
 
-    document
-      .getElementById("authorsTab")
-      .classList.add("active");
+    document.getElementById("catalogWelcome").style.display = "none";
 
-
-    document
-      .getElementById("tropesTab")
-      .classList.remove("active");
-
-
-    document
-      .getElementById("catalogWelcome")
-      .style.display = "none";
-
-
-    document
-      .getElementById("catalogResultsSection")
-      .style.display = "none";
-
+    document.getElementById("catalogResultsSection").style.display = "none";
 
     renderAuthors();
 
@@ -1995,47 +1699,40 @@
   function renderAuthors() {
 
     selectedAuthor = null;
-
     selectedSeries = null;
 
+    document.getElementById("catalogResultsSection").style.display = "none";
 
-    document
-      .getElementById("catalogResultsSection")
-      .style.display = "none";
+    document.getElementById("catalogControls").innerHTML = `
 
+      <h3 class="choice-title">
+        Выбери автора
+      </h3>
 
-    document
-      .getElementById("catalogControls")
-      .innerHTML = `
+      <div class="author-list">
 
-        <h3 class="choice-title">
-          Выбери автора
-        </h3>
+        ${Object.keys(authors).map(author => `
 
-        <div class="author-list">
+          <button
+            class="author-btn"
+            onclick="selectAuthor('${escapeQuote(author)}')"
+          >
 
-          ${Object.keys(authors).map(author => `
+            <span class="author-name">
+              ${author}
+            </span>
 
-            <button
-              class="author-btn"
-              onclick="selectAuthor('${escapeQuote(author)}')"
-            >
+            <span class="author-arrow">
+              →
+            </span>
 
-              <span class="author-name">
-                ${author}
-              </span>
+          </button>
 
-              <span class="author-arrow">
-                →
-              </span>
+        `).join("")}
 
-            </button>
+      </div>
 
-          `).join("")}
-
-        </div>
-
-      `;
+    `;
 
   }
 
@@ -2043,62 +1740,54 @@
   function selectAuthor(author) {
 
     selectedAuthor = author;
-
     selectedSeries = null;
-
 
     const seriesList =
       authors[author] || [];
 
+    document.getElementById("catalogControls").innerHTML = `
 
-    document
-      .getElementById("catalogControls")
-      .innerHTML = `
+      <button
+        class="catalog-back"
+        onclick="renderAuthors()"
+      >
+        ← Назад к авторам
+      </button>
 
-        <button
-          class="catalog-back"
-          onclick="renderAuthors()"
-        >
-          ← Назад к авторам
-        </button>
+      <h3 class="selected-author">
+        ${author}
+      </h3>
 
-        <h3 class="selected-author">
-          ${author}
-        </h3>
+      <p class="series-caption">
+        Выбери серию
+      </p>
 
-        <p class="series-caption">
-          Выбери серию
-        </p>
+      <div class="author-list">
 
-        <div class="author-list">
+        ${seriesList.map(seriesName => `
 
-          ${seriesList.map(seriesName => `
+          <button
+            class="series-btn"
+            onclick="selectSeries('${escapeQuote(seriesName)}')"
+          >
 
-            <button
-              class="series-btn"
-              onclick="selectSeries('${escapeQuote(seriesName)}')"
-            >
+            <span class="series-name">
+              ${seriesName}
+            </span>
 
-              <span class="series-name">
-                ${seriesName}
-              </span>
+            <span class="series-arrow">
+              →
+            </span>
 
-              <span class="series-arrow">
-                →
-              </span>
+          </button>
 
-            </button>
+        `).join("")}
 
-          `).join("")}
+      </div>
 
-        </div>
+    `;
 
-      `;
-
-
-    document
-      .getElementById("catalogResultsSection")
-      .style.display = "none";
+    document.getElementById("catalogResultsSection").style.display = "none";
 
   }
 
@@ -2107,52 +1796,37 @@
 
     selectedSeries = seriesName;
 
-
     const matches =
+      Object.values(books).filter(book =>
 
-      Object
-        .values(books)
-        .filter(book =>
+        book.author === selectedAuthor &&
+        book.series === selectedSeries
 
-          book.author === selectedAuthor
+      );
 
-          &&
+    document.getElementById("catalogControls").innerHTML = `
 
-          book.series === selectedSeries
+      <button
+        class="catalog-back"
+        onclick="selectAuthor('${escapeQuote(selectedAuthor)}')"
+      >
+        ← Назад к сериям
+      </button>
 
-        );
+      <h3 class="selected-author">
+        ${selectedAuthor}
+      </h3>
 
+      <p class="series-caption">
+        ${selectedSeries}
+      </p>
 
-    document
-      .getElementById("catalogControls")
-      .innerHTML = `
-
-        <button
-          class="catalog-back"
-          onclick="selectAuthor('${escapeQuote(selectedAuthor)}')"
-        >
-          ← Назад к сериям
-        </button>
-
-        <h3 class="selected-author">
-          ${selectedAuthor}
-        </h3>
-
-        <p class="series-caption">
-          ${selectedSeries}
-        </p>
-
-      `;
-
+    `;
 
     showBookResults(matches);
 
   }
 
-
-  /* =========================
-     РЕЗУЛЬТАТЫ
-  ========================= */
 
   function showBookResults(bookList) {
 
@@ -2165,26 +1839,20 @@
     const empty =
       document.getElementById("catalogEmpty");
 
-
     section.style.display = "block";
-
 
     if (!bookList.length) {
 
       container.innerHTML = "";
-
       empty.style.display = "block";
 
       return;
 
     }
 
-
     empty.style.display = "none";
 
-
     container.innerHTML =
-
       bookList
         .map(createBookCard)
         .join("");
@@ -2192,278 +1860,186 @@
   }
 
 
-  /* =========================
-     ПОИСК В КАТАЛОГЕ
-  ========================= */
+  document.getElementById("catalogSearch").addEventListener(
+    "input",
+    event => {
 
-  document
-    .getElementById("catalogSearch")
-    .addEventListener(
-      "input",
-      event => {
+      const query =
+        normalize(event.target.value);
 
-        const query =
-          normalize(event.target.value);
+      if (!query) {
 
+        document.getElementById("catalogResultsSection").style.display = "none";
 
-        if (!query) {
+        if (catalogMode === "authors") {
 
-          document
-            .getElementById("catalogResultsSection")
-            .style.display = "none";
+          renderAuthors();
 
+        } else {
 
-          if (catalogMode === "authors") {
+          document.getElementById("catalogWelcome").style.display = "block";
 
-            renderAuthors();
-
-          } else {
-
-            document
-              .getElementById("catalogWelcome")
-              .style.display = "block";
-
-            renderTropes();
-
-          }
-
-          return;
+          renderTropes();
 
         }
 
-
-        const matches =
-
-          Object
-            .values(books)
-            .filter(book =>
-
-              normalize(book.title).includes(query)
-
-              ||
-
-              normalize(book.author).includes(query)
-
-              ||
-
-              normalize(book.series).includes(query)
-
-            );
-
-
-        document
-          .getElementById("catalogWelcome")
-          .style.display = "none";
-
-
-        document
-          .getElementById("catalogControls")
-          .innerHTML = `
-
-            <h3 class="choice-title">
-              Результаты поиска
-            </h3>
-
-          `;
-
-
-        showBookResults(matches);
+        return;
 
       }
-    );
+
+      const matches =
+        Object.values(books).filter(book =>
+
+          normalize(book.title).includes(query) ||
+          normalize(book.author).includes(query) ||
+          normalize(book.series).includes(query)
+
+        );
+
+      document.getElementById("catalogWelcome").style.display = "none";
+
+      document.getElementById("catalogControls").innerHTML = `
+        <h3 class="choice-title">
+          Результаты поиска
+        </h3>
+      `;
+
+      showBookResults(matches);
+
+    }
+  );
 
 
-  /* =========================
-     ПОИСК НА ГЛАВНОЙ
-  ========================= */
+  document.getElementById("homeSearch").addEventListener(
+    "input",
+    event => {
 
-  document
-    .getElementById("homeSearch")
-    .addEventListener(
-      "input",
-      event => {
+      const query =
+        normalize(event.target.value);
 
-        const query =
-          normalize(event.target.value);
+      if (!query) {
 
+        renderHomeBooks();
 
-        if (!query) {
-
-          renderHomeBooks();
-
-          return;
-
-        }
-
-
-        const matches =
-
-          Object
-            .values(books)
-            .filter(book =>
-
-              normalize(book.title).includes(query)
-
-              ||
-
-              normalize(book.author).includes(query)
-
-            );
-
-
-        document
-          .getElementById("homeBooks")
-          .innerHTML =
-
-            matches
-              .map(createBookCard)
-              .join("");
+        return;
 
       }
-    );
 
+      const matches =
+        Object.values(books).filter(book =>
 
-  /* =========================
-     СТРАНИЦА КНИГИ
-  ========================= */
+          normalize(book.title).includes(query) ||
+          normalize(book.author).includes(query)
+
+        );
+
+      document.getElementById("homeBooks").innerHTML =
+        matches
+          .map(createBookCard)
+          .join("");
+
+    }
+  );
+
 
   function openBook(bookId) {
 
     currentBookId = bookId;
 
-
-    if (
-      screens.catalog.classList.contains("active")
-    ) {
-
+    if (screens.catalog.classList.contains("active")) {
       previousScreen = "catalog";
-
     }
 
-    else if (
-      screens.favorites.classList.contains("active")
-    ) {
-
+    else if (screens.favorites.classList.contains("active")) {
       previousScreen = "favorites";
-
     }
 
     else {
-
       previousScreen = "home";
-
     }
-
 
     const book =
       books[bookId];
 
+    document.getElementById("detailCover").src =
+      book.cover;
 
-    document
-      .getElementById("detailCover")
-      .src = book.cover;
+    document.getElementById("detailCover").alt =
+      book.title;
 
+    document.getElementById("detailTitle").textContent =
+      book.title.toUpperCase();
 
-    document
-      .getElementById("detailCover")
-      .alt = book.title;
+    document.getElementById("detailAuthor").textContent =
+      book.author.toUpperCase();
 
+    document.getElementById("detailSeries").textContent =
+      "♕ Серия: " + book.series;
 
-    document
-      .getElementById("detailTitle")
-      .textContent =
-        book.title.toUpperCase();
+    document.getElementById("detailNumber").textContent =
+      "♡ Книга: " + book.number;
 
-
-    document
-      .getElementById("detailAuthor")
-      .textContent =
-        book.author.toUpperCase();
-
-
-    document
-      .getElementById("detailSeries")
-      .textContent =
-        "♕ Серия: " + book.series;
-
-
-    document
-      .getElementById("detailNumber")
-      .textContent =
-        "♡ Книга: " + book.number;
-
-
-    document
-      .getElementById("detailTropes")
-      .innerHTML =
-
-        book.tropes
-          .map(trope =>
-
-            `<span class="trope">${trope}</span>`
-
-          )
-          .join("");
-
+    document.getElementById("detailTropes").innerHTML =
+      book.tropes
+        .map(trope => `<span class="trope">${trope}</span>`)
+        .join("");
 
     const firstPart =
       book.annotation.slice(0,4);
 
-
     const extraPart =
       book.annotation.slice(4);
 
-
-    document
-      .getElementById("annotationVisible")
-      .innerHTML =
-
-        firstPart
-          .map(text =>
-
-            `<p>${text}</p>`
-
-          )
-          .join("");
-
+    document.getElementById("annotationVisible").innerHTML =
+      firstPart
+        .map(text => `<p>${text}</p>`)
+        .join("");
 
     const extra =
       document.getElementById("annotationExtra");
 
-
     extra.innerHTML =
-
       extraPart
-        .map(text =>
-
-          `<p>${text}</p>`
-
-        )
+        .map(text => `<p>${text}</p>`)
         .join("");
-
 
     extra.classList.remove("show");
 
+    document.getElementById("showMoreBtn").textContent =
+      "Показать полностью ↓";
 
-    document
-      .getElementById("showMoreBtn")
-      .textContent =
-        "Показать полностью ↓";
+
+    const bonusButton =
+      document.getElementById("bonusButton");
+
+    const bookActions =
+      document.getElementById("bookActions");
+
+
+    if (book.bonusFile) {
+
+      bonusButton.style.display = "flex";
+
+      bookActions.classList.add("has-bonus");
+
+    } else {
+
+      bonusButton.style.display = "none";
+
+      bookActions.classList.remove("has-bonus");
+
+    }
 
 
     hideScreens();
 
-
     screens.book.classList.add("active");
-
 
     mainHeader.style.display = "none";
 
     bottomNav.style.display = "grid";
 
-
     updateFavoriteButton();
-
 
     window.scrollTo(0,0);
 
@@ -2498,23 +2074,16 @@
     const extra =
       document.getElementById("annotationExtra");
 
-
     const button =
       document.getElementById("showMoreBtn");
 
-
     extra.classList.toggle("show");
 
-
-    if (
-      extra.classList.contains("show")
-    ) {
+    if (extra.classList.contains("show")) {
 
       button.textContent = "Скрыть ↑";
 
-    }
-
-    else {
+    } else {
 
       button.textContent = "Показать полностью ↓";
 
@@ -2523,72 +2092,69 @@
   }
 
 
-  /* =========================
-     СКАЧИВАНИЕ
-  ========================= */
+  function buildFileUrl(filename) {
 
-  function downloadCurrentBook() {
+    return (
+      "https://anastasiyudina283-spec.github.io/anastasi-book-library/" +
+      encodeURIComponent(filename)
+    );
 
-    if (!currentBookId) return;
+  }
 
 
-    const book =
-      books[currentBookId];
-
+  function openFile(filename) {
 
     const fileUrl =
+      buildFileUrl(filename);
 
-      "https://anastasiyudina283-spec.github.io/anastasi-book-library/"
+    if (window.Telegram?.WebApp) {
 
-      +
+      window.Telegram.WebApp.openLink(fileUrl);
 
-      encodeURIComponent(book.file);
+    } else {
 
-
-    if (
-      window.Telegram?.WebApp
-    ) {
-
-      window
-        .Telegram
-        .WebApp
-        .openLink(fileUrl);
-
-    }
-
-    else {
-
-      window.open(
-        fileUrl,
-        "_blank"
-      );
+      window.open(fileUrl, "_blank");
 
     }
 
   }
 
 
-  /* =========================
-     ИЗБРАННОЕ
-  ========================= */
+  function downloadCurrentBook() {
+
+    if (!currentBookId) return;
+
+    const book =
+      books[currentBookId];
+
+    openFile(book.file);
+
+  }
+
+
+  function downloadCurrentBonus() {
+
+    if (!currentBookId) return;
+
+    const book =
+      books[currentBookId];
+
+    if (!book.bonusFile) return;
+
+    openFile(book.bonusFile);
+
+  }
+
 
   function getFavorites() {
 
     try {
 
       return JSON.parse(
-
-        localStorage.getItem("bookFavorites")
-
-        ||
-
-        "[]"
-
+        localStorage.getItem("bookFavorites") || "[]"
       );
 
-    }
-
-    catch {
+    } catch {
 
       return [];
 
@@ -2600,11 +2166,8 @@
   function saveFavorites(favorites) {
 
     localStorage.setItem(
-
       "bookFavorites",
-
       JSON.stringify(favorites)
-
     );
 
   }
@@ -2612,8 +2175,7 @@
 
   function isFavorite(bookId) {
 
-    return getFavorites()
-      .includes(bookId);
+    return getFavorites().includes(bookId);
 
   }
 
@@ -2622,28 +2184,19 @@
 
     if (!currentBookId) return;
 
-
     let favorites =
       getFavorites();
 
-
-    if (
-      favorites.includes(currentBookId)
-    ) {
+    if (favorites.includes(currentBookId)) {
 
       favorites =
-        favorites.filter(
-          id => id !== currentBookId
-        );
+        favorites.filter(id => id !== currentBookId);
 
-    }
-
-    else {
+    } else {
 
       favorites.push(currentBookId);
 
     }
-
 
     saveFavorites(favorites);
 
@@ -2656,18 +2209,13 @@
 
     if (!currentBookId) return;
 
-
     const button =
       document.getElementById("favoriteButton");
-
 
     const topHeart =
       document.getElementById("topBookHeart");
 
-
-    if (
-      isFavorite(currentBookId)
-    ) {
+    if (isFavorite(currentBookId)) {
 
       button.classList.add("saved");
 
@@ -2677,9 +2225,7 @@
       topHeart.textContent =
         "♥";
 
-    }
-
-    else {
+    } else {
 
       button.classList.remove("saved");
 
@@ -2699,18 +2245,13 @@
     const favorites =
       getFavorites();
 
-
     const container =
       document.getElementById("favoritesContent");
-
 
     const empty =
       document.getElementById("favoritesEmpty");
 
-
-    if (
-      favorites.length === 0
-    ) {
+    if (favorites.length === 0) {
 
       container.innerHTML = "";
 
@@ -2720,32 +2261,16 @@
 
     }
 
-
     empty.style.display = "none";
 
-
     container.innerHTML =
-
       favorites
-
-        .filter(id =>
-          books[id]
-        )
-
-        .map(id =>
-          createBookCard(
-            books[id]
-          )
-        )
-
+        .filter(id => books[id])
+        .map(id => createBookCard(books[id]))
         .join("");
 
   }
 
-
-  /* =========================
-     ВСПОМОГАТЕЛЬНОЕ
-  ========================= */
 
   function normalize(value) {
 
@@ -2758,13 +2283,7 @@
 
   function capitalizeFirst(value) {
 
-    return value
-      .charAt(0)
-      .toUpperCase()
-
-      +
-
-      value.slice(1);
+    return value.charAt(0).toUpperCase() + value.slice(1);
 
   }
 
@@ -2778,29 +2297,18 @@
   }
 
 
-  /* =========================
-     TELEGRAM
-  ========================= */
-
   const tg =
     window.Telegram?.WebApp;
-
 
   if (tg) {
 
     tg.ready();
-
     tg.expand();
 
   }
 
 
-  /* =========================
-     СТАРТ
-  ========================= */
-
   renderHomeBooks();
-
   renderTropes();
 
 </script>
