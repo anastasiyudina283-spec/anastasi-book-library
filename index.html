@@ -885,34 +885,39 @@
     }
   
     .community-links{
+      position:absolute;
+      z-index:5;
+      left:18px;
+      bottom:15px;
       display:flex;
       flex-direction:column;
       align-items:stretch;
-      gap:7px;
-      width:286px;
-      max-width:calc(100% - 36px);
-      margin:0 auto 18px;
+      gap:6px;
+      width:215px;
     }
+
     .community-link{
       display:flex;
       align-items:center;
       justify-content:flex-start;
       width:100%;
-      min-height:36px;
-      padding:8px 16px;
+      min-height:31px;
+      padding:6px 12px;
       border:1px solid rgba(210,132,151,.42);
       border-radius:999px;
       background:rgba(255,255,255,.72);
       color:#b85f78;
       font-family:"Cormorant Garamond",Georgia,serif;
-      font-size:11px;
+      font-size:10px;
       font-weight:500;
-      letter-spacing:.08em;
+      letter-spacing:.075em;
+      line-height:1;
       text-align:left;
       text-decoration:none;
       box-sizing:border-box;
       -webkit-tap-highlight-color:transparent;
     }
+
     .community-link:active{
       transform:scale(.98);
       background:rgba(255,239,244,.95);
@@ -958,6 +963,11 @@
 
       </div>
 
+      <div class="community-links">
+        <a class="community-link" href="https://t.me/anastasi_book">♡ ПЕРЕЙТИ В КАНАЛ</a>
+        <a class="community-link" href="https://t.me/+mX6EtmNMNDYwMjYy">♡ ПЕРЕЙТИ В ЧАТИК КОШЕЧЕК</a>
+      </div>
+
       <span class="spark spark-1">✦</span>
       <span class="spark spark-2">✧</span>
       <span class="spark spark-3">♥</span>
@@ -965,12 +975,6 @@
       <img class="hero-cat" src="cat-main.png" alt="Котик">
 
     </section>
-
-    <div class="community-links">
-      <a class="community-link" href="https://t.me/anastasi_book">♡ ПЕРЕЙТИ В КАНАЛ</a>
-      <a class="community-link" href="https://t.me/+mX6EtmNMNDYwMjYy">♡ ПЕРЕЙТИ В ЧАТИК КОШЕЧЕК</a>
-    </div>
-
     <section class="search-section">
       <div class="search-box">
         <span class="search-icon"></span>
