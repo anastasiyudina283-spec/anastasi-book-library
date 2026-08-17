@@ -883,6 +883,38 @@
       height:2px;
       background:var(--pink-dark);
     }
+  
+    .community-links{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      margin:18px auto 4px;
+      width:min(100%, 360px);
+    }
+    .community-link{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      min-height:44px;
+      padding:10px 18px;
+      border:1px solid rgba(210,132,151,.42);
+      border-radius:999px;
+      background:rgba(255,255,255,.72);
+      color:#b85f78;
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-decoration:none;
+      box-sizing:border-box;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .community-link:active{
+      transform:scale(.98);
+      background:rgba(255,239,244,.95);
+    }
+
   </style>
 </head>
 
@@ -918,6 +950,12 @@
         <div class="hero-subtitle">
           <span class="heart">♥</span>
           <span>ДЛЯ МОИХ КОШЕЧЕК</span>
+
+        <div class="community-links">
+          <a class="community-link" href="https://t.me/anastasi_book">♡ ПЕРЕЙТИ В КАНАЛ</a>
+          <a class="community-link" href="https://t.me/+mX6EtmNMNDYwMjYy">♡ ПЕРЕЙТИ В ЧАТИК КОШЕЧЕК</a>
+        </div>
+
           <span class="heart">♥</span>
         </div>
 
