@@ -340,6 +340,12 @@
       line-height:1.05;
     }
 
+    .book-details h3.long-title {
+      padding-right:3px;
+      font-size:15px;
+      line-height:1.08;
+    }
+
     .book-details p {
       margin:6px 0 10px;
       color:var(--pink-dark);
@@ -655,10 +661,21 @@
 
     .book-main-info h1 {
       margin:0;
+      padding-right:6px;
       font-family:"Cormorant Garamond",Georgia,serif;
       font-size:30px;
       font-weight:500;
       line-height:.95;
+    }
+
+    .book-main-info h1.long-title {
+      font-size:26px;
+      line-height:1;
+    }
+
+    .book-main-info h1.very-long-title {
+      font-size:24px;
+      line-height:1.02;
     }
 
     .book-main-info .author {
@@ -2315,7 +2332,7 @@
 
         <div class="book-details">
 
-          <h3>${book.title}</h3>
+          <h3 class="${book.title.length >= 22 ? 'long-title' : ''}">${book.title}</h3>
 
           <p>${book.author}</p>
 
@@ -2742,8 +2759,19 @@
     document.getElementById("detailCover").alt =
       book.title;
 
-    document.getElementById("detailTitle").textContent =
+    const detailTitle =
+      document.getElementById("detailTitle");
+
+    detailTitle.textContent =
       book.title.toUpperCase();
+
+    detailTitle.classList.remove("long-title", "very-long-title");
+
+    if (book.title.length >= 28) {
+      detailTitle.classList.add("very-long-title");
+    } else if (book.title.length >= 22) {
+      detailTitle.classList.add("long-title");
+    }
 
     document.getElementById("detailAuthor").textContent =
       book.author.toUpperCase();
