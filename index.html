@@ -1063,6 +1063,20 @@
       accent-color:var(--pink-dark);
     }
 
+    .early-access-doc-link {
+      color:var(--pink-dark);
+      text-decoration:underline;
+      text-underline-offset:2px;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    .early-access-policy {
+      margin:-5px 0 15px 26px;
+      font-size:8.5px;
+      line-height:1.45;
+    }
+
     .early-access-pay {
       width:100%;
       min-height:54px;
@@ -1455,8 +1469,12 @@
 
     <label class="early-access-check">
       <input id="earlyAccessConsent" type="checkbox" onchange="updateEarlyAccessPaymentButton()">
-      <span>Я принимаю условия раннего доступа</span>
+      <span>Я принимаю <a class="early-access-doc-link" href="#" onclick="openEarlyAccessDocument(event, 'usloviya-rannego-dostupa.pdf')">Условия раннего доступа</a></span>
     </label>
+
+    <p class="early-access-policy">
+      <a class="early-access-doc-link" href="#" onclick="openEarlyAccessDocument(event, 'politika-personalnyh-dannyh.pdf')">Политика обработки персональных данных</a>
+    </p>
 
     <button id="earlyAccessPayButton" class="early-access-pay" onclick="goToEarlyAccessPayment()" disabled>
       ПЕРЕЙТИ К ОПЛАТЕ — 100 ₽
@@ -3233,6 +3251,22 @@
 
     const consent = document.getElementById("earlyAccessConsent");
     document.getElementById("earlyAccessPayButton").disabled = !consent.checked;
+
+  }
+
+
+  function openEarlyAccessDocument(event, filename) {
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const url = buildFileUrl(filename);
+
+    if (window.Telegram?.WebApp) {
+      window.Telegram.WebApp.openLink(url);
+    } else {
+      window.open(url, "_blank");
+    }
 
   }
 
