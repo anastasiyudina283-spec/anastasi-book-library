@@ -941,164 +941,7 @@
     }
 
 
-    .early-access-modal {
-      position:fixed;
-      inset:0;
-      z-index:500;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:22px 18px;
-      background:rgba(48,33,31,.38);
-      backdrop-filter:blur(5px);
-    }
 
-    .early-access-modal.show {
-      display:flex;
-    }
-
-    .early-access-dialog {
-      position:relative;
-      width:100%;
-      max-width:394px;
-      max-height:calc(100vh - 44px);
-      overflow:auto;
-      padding:24px 20px 20px;
-      border:1px solid var(--line);
-      border-radius:22px;
-      background:var(--panel);
-      box-shadow:0 18px 48px rgba(74,35,31,.18);
-    }
-
-    .early-access-close {
-      position:absolute;
-      top:12px;
-      right:14px;
-      width:32px;
-      height:32px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:var(--muted);
-      font-size:22px;
-    }
-
-    .early-access-kicker {
-      margin:0 0 8px;
-      color:var(--pink-dark);
-      font-size:9px;
-      font-weight:500;
-      letter-spacing:1.5px;
-      text-transform:uppercase;
-    }
-
-    .early-access-dialog h2 {
-      margin:0 34px 9px 0;
-      font-family:"Cormorant Garamond",Georgia,serif;
-      font-size:29px;
-      font-weight:500;
-      line-height:1;
-    }
-
-    .early-access-lead {
-      margin:0 0 17px;
-      color:#715b55;
-      font-size:10px;
-      line-height:1.55;
-    }
-
-    .early-access-summary {
-      margin:0 0 16px;
-      padding:14px 15px;
-      border-radius:15px;
-      background:#fae8e5;
-    }
-
-    .early-access-row {
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      padding:5px 0;
-      font-size:10px;
-      line-height:1.4;
-    }
-
-    .early-access-row span:first-child {
-      color:#806d66;
-    }
-
-    .early-access-row strong {
-      color:#7f3a42;
-      font-weight:500;
-      text-align:right;
-    }
-
-    .early-access-terms {
-      margin:0 0 16px;
-      color:#5f4b46;
-      font-size:9px;
-      line-height:1.55;
-    }
-
-    .early-access-terms p {
-      margin:0 0 8px;
-    }
-
-    .early-access-check {
-      display:flex;
-      align-items:flex-start;
-      gap:9px;
-      margin:3px 0 15px;
-      color:#503d39;
-      font-size:9px;
-      line-height:1.45;
-      cursor:pointer;
-    }
-
-    .early-access-check input {
-      width:17px;
-      height:17px;
-      margin:0;
-      flex:0 0 17px;
-      accent-color:var(--pink-dark);
-    }
-
-    .early-access-doc-link {
-      color:var(--pink-dark);
-      text-decoration:underline;
-      text-underline-offset:2px;
-      font-weight:600;
-      cursor:pointer;
-    }
-
-    .early-access-policy {
-      margin:-5px 0 15px 26px;
-      font-size:8.5px;
-      line-height:1.45;
-    }
-
-    .early-access-pay {
-      width:100%;
-      min-height:54px;
-      border-radius:14px;
-      color:white;
-      background:linear-gradient(135deg,#c84f65,#de7585);
-      font-size:10px;
-      letter-spacing:.2px;
-      transition:opacity .2s ease;
-    }
-
-    .early-access-pay:disabled {
-      cursor:default;
-      opacity:.38;
-    }
-
-    .early-access-provider {
-      margin:9px 0 0;
-      color:var(--muted);
-      font-size:8px;
-      text-align:center;
-    }
 
   </style>
 </head>
@@ -1438,73 +1281,6 @@
 </main>
 
 
-<div id="earlyAccessModal" class="early-access-modal" onclick="handleEarlyAccessBackdrop(event)">
-  <div class="early-access-dialog" role="dialog" aria-modal="true" aria-labelledby="earlyAccessTitle">
-    <button class="early-access-close" onclick="closeEarlyAccessModal()" aria-label="Закрыть">×</button>
-
-    <p class="early-access-kicker">РАННИЙ ДОСТУП ✦</p>
-    <h2 id="earlyAccessTitle">Получить книгу раньше</h2>
-    <p class="early-access-lead">Получите EPUB до общего релиза книги.</p>
-
-    <div class="early-access-summary">
-      <div class="early-access-row">
-        <span>Ранний доступ</span>
-        <strong>100 ₽</strong>
-      </div>
-      <div class="early-access-row">
-        <span>Общий релиз</span>
-        <strong>22 сентября 2026</strong>
-      </div>
-      <div class="early-access-row">
-        <span>Формат</span>
-        <strong>EPUB</strong>
-      </div>
-    </div>
-
-    <div class="early-access-terms">
-      <p>Разовый платёж, без подписки. После оплаты вы получите инструкцию, как забрать книгу.</p>
-      <p>Материал предоставляется для личного использования. Просим не распространять файл до общего релиза.</p>
-      <p>Субъективная оценка содержания книги после предоставления доступа сама по себе не является основанием для возврата.</p>
-    </div>
-
-    <label class="early-access-check">
-      <input id="earlyAccessConsent" type="checkbox" onchange="updateEarlyAccessPaymentButton()">
-      <span>Я принимаю <a class="early-access-doc-link" href="#" onclick="openEarlyAccessDocument(event, 'usloviya-rannego-dostupa.pdf')">Условия раннего доступа</a></span>
-    </label>
-
-    <p class="early-access-policy">
-      <a class="early-access-doc-link" href="#" onclick="openEarlyAccessDocument(event, 'politika-personalnyh-dannyh.pdf')">Политика обработки персональных данных</a>
-    </p>
-
-    <button id="earlyAccessPayButton" class="early-access-pay" onclick="goToEarlyAccessPayment()" disabled>
-      ПЕРЕЙТИ К ОПЛАТЕ — 100 ₽
-    </button>
-
-    <p class="early-access-provider">Оплата через Prodamus</p>
-  </div>
-</div>
-
-
-<nav id="bottomNav" class="bottom-nav">
-
-  <button id="homeNav" class="nav-item active" onclick="openHome()">
-    <span class="nav-icon">⌂</span>
-    <span>Главная</span>
-  </button>
-
-  <button id="catalogNav" class="nav-item" onclick="openCatalog()">
-    <span class="nav-icon">▦</span>
-    <span>Каталог</span>
-  </button>
-
-  <button id="favoritesNav" class="nav-item" onclick="openFavorites()">
-    <span class="nav-icon">♡</span>
-    <span>Избранное</span>
-  </button>
-
-</nav>
-
-
 <script>
 
   const authors = {
@@ -1583,11 +1359,8 @@
       series:"Королевская гавань",
       number:"2",
       cover:"buntar-ishchet-zhenu.png",
-      tag:"РАННИЙ ДОСТУП",
-      earlyAccess:true,
-      earlyAccessPrice:100,
-      releaseDate:"22 сентября 2026",
-      paymentUrl:"https://payform.ru/jmcvIlb/",
+      file:"buntar-ishchet-zhenu.epub",
+      tag:"НОВИНКА",
 
       tropes:[
         "миллиардеры",
@@ -3097,13 +2870,8 @@
     const primaryBookButton =
       document.getElementById("primaryBookButton");
 
-    if (book.earlyAccess) {
-      primaryBookButton.textContent = "РАННИЙ ДОСТУП";
-      primaryBookButton.onclick = openEarlyAccessModal;
-    } else {
-      primaryBookButton.textContent = "↓ СКАЧАТЬ КНИГУ";
-      primaryBookButton.onclick = downloadCurrentBook;
-    }
+    primaryBookButton.textContent = "↓ СКАЧАТЬ КНИГУ";
+    primaryBookButton.onclick = downloadCurrentBook;
 
 
     if (book.bonusFile) {
@@ -3205,85 +2973,6 @@
 
       window.open(fileUrl, "_blank");
 
-    }
-
-  }
-
-
-  function openEarlyAccessModal() {
-
-    if (!currentBookId) return;
-
-    const book = books[currentBookId];
-
-    if (!book || !book.earlyAccess) return;
-
-    const modal = document.getElementById("earlyAccessModal");
-    const consent = document.getElementById("earlyAccessConsent");
-    const payButton = document.getElementById("earlyAccessPayButton");
-
-    consent.checked = false;
-    payButton.disabled = true;
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
-
-  }
-
-
-  function closeEarlyAccessModal() {
-
-    document.getElementById("earlyAccessModal").classList.remove("show");
-    document.body.style.overflow = "";
-
-  }
-
-
-  function handleEarlyAccessBackdrop(event) {
-
-    if (event.target.id === "earlyAccessModal") {
-      closeEarlyAccessModal();
-    }
-
-  }
-
-
-  function updateEarlyAccessPaymentButton() {
-
-    const consent = document.getElementById("earlyAccessConsent");
-    document.getElementById("earlyAccessPayButton").disabled = !consent.checked;
-
-  }
-
-
-  function openEarlyAccessDocument(event, filename) {
-
-    event.preventDefault();
-    event.stopPropagation();
-
-    const url = buildFileUrl(filename);
-
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.openLink(url);
-    } else {
-      window.open(url, "_blank");
-    }
-
-  }
-
-
-  function goToEarlyAccessPayment() {
-
-    if (!currentBookId) return;
-
-    const book = books[currentBookId];
-    const consent = document.getElementById("earlyAccessConsent");
-
-    if (!book || !book.paymentUrl || !consent.checked) return;
-
-    if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.openLink(book.paymentUrl);
-    } else {
-      window.open(book.paymentUrl, "_blank");
     }
 
   }
