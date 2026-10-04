@@ -1444,6 +1444,49 @@
       z-index:4;
     }
 
+
+    /* AUTUMN v23 — corrected Favorites transparency + dedicated Tropes garland */
+
+    #favoritesScreen .catalog-hero {
+      min-height:245px !important;
+      padding-top:42px !important;
+      padding-bottom:6px !important;
+      display:block !important;
+      overflow:hidden;
+    }
+
+    #favoritesScreen .catalog-copy {
+      position:relative;
+      z-index:5;
+      width:100%;
+    }
+
+    #favoritesScreen .catalog-cat {
+      position:absolute !important;
+      z-index:3 !important;
+      width:470px !important;
+      max-width:none !important;
+      right:-55px !important;
+      left:auto !important;
+      bottom:-8px !important;
+      margin:0 !important;
+      transform:none !important;
+      height:auto !important;
+      pointer-events:none;
+    }
+
+    #bookScreen .book-tropes-autumn {
+      position:absolute !important;
+      z-index:3 !important;
+      width:205px !important;
+      height:auto !important;
+      right:-8px !important;
+      top:-31px !important;
+      opacity:.82 !important;
+      pointer-events:none;
+      user-select:none;
+    }
+
   </style>
 </head>
 
@@ -1689,7 +1732,7 @@
 
 
     <section class="info-card">
-        <img class="book-tropes-autumn" src="autumn-details.png" alt="" aria-hidden="true">
+        <img class="book-tropes-autumn" src="autumn-tropes-garland.png" alt="" aria-hidden="true">
 
       <h2>ТРОПЫ </h2>
 
@@ -1760,7 +1803,7 @@
         <p>Твои сохранённые истории</p>
       </div>
 
-      <img class="catalog-cat" src="autumn-favorites-wide.png" alt="Котик с сердечком">
+      <img class="catalog-cat" src="autumn-favorites-wide-v2.png" alt="Котик с сердечком">
 
     </section>
 
@@ -1774,7 +1817,7 @@
         style="display:none;"
       >
 
-        <img src="autumn-favorites-wide.png" alt="Котик с сердечком">
+        <img src="autumn-favorites-wide-v2.png" alt="Котик с сердечком">
 
         <h2>Здесь пока пусто</h2>
 
