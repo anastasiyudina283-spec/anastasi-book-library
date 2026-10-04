@@ -22,15 +22,18 @@
 
   <style>
     :root {
-      --bg:#fbf5ef;
-      --panel:#fffaf7;
-      --text:#30211f;
-      --pink:#d98592;
-      --pink-dark:#bd5d72;
-      --pink-soft:#f6dfdf;
-      --line:#ead8ce;
-      --muted:#ad998e;
-      --shadow:0 8px 24px rgba(88,55,47,.07);
+      --bg:#fbf4ea;
+      --panel:#fffaf5;
+      --text:#34231f;
+      --pink:#cf7f8d;
+      --pink-dark:#a95f68;
+      --pink-soft:#f3dddd;
+      --line:#e7d2c4;
+      --muted:#9d877b;
+      --autumn:#b8754f;
+      --autumn-soft:#ead1b9;
+      --wine:#8f5a5e;
+      --shadow:0 8px 24px rgba(92,58,43,.08);
     }
 
     * {
@@ -952,6 +955,102 @@
 
 
 
+
+    /* AUTUMN v16 — decorative layer only */
+    .hero {
+      overflow:hidden;
+    }
+
+    .hero-cat {
+      width:205px;
+      right:-14px;
+      bottom:4px;
+    }
+
+    .catalog-hero {
+      position:relative;
+      overflow:hidden;
+      min-height:170px;
+      grid-template-columns:1fr 155px;
+    }
+
+    .catalog-cat {
+      width:155px;
+      position:relative;
+      z-index:2;
+    }
+
+    #favoritesScreen .catalog-cat {
+      width:122px;
+      margin-right:12px;
+    }
+
+    .catalog-welcome img {
+      width:155px;
+    }
+
+    .favorites-empty img {
+      width:112px;
+    }
+
+    .autumn-leaf {
+      position:absolute;
+      z-index:1;
+      pointer-events:none;
+      user-select:none;
+      opacity:.78;
+      height:auto;
+      transform-origin:center;
+      animation:leafFloat 7s ease-in-out infinite;
+    }
+
+    .hero .leaf-a {
+      width:34px;
+      right:12px;
+      top:30px;
+      transform:rotate(22deg);
+    }
+
+    .hero .leaf-b {
+      width:25px;
+      right:172px;
+      top:18px;
+      opacity:.56;
+      animation-delay:-2.2s;
+    }
+
+    .hero .leaf-c {
+      width:22px;
+      right:152px;
+      bottom:24px;
+      opacity:.48;
+      animation-delay:-4.1s;
+    }
+
+    .catalog-hero .leaf-a {
+      width:27px;
+      right:8px;
+      top:16px;
+      opacity:.58;
+    }
+
+    .catalog-hero .leaf-b {
+      width:20px;
+      right:145px;
+      bottom:18px;
+      opacity:.45;
+      animation-delay:-3s;
+    }
+
+    @keyframes leafFloat {
+      0%,100% { translate:0 0; rotate:0deg; }
+      50% { translate:0 6px; rotate:4deg; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .autumn-leaf { animation:none; }
+    }
+
   </style>
 </head>
 
@@ -1001,7 +1100,10 @@
       <span class="spark spark-2">✧</span>
       <span class="spark spark-3">♥</span>
 
-      <img class="hero-cat" src="cat-main.png" alt="Котик">
+      <img class="hero-cat" src="autumn-main.png" alt="Котик">
+      <img class="autumn-leaf leaf-a" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+      <img class="autumn-leaf leaf-b" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="autumn-leaf leaf-c" src="autumn-leaf-3.png" alt="" aria-hidden="true">
 
     </section>
     <section class="search-section">
@@ -1059,7 +1161,9 @@
         <p>Что будем читать сегодня?</p>
       </div>
 
-      <img class="catalog-cat" src="cat-catalog.png" alt="Котик каталога">
+      <img class="catalog-cat" src="autumn-catalog.png" alt="Котик каталога">
+      <img class="autumn-leaf leaf-a" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="autumn-leaf leaf-b" src="autumn-leaf-3.png" alt="" aria-hidden="true">
 
     </section>
 
@@ -1101,7 +1205,7 @@
 
     <div id="catalogWelcome" class="catalog-welcome">
 
-      <img src="cat-catalog.png" alt="Котик каталога">
+      <img src="autumn-catalog.png" alt="Котик каталога">
 
       <h3>Что тебе найти?</h3>
 
@@ -1126,7 +1230,7 @@
         style="display:none;"
       >
 
-        <img src="cat-catalog.png" alt="Котик каталога">
+        <img src="autumn-catalog.png" alt="Котик каталога">
 
         <h3>Здесь пока тихо…</h3>
 
@@ -1258,7 +1362,9 @@
         <p>Твои сохранённые истории</p>
       </div>
 
-      <img class="catalog-cat" src="cat-favorites.png" alt="Котик с сердечком">
+      <img class="catalog-cat" src="autumn-favorites.png" alt="Котик с сердечком">
+      <img class="autumn-leaf leaf-a" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+      <img class="autumn-leaf leaf-b" src="autumn-leaf-3.png" alt="" aria-hidden="true">
 
     </section>
 
@@ -1272,7 +1378,7 @@
         style="display:none;"
       >
 
-        <img src="cat-favorites.png" alt="Котик с сердечком">
+        <img src="autumn-favorites.png" alt="Котик с сердечком">
 
         <h2>Здесь пока пусто</h2>
 
