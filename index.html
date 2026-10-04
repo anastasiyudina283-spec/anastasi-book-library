@@ -1051,6 +1051,121 @@
       .autumn-leaf { animation:none; }
     }
 
+
+    /* AUTUMN v17 — HOME SCENE ONLY */
+    #homeScreen {
+      background:
+        radial-gradient(circle at 91% 12%, rgba(224,177,119,.13), transparent 24%),
+        radial-gradient(circle at 76% 28%, rgba(207,127,141,.07), transparent 28%),
+        var(--bg);
+    }
+
+    #homeScreen .hero {
+      height:278px;
+      padding-top:44px;
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    #homeScreen .hero::after {
+      content:"";
+      position:absolute;
+      right:-58px;
+      bottom:4px;
+      width:280px;
+      height:145px;
+      border-radius:50%;
+      background:radial-gradient(ellipse at center,
+        rgba(198,139,91,.13) 0%,
+        rgba(207,127,141,.06) 45%,
+        rgba(255,255,255,0) 73%);
+      filter:blur(4px);
+      z-index:0;
+      pointer-events:none;
+    }
+
+    #homeScreen .hero-copy {
+      z-index:5;
+    }
+
+    #homeScreen .hero-cat {
+      width:225px;
+      right:-10px;
+      bottom:7px;
+      z-index:4;
+    }
+
+    .autumn-lights-home {
+      position:absolute;
+      z-index:1;
+      width:285px;
+      height:auto;
+      right:-62px;
+      top:-17px;
+      pointer-events:none;
+      opacity:.66;
+    }
+
+    .autumn-details-home {
+      position:absolute;
+      z-index:3;
+      width:245px;
+      height:auto;
+      right:-56px;
+      bottom:-4px;
+      pointer-events:none;
+      opacity:.82;
+    }
+
+    #homeScreen .hero .leaf-a {
+      width:31px;
+      right:16px;
+      top:82px;
+      opacity:.72;
+      z-index:3;
+    }
+
+    #homeScreen .hero .leaf-b {
+      width:22px;
+      right:196px;
+      top:23px;
+      opacity:.54;
+      z-index:3;
+    }
+
+    #homeScreen .hero .leaf-c {
+      width:18px;
+      right:180px;
+      bottom:17px;
+      opacity:.48;
+      z-index:3;
+    }
+
+    #homeScreen .search-wrap {
+      position:relative;
+      z-index:6;
+    }
+
+    #homeScreen .search-box {
+      background:rgba(255,250,245,.92);
+      border-color:#dfc7b7;
+      box-shadow:0 9px 25px rgba(116,76,54,.08);
+    }
+
+    #homeScreen .section-title-row {
+      position:relative;
+    }
+
+    #homeScreen .section-title-row::after {
+      content:"";
+      position:absolute;
+      right:8px;
+      bottom:-13px;
+      width:72px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(184,117,79,.42));
+    }
+
   </style>
 </head>
 
@@ -1100,6 +1215,8 @@
       <span class="spark spark-2">✧</span>
       <span class="spark spark-3">♥</span>
 
+      <img class="autumn-lights-home" src="autumn-lights.png" alt="" aria-hidden="true">
+      <img class="autumn-details-home" src="autumn-details.png" alt="" aria-hidden="true">
       <img class="hero-cat" src="autumn-main.png" alt="Котик">
       <img class="autumn-leaf leaf-a" src="autumn-leaf-1.png" alt="" aria-hidden="true">
       <img class="autumn-leaf leaf-b" src="autumn-leaf-2.png" alt="" aria-hidden="true">
