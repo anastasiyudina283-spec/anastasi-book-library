@@ -1185,23 +1185,10 @@
     /* HOME: continue autumn below the hero */
 
     /* CATALOG: leaves around empty margins, never over controls */
-    #catalogScreen .seasonal-cat-1 { width:36px; left:-13px; top:305px; transform:rotate(35deg); opacity:.38; }
-    #catalogScreen .seasonal-cat-2 { width:28px; right:-7px; top:505px; transform:rotate(-18deg); opacity:.42; }
-    #catalogScreen .seasonal-cat-3 { width:42px; left:-17px; top:790px; transform:rotate(-28deg); opacity:.31; }
-    #catalogScreen .seasonal-cat-4 { width:32px; right:-10px; top:1010px; transform:rotate(48deg); opacity:.37; }
-    #catalogScreen .seasonal-cat-5 { width:27px; left:8px; top:1240px; transform:rotate(12deg); opacity:.29; }
 
     /* FAVORITES: fill the large calm spaces without crowding books */
-    #favoritesScreen .seasonal-fav-1 { width:38px; left:-13px; top:315px; transform:rotate(24deg); opacity:.38; }
-    #favoritesScreen .seasonal-fav-2 { width:29px; right:-7px; top:475px; transform:rotate(-34deg); opacity:.42; }
-    #favoritesScreen .seasonal-fav-3 { width:34px; left:-12px; top:760px; transform:rotate(-18deg); opacity:.30; }
-    #favoritesScreen .seasonal-fav-4 { width:40px; right:-15px; top:990px; transform:rotate(40deg); opacity:.34; }
 
     /* BOOK DETAIL: restrained autumn frame; cover remains untouched */
-    #bookScreen .seasonal-book-1 { width:34px; left:-11px; top:215px; transform:rotate(32deg); opacity:.34; }
-    #bookScreen .seasonal-book-2 { width:27px; right:-6px; top:405px; transform:rotate(-24deg); opacity:.38; }
-    #bookScreen .seasonal-book-3 { width:36px; left:-14px; top:720px; transform:rotate(-15deg); opacity:.28; }
-    #bookScreen .seasonal-book-4 { width:31px; right:-9px; top:940px; transform:rotate(44deg); opacity:.31; }
 
     /* Warm seasonal cards without recoloring book covers */
     #homeScreen .info-card,
@@ -1282,72 +1269,104 @@
     }
 
     /* Purposeful leaf clusters below the hero instead of tiny clipped singles. */
-    #homeScreen .home-autumn-cluster {
+
+
+    /* AUTUMN v20 — composition-first cleanup */
+
+    /* HOME: mascot can overlap button area, but buttons always stay readable above it. */
+    #homeScreen .hero-cat {
+      width:270px;
+      right:-22px;
+      bottom:0;
+      z-index:4;
+    }
+    #homeScreen .community-links {
+      z-index:8 !important;
+    }
+    #homeScreen .community-link {
+      position:relative;
+      z-index:9 !important;
+      background:rgba(255,250,247,.94);
+      backdrop-filter:blur(2px);
+    }
+
+    /* Move the leaf that was hanging beside the title lower into the scene. */
+    #homeScreen .hero .leaf-b {
+      width:30px;
+      right:164px;
+      top:104px;
+      opacity:.60;
+      z-index:4;
+    }
+    #homeScreen .hero .leaf-c {
+      width:23px;
+      right:112px;
+      top:132px;
+      bottom:auto;
+      opacity:.48;
+      z-index:4;
+    }
+
+    /* One intentional autumn ending on Home instead of random edge leaves. */
+    #homeScreen .home-autumn-footer {
       position:absolute !important;
       z-index:1 !important;
+      width:250px;
+      right:-82px;
+      bottom:72px;
+      height:auto;
+      opacity:.54;
       pointer-events:none;
       user-select:none;
+    }
+
+    /* CATALOG: one coherent decorative corner around the mascot. */
+    #catalogScreen .catalog-hero {
+      overflow:hidden;
+      min-height:180px;
+    }
+    #catalogScreen .catalog-cat {
+      width:165px;
+      z-index:4;
+    }
+    #catalogScreen .catalog-autumn-corner {
+      position:absolute !important;
+      z-index:2 !important;
+      width:235px;
+      right:-78px;
+      bottom:-22px;
       height:auto;
+      opacity:.58;
+      pointer-events:none;
+      user-select:none;
     }
 
-    #homeScreen .cluster-a1 {
-      width:45px;
-      left:-12px;
-      top:795px;
-      transform:rotate(28deg);
-      opacity:.48;
+    /* FAVORITES: enlarge mascot and turn header into one composition. */
+    #favoritesScreen .catalog-hero {
+      min-height:230px;
+      overflow:hidden;
+      align-items:start;
+      padding-top:54px;
     }
-    #homeScreen .cluster-a2 {
-      width:32px;
-      left:18px;
-      top:822px;
-      transform:rotate(-28deg);
-      opacity:.35;
+    #favoritesScreen .catalog-cat {
+      width:160px !important;
+      margin-right:-8px !important;
+      margin-top:0;
+      z-index:4;
     }
-    #homeScreen .cluster-a3 {
-      width:27px;
-      left:-3px;
-      top:850px;
-      transform:rotate(72deg);
-      opacity:.30;
-    }
-
-    #homeScreen .cluster-b1 {
-      width:48px;
-      right:-13px;
-      top:1125px;
-      transform:rotate(-31deg);
-      opacity:.47;
-    }
-    #homeScreen .cluster-b2 {
-      width:31px;
-      right:20px;
-      top:1154px;
-      transform:rotate(31deg);
-      opacity:.34;
-    }
-    #homeScreen .cluster-b3 {
-      width:25px;
-      right:-1px;
-      top:1182px;
-      transform:rotate(-68deg);
-      opacity:.29;
+    #favoritesScreen .favorites-autumn-corner {
+      position:absolute !important;
+      z-index:2 !important;
+      width:235px;
+      right:-72px;
+      bottom:-18px;
+      height:auto;
+      opacity:.55;
+      pointer-events:none;
+      user-select:none;
     }
 
-    #homeScreen .cluster-c1 {
-      width:42px;
-      left:-10px;
-      top:1395px;
-      transform:rotate(38deg);
-      opacity:.42;
-    }
-    #homeScreen .cluster-c2 {
-      width:28px;
-      left:20px;
-      top:1424px;
-      transform:rotate(-20deg);
-      opacity:.31;
-    }
+    /* BOOK DETAIL stays deliberately clean: no scattered leaves. */
 
   </style>
 </head>
@@ -1371,16 +1390,7 @@
 
 
   <section id="homeScreen" class="screen active">
-      <img class="home-autumn-cluster cluster-a1" src="autumn-leaf-1.png" alt="" aria-hidden="true">
-      <img class="home-autumn-cluster cluster-a2" src="autumn-leaf-2.png" alt="" aria-hidden="true">
-      <img class="home-autumn-cluster cluster-a3" src="autumn-leaf-3.png" alt="" aria-hidden="true">
-
-      <img class="home-autumn-cluster cluster-b1" src="autumn-leaf-2.png" alt="" aria-hidden="true">
-      <img class="home-autumn-cluster cluster-b2" src="autumn-leaf-1.png" alt="" aria-hidden="true">
-      <img class="home-autumn-cluster cluster-b3" src="autumn-leaf-3.png" alt="" aria-hidden="true">
-
-      <img class="home-autumn-cluster cluster-c1" src="autumn-leaf-1.png" alt="" aria-hidden="true">
-      <img class="home-autumn-cluster cluster-c2" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="home-autumn-footer" src="autumn-details.png" alt="" aria-hidden="true">
 
 
     <section class="hero">
@@ -1464,12 +1474,7 @@
 
 
   <section id="catalogScreen" class="screen">
-
-      <img class="seasonal-leaf seasonal-cat-1" src="autumn-leaf-1.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-cat-2" src="autumn-leaf-2.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-cat-3" src="autumn-leaf-3.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-cat-4" src="autumn-leaf-1.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-cat-5" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="catalog-autumn-corner" src="autumn-details.png" alt="" aria-hidden="true">
 
     <section class="catalog-hero">
 
@@ -1561,11 +1566,6 @@
 
 
   <section id="bookScreen" class="screen">
-
-      <img class="seasonal-leaf seasonal-book-1" src="autumn-leaf-1.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-book-2" src="autumn-leaf-3.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-book-3" src="autumn-leaf-2.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-book-4" src="autumn-leaf-1.png" alt="" aria-hidden="true">
 
     <header class="book-page-header">
 
@@ -1676,11 +1676,7 @@
 
 
   <section id="favoritesScreen" class="screen">
-
-      <img class="seasonal-leaf seasonal-fav-1" src="autumn-leaf-2.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-fav-2" src="autumn-leaf-1.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-fav-3" src="autumn-leaf-3.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-fav-4" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="favorites-autumn-corner" src="autumn-details.png" alt="" aria-hidden="true">
 
     <section class="catalog-hero">
 
