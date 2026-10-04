@@ -1183,12 +1183,6 @@
     }
 
     /* HOME: continue autumn below the hero */
-    #homeScreen .seasonal-home-1 { width:42px; left:-17px; top:650px; transform:rotate(28deg); }
-    #homeScreen .seasonal-home-2 { width:31px; right:-8px; top:790px; transform:rotate(-24deg); opacity:.48; }
-    #homeScreen .seasonal-home-3 { width:36px; left:-14px; top:1110px; transform:rotate(-12deg); opacity:.34; }
-    #homeScreen .seasonal-home-4 { width:46px; right:-18px; top:1320px; transform:rotate(34deg); opacity:.38; }
-    #homeScreen .seasonal-home-5 { width:28px; left:18px; top:1490px; transform:rotate(70deg); opacity:.30; }
-    #homeScreen .seasonal-home-6 { width:40px; right:-14px; top:1630px; transform:rotate(-35deg); opacity:.40; }
 
     /* CATALOG: leaves around empty margins, never over controls */
     #catalogScreen .seasonal-cat-1 { width:36px; left:-13px; top:305px; transform:rotate(35deg); opacity:.38; }
@@ -1217,6 +1211,144 @@
       border-color:rgba(194,145,112,.27);
     }
 
+
+    /* AUTUMN v19 — HOME composition corrections from phone review */
+
+    /* Make the approved mascot scene fill the empty right-hand area. */
+    #homeScreen .hero {
+      height:278px;
+      overflow:hidden;
+    }
+
+    #homeScreen .hero-cat {
+      width:270px;
+      right:-22px;
+      bottom:0px;
+      z-index:5;
+    }
+
+    /* Let the scene visually overlap the right ends of the two community buttons. */
+    #homeScreen .community-links {
+      z-index:4;
+    }
+
+    #homeScreen .community-link {
+      position:relative;
+      z-index:4;
+    }
+
+    /* Keep lights airy and visible above the larger mascot. */
+    #homeScreen .autumn-lights-home {
+      width:315px;
+      right:-72px;
+      top:-18px;
+      opacity:.70;
+      z-index:2;
+    }
+
+    /* Details now support the mascot rather than creating a separate strip. */
+    #homeScreen .autumn-details-home {
+      width:285px;
+      right:-72px;
+      bottom:-12px;
+      opacity:.76;
+      z-index:3;
+    }
+
+    /* Reposition the three existing hero leaves into the formerly empty zone. */
+    #homeScreen .hero .leaf-a {
+      width:39px;
+      right:23px;
+      top:93px;
+      opacity:.78;
+      z-index:4;
+    }
+
+    #homeScreen .hero .leaf-b {
+      width:30px;
+      right:165px;
+      top:67px;
+      opacity:.62;
+      z-index:4;
+    }
+
+    #homeScreen .hero .leaf-c {
+      width:24px;
+      right:118px;
+      top:118px;
+      bottom:auto;
+      opacity:.52;
+      z-index:4;
+    }
+
+    /* Purposeful leaf clusters below the hero instead of tiny clipped singles. */
+    #homeScreen .home-autumn-cluster {
+      position:absolute !important;
+      z-index:1 !important;
+      pointer-events:none;
+      user-select:none;
+      height:auto;
+    }
+
+    #homeScreen .cluster-a1 {
+      width:45px;
+      left:-12px;
+      top:795px;
+      transform:rotate(28deg);
+      opacity:.48;
+    }
+    #homeScreen .cluster-a2 {
+      width:32px;
+      left:18px;
+      top:822px;
+      transform:rotate(-28deg);
+      opacity:.35;
+    }
+    #homeScreen .cluster-a3 {
+      width:27px;
+      left:-3px;
+      top:850px;
+      transform:rotate(72deg);
+      opacity:.30;
+    }
+
+    #homeScreen .cluster-b1 {
+      width:48px;
+      right:-13px;
+      top:1125px;
+      transform:rotate(-31deg);
+      opacity:.47;
+    }
+    #homeScreen .cluster-b2 {
+      width:31px;
+      right:20px;
+      top:1154px;
+      transform:rotate(31deg);
+      opacity:.34;
+    }
+    #homeScreen .cluster-b3 {
+      width:25px;
+      right:-1px;
+      top:1182px;
+      transform:rotate(-68deg);
+      opacity:.29;
+    }
+
+    #homeScreen .cluster-c1 {
+      width:42px;
+      left:-10px;
+      top:1395px;
+      transform:rotate(38deg);
+      opacity:.42;
+    }
+    #homeScreen .cluster-c2 {
+      width:28px;
+      left:20px;
+      top:1424px;
+      transform:rotate(-20deg);
+      opacity:.31;
+    }
+
   </style>
 </head>
 
@@ -1239,13 +1371,17 @@
 
 
   <section id="homeScreen" class="screen active">
+      <img class="home-autumn-cluster cluster-a1" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+      <img class="home-autumn-cluster cluster-a2" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="home-autumn-cluster cluster-a3" src="autumn-leaf-3.png" alt="" aria-hidden="true">
 
-      <img class="seasonal-leaf seasonal-home-1" src="autumn-leaf-1.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-home-2" src="autumn-leaf-2.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-home-3" src="autumn-leaf-3.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-home-4" src="autumn-leaf-1.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-home-5" src="autumn-leaf-2.png" alt="" aria-hidden="true">
-      <img class="seasonal-leaf seasonal-home-6" src="autumn-leaf-3.png" alt="" aria-hidden="true">
+      <img class="home-autumn-cluster cluster-b1" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="home-autumn-cluster cluster-b2" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+      <img class="home-autumn-cluster cluster-b3" src="autumn-leaf-3.png" alt="" aria-hidden="true">
+
+      <img class="home-autumn-cluster cluster-c1" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+      <img class="home-autumn-cluster cluster-c2" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+
 
     <section class="hero">
 
