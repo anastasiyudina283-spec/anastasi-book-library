@@ -1308,17 +1308,6 @@
     }
 
     /* One intentional autumn ending on Home instead of random edge leaves. */
-    #homeScreen .home-autumn-footer {
-      position:absolute !important;
-      z-index:1 !important;
-      width:250px;
-      right:-82px;
-      bottom:72px;
-      height:auto;
-      opacity:.54;
-      pointer-events:none;
-      user-select:none;
-    }
 
     /* CATALOG: one coherent decorative corner around the mascot. */
     #catalogScreen .catalog-hero {
@@ -1354,19 +1343,45 @@
       margin-top:0;
       z-index:4;
     }
-    #favoritesScreen .favorites-autumn-corner {
-      position:absolute !important;
-      z-index:2 !important;
-      width:235px;
-      right:-72px;
-      bottom:-18px;
-      height:auto;
-      opacity:.55;
-      pointer-events:none;
-      user-select:none;
-    }
 
     /* BOOK DETAIL stays deliberately clean: no scattered leaves. */
+
+
+    /* AUTUMN v21 — cleanup + Favorites hero correction */
+
+    /* HOME: no decorative composition below the hero. */
+    #homeScreen .home-autumn-footer {
+      display:none !important;
+    }
+
+    /* FAVORITES: compact hero, larger mascot, no scattered leaves. */
+    #favoritesScreen .catalog-hero {
+      min-height:185px !important;
+      padding-top:42px !important;
+      padding-bottom:12px !important;
+      overflow:hidden;
+      align-items:start;
+      grid-template-columns:1fr 190px !important;
+    }
+
+    #favoritesScreen .catalog-cat {
+      width:195px !important;
+      max-width:none !important;
+      margin:0 -24px 0 0 !important;
+      transform:translate(-18px, 16px);
+      position:relative;
+      z-index:4;
+    }
+
+    #favoritesScreen .catalog-copy {
+      position:relative;
+      z-index:5;
+    }
+
+    #favoritesScreen .favorites-autumn-corner,
+    #favoritesScreen .autumn-leaf {
+      display:none !important;
+    }
 
   </style>
 </head>
@@ -1390,7 +1405,6 @@
 
 
   <section id="homeScreen" class="screen active">
-      <img class="home-autumn-footer" src="autumn-details.png" alt="" aria-hidden="true">
 
 
     <section class="hero">
@@ -1676,7 +1690,6 @@
 
 
   <section id="favoritesScreen" class="screen">
-      <img class="favorites-autumn-corner" src="autumn-details.png" alt="" aria-hidden="true">
 
     <section class="catalog-hero">
 
@@ -1686,8 +1699,6 @@
       </div>
 
       <img class="catalog-cat" src="autumn-favorites.png" alt="Котик с сердечком">
-      <img class="autumn-leaf leaf-a" src="autumn-leaf-1.png" alt="" aria-hidden="true">
-      <img class="autumn-leaf leaf-b" src="autumn-leaf-3.png" alt="" aria-hidden="true">
 
     </section>
 
