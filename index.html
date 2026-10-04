@@ -1383,6 +1383,67 @@
       display:none !important;
     }
 
+
+    /* AUTUMN v22 — Favorites custom hero + Book tropes decoration */
+
+    /* Favorites: use one purpose-built wide illustration instead of a floating mascot. */
+    #favoritesScreen .catalog-hero {
+      min-height:235px !important;
+      padding-top:42px !important;
+      padding-bottom:8px !important;
+      grid-template-columns:1fr !important;
+      display:block !important;
+      overflow:hidden;
+    }
+
+    #favoritesScreen .catalog-copy {
+      position:relative;
+      z-index:5;
+      width:100%;
+    }
+
+    #favoritesScreen .catalog-cat {
+      position:absolute !important;
+      z-index:3 !important;
+      width:390px !important;
+      max-width:none !important;
+      right:-58px !important;
+      left:auto !important;
+      bottom:-4px !important;
+      margin:0 !important;
+      transform:none !important;
+      height:auto !important;
+      pointer-events:none;
+    }
+
+    /* Book page: autumn arrangement sits on the upper-right rim of the Tropes card. */
+    #bookScreen .book-tropes-autumn {
+      position:absolute;
+      z-index:3;
+      width:190px;
+      height:auto;
+      right:-20px;
+      top:-46px;
+      opacity:.78;
+      pointer-events:none;
+      user-select:none;
+    }
+
+    /* Ensure the card containing TROПЫ can anchor the decoration. */
+    #bookScreen .detail-card,
+    #bookScreen .book-section,
+    #bookScreen .info-card {
+      position:relative;
+    }
+
+    /* Keep trope text above any decorative overlap. */
+    #bookScreen .detail-card > *:not(.book-tropes-autumn),
+    #bookScreen .book-section > *:not(.book-tropes-autumn),
+    #bookScreen .info-card > *:not(.book-tropes-autumn) {
+      position:relative;
+      z-index:4;
+    }
+
   </style>
 </head>
 
@@ -1628,6 +1689,7 @@
 
 
     <section class="info-card">
+        <img class="book-tropes-autumn" src="autumn-details.png" alt="" aria-hidden="true">
 
       <h2>ТРОПЫ </h2>
 
@@ -1698,7 +1760,7 @@
         <p>Твои сохранённые истории</p>
       </div>
 
-      <img class="catalog-cat" src="autumn-favorites.png" alt="Котик с сердечком">
+      <img class="catalog-cat" src="autumn-favorites-wide.png" alt="Котик с сердечком">
 
     </section>
 
@@ -1712,7 +1774,7 @@
         style="display:none;"
       >
 
-        <img src="autumn-favorites.png" alt="Котик с сердечком">
+        <img src="autumn-favorites-wide.png" alt="Котик с сердечком">
 
         <h2>Здесь пока пусто</h2>
 
