@@ -1166,6 +1166,57 @@
       background:linear-gradient(90deg, transparent, rgba(184,117,79,.42));
     }
 
+
+    /* AUTUMN v18 — page-wide seasonal atmosphere */
+    .screen { position:relative; overflow:hidden; }
+    .screen > * { position:relative; z-index:2; }
+
+    .seasonal-leaf {
+      position:absolute !important;
+      z-index:1 !important;
+      pointer-events:none;
+      user-select:none;
+      height:auto;
+      opacity:.42;
+      filter:saturate(.88);
+      transform-origin:center;
+    }
+
+    /* HOME: continue autumn below the hero */
+    #homeScreen .seasonal-home-1 { width:42px; left:-17px; top:650px; transform:rotate(28deg); }
+    #homeScreen .seasonal-home-2 { width:31px; right:-8px; top:790px; transform:rotate(-24deg); opacity:.48; }
+    #homeScreen .seasonal-home-3 { width:36px; left:-14px; top:1110px; transform:rotate(-12deg); opacity:.34; }
+    #homeScreen .seasonal-home-4 { width:46px; right:-18px; top:1320px; transform:rotate(34deg); opacity:.38; }
+    #homeScreen .seasonal-home-5 { width:28px; left:18px; top:1490px; transform:rotate(70deg); opacity:.30; }
+    #homeScreen .seasonal-home-6 { width:40px; right:-14px; top:1630px; transform:rotate(-35deg); opacity:.40; }
+
+    /* CATALOG: leaves around empty margins, never over controls */
+    #catalogScreen .seasonal-cat-1 { width:36px; left:-13px; top:305px; transform:rotate(35deg); opacity:.38; }
+    #catalogScreen .seasonal-cat-2 { width:28px; right:-7px; top:505px; transform:rotate(-18deg); opacity:.42; }
+    #catalogScreen .seasonal-cat-3 { width:42px; left:-17px; top:790px; transform:rotate(-28deg); opacity:.31; }
+    #catalogScreen .seasonal-cat-4 { width:32px; right:-10px; top:1010px; transform:rotate(48deg); opacity:.37; }
+    #catalogScreen .seasonal-cat-5 { width:27px; left:8px; top:1240px; transform:rotate(12deg); opacity:.29; }
+
+    /* FAVORITES: fill the large calm spaces without crowding books */
+    #favoritesScreen .seasonal-fav-1 { width:38px; left:-13px; top:315px; transform:rotate(24deg); opacity:.38; }
+    #favoritesScreen .seasonal-fav-2 { width:29px; right:-7px; top:475px; transform:rotate(-34deg); opacity:.42; }
+    #favoritesScreen .seasonal-fav-3 { width:34px; left:-12px; top:760px; transform:rotate(-18deg); opacity:.30; }
+    #favoritesScreen .seasonal-fav-4 { width:40px; right:-15px; top:990px; transform:rotate(40deg); opacity:.34; }
+
+    /* BOOK DETAIL: restrained autumn frame; cover remains untouched */
+    #bookScreen .seasonal-book-1 { width:34px; left:-11px; top:215px; transform:rotate(32deg); opacity:.34; }
+    #bookScreen .seasonal-book-2 { width:27px; right:-6px; top:405px; transform:rotate(-24deg); opacity:.38; }
+    #bookScreen .seasonal-book-3 { width:36px; left:-14px; top:720px; transform:rotate(-15deg); opacity:.28; }
+    #bookScreen .seasonal-book-4 { width:31px; right:-9px; top:940px; transform:rotate(44deg); opacity:.31; }
+
+    /* Warm seasonal cards without recoloring book covers */
+    #homeScreen .info-card,
+    #homeScreen .notice-card,
+    #favoritesScreen .book-card,
+    #catalogScreen .book-card {
+      border-color:rgba(194,145,112,.27);
+    }
+
   </style>
 </head>
 
@@ -1189,6 +1240,13 @@
 
   <section id="homeScreen" class="screen active">
 
+      <img class="seasonal-leaf seasonal-home-1" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-home-2" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-home-3" src="autumn-leaf-3.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-home-4" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-home-5" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-home-6" src="autumn-leaf-3.png" alt="" aria-hidden="true">
+
     <section class="hero">
 
       <div class="hero-copy">
@@ -1211,8 +1269,8 @@
         <a class="community-link" href="https://t.me/+mX6EtmNMNDYwMjYy">♡ ПЕРЕЙТИ В ЧАТИК КОШЕЧЕК</a>
       </div>
 
-      <span class="spark spark-1">✦</span>
-      <span class="spark spark-2">✧</span>
+      <span class="spark spark-1"></span>
+      <span class="spark spark-2"></span>
       <span class="spark spark-3">♥</span>
 
       <img class="autumn-lights-home" src="autumn-lights.png" alt="" aria-hidden="true">
@@ -1270,6 +1328,12 @@
 
 
   <section id="catalogScreen" class="screen">
+
+      <img class="seasonal-leaf seasonal-cat-1" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-cat-2" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-cat-3" src="autumn-leaf-3.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-cat-4" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-cat-5" src="autumn-leaf-2.png" alt="" aria-hidden="true">
 
     <section class="catalog-hero">
 
@@ -1362,6 +1426,11 @@
 
   <section id="bookScreen" class="screen">
 
+      <img class="seasonal-leaf seasonal-book-1" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-book-2" src="autumn-leaf-3.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-book-3" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-book-4" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+
     <header class="book-page-header">
 
       <button class="back-btn" onclick="goBack()">←</button>
@@ -1410,7 +1479,7 @@
 
     <section class="info-card">
 
-      <h2>ТРОПЫ ✦</h2>
+      <h2>ТРОПЫ </h2>
 
       <div id="detailTropes" class="trope-list"></div>
 
@@ -1419,7 +1488,7 @@
 
     <section class="info-card">
 
-      <h2>АННОТАЦИЯ ✦</h2>
+      <h2>АННОТАЦИЯ </h2>
 
       <div id="annotationVisible" class="annotation"></div>
 
@@ -1452,7 +1521,7 @@
           onclick="downloadCurrentBonus()"
           style="display:none;"
         >
-          ✦ СКАЧАТЬ БОНУС
+           СКАЧАТЬ БОНУС
         </button>
 
         <button
@@ -1471,6 +1540,11 @@
 
 
   <section id="favoritesScreen" class="screen">
+
+      <img class="seasonal-leaf seasonal-fav-1" src="autumn-leaf-2.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-fav-2" src="autumn-leaf-1.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-fav-3" src="autumn-leaf-3.png" alt="" aria-hidden="true">
+      <img class="seasonal-leaf seasonal-fav-4" src="autumn-leaf-2.png" alt="" aria-hidden="true">
 
     <section class="catalog-hero">
 
