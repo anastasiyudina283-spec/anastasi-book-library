@@ -3024,7 +3024,7 @@
   }
 
 
-  function createBookCard(book, showSeriesNumber = false) {
+  function createBookCard(book, showSeriesNumber = true) {
 
     return `
       <article
@@ -3343,7 +3343,7 @@
   }
 
 
-  function showBookResults(bookList, showSeriesNumber = false) {
+  function showBookResults(bookList, showSeriesNumber = true) {
 
     const section =
       document.getElementById("catalogResultsSection");
