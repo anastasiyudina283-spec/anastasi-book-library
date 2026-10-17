@@ -644,7 +644,7 @@
     .book-hero {
       padding:18px 18px 0;
       display:grid;
-      grid-template-columns:150px 1fr;
+      grid-template-columns:150px minmax(0, 1fr);
       gap:18px;
       align-items:center;
     }
@@ -671,23 +671,30 @@
       top:43px;
     }
 
+    .book-main-info {
+      min-width:0;
+      max-width:100%;
+    }
+
     .book-main-info h1 {
       margin:0;
       padding-right:6px;
       font-family:"Cormorant Garamond",Georgia,serif;
-      font-size:30px;
+      font-size:27px;
       font-weight:500;
-      line-height:.95;
+      line-height:1.04;
+      overflow-wrap:anywhere;
+      hyphens:auto;
     }
 
     .book-main-info h1.long-title {
-      font-size:26px;
-      line-height:1;
+      font-size:17px;
+      line-height:1.06;
     }
 
     .book-main-info h1.very-long-title {
-      font-size:24px;
-      line-height:1.02;
+      font-size:16px;
+      line-height:1.08;
     }
 
     .book-main-info .author {
@@ -3492,7 +3499,7 @@
 
     if (book.title.length >= 28) {
       detailTitle.classList.add("very-long-title");
-    } else if (book.title.length >= 22) {
+    } else if (book.title.length >= 18) {
       detailTitle.classList.add("long-title");
     }
 
