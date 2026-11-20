@@ -3148,8 +3148,8 @@
 
           <p>${book.author}</p>
 
-          ${showSeriesNumber && book.number !== "вне серии" ? `
-            <div class="series-book-number">КНИГА ${book.number}</div>
+          ${book.number != null && /^\d+(?:[.,]\d+)?$/.test(String(book.number).trim()) ? `
+            <div class="series-book-number">КНИГА ${String(book.number).trim()}</div>
           ` : ""}
 
           <span class="tag">
@@ -3167,8 +3167,8 @@
   function renderHomeBooks() {
 
     const newestBooks = [
-      books.paktSopernikov,
       books.zapasnaya,
+      books.paktSopernikov,
       books.beregiEe
     ];
 
