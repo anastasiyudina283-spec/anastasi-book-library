@@ -1939,6 +1939,41 @@
 
   const books = {
 
+    naslednik: {
+      id:"naslednik",
+      title:"Наследник",
+      author:"Ава Рани",
+      series:"Миллиардеры биотеха",
+      number:"3",
+      cover:"naslednik.png",
+      file:"naslednik.epub",
+      tag:"РАННИЙ ДОСТУП",
+      earlyAccess: {
+        price:150,
+        paymentUrl:"https://payform.ru/5sd5WxC/",
+        publicFrom:"2026-12-04"
+      },
+      tropes:[
+        "миллиардер",
+        "роман на рабочем месте",
+        "вынужденная близость",
+        "запретные отношения",
+        "защищающий герой",
+        "тайны прошлого"
+      ],
+      annotation:[
+        "Ему нужен безупречный год. Ей – возможность вырваться.",
+        "Генри Амари годами оправдывал славу безрассудного плейбоя, но теперь готов возглавить престижную семейную компанию «Amari Global». Совет директоров сомневается, что он способен оставить прошлое позади, поэтому дает ему год, чтобы доказать свою состоятельность, и нанимает ведущее PR-агентство для восстановления его имиджа.",
+        "Есть лишь одна проблема: новым консультантом Генри оказывается та самая красавица, с которой он пытался флиртовать на вечеринке и которая без колебаний его отвергла.",
+        "Селене Монтес, известной как «укротительница аристократов», осталось успешно завершить всего один контракт, прежде чем покинуть Нью-Йорк. После неудачного опыта работы с другой влиятельной семьей она не может позволить себе еще один провал.",
+        "Генри обезоруживает ее своей искренностью и добротой, но Селена твердо намерена сохранить их отношения исключительно деловыми.",
+        "Однако вынужденная близость сближает их, а тайны, связывающие Селену с высшим обществом, начинают напоминать о себе. Взаимное притяжение становится невозможно игнорировать, и теперь сама Селена рискует превратиться в главную угрозу для репутации Генри.",
+        "На кону – крупная сделка по поглощению и его должность генерального директора.",
+        "Сможет ли их любовь пережить надвигающийся скандал?"
+      ]
+    },
+
+
     paktSopernikov: {
       id:"paktSopernikov",
       title:"Пакт соперников",
@@ -3127,6 +3162,26 @@
   }
 
 
+  // Общий доступ начинается 4 декабря по московскому времени.
+  function isEarlyAccessActive(book) {
+    if (!book || !book.earlyAccess) return false;
+    const todayMoscow = new Intl.DateTimeFormat("en-CA", {
+      timeZone:"Europe/Moscow", year:"numeric", month:"2-digit", day:"2-digit"
+    }).format(new Date());
+    return todayMoscow < book.earlyAccess.publicFrom;
+  }
+
+  function openEarlyAccessPayment() {
+    const book = books[currentBookId];
+    if (!book?.earlyAccess?.paymentUrl) return;
+    const url = book.earlyAccess.paymentUrl;
+    if (window.Telegram?.WebApp?.openLink) {
+      window.Telegram.WebApp.openLink(url);
+    } else {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  }
+
   function createBookCard(book, showSeriesNumber = true) {
 
     return `
@@ -3153,7 +3208,7 @@
           ` : ""}
 
           <span class="tag">
-            ${book.tag}
+            ${isEarlyAccessActive(book) ? "РАННИЙ ДОСТУП · 150 ₽" : (book.earlyAccess ? "НОВИНКА" : book.tag)}
           </span>
 
         </div>
@@ -3167,9 +3222,9 @@
   function renderHomeBooks() {
 
     const newestBooks = [
+      books.naslednik,
       books.zapasnaya,
-      books.paktSopernikov,
-      books.beregiEe
+      books.paktSopernikov
     ];
 
     document.getElementById("homeBooks").innerHTML =
@@ -3647,8 +3702,13 @@
     const primaryBookButton =
       document.getElementById("primaryBookButton");
 
-    primaryBookButton.textContent = "↓ СКАЧАТЬ КНИГУ";
-    primaryBookButton.onclick = downloadCurrentBook;
+    if (isEarlyAccessActive(book)) {
+      primaryBookButton.textContent = "♡ РАННИЙ ДОСТУП · 150 ₽";
+      primaryBookButton.onclick = openEarlyAccessPayment;
+    } else {
+      primaryBookButton.textContent = "↓ СКАЧАТЬ КНИГУ";
+      primaryBookButton.onclick = downloadCurrentBook;
+    }
 
 
     if (book.bonusFile) {
@@ -3762,6 +3822,10 @@
     const book =
       books[currentBookId];
 
+    if (isEarlyAccessActive(book)) {
+      openEarlyAccessPayment();
+      return;
+    }
     openFile(book.file);
 
   }
