@@ -1495,7 +1495,26 @@
       user-select:none;
     }
 
-  </style>
+  
+  /* Окно раннего доступа — без изменения оформления остальных страниц */
+  .early-access-overlay[hidden] {display:none !important}
+  .early-access-overlay {position:fixed;inset:0;z-index:99999;background:rgba(31,23,28,.52);display:flex;align-items:center;justify-content:center;padding:18px;overflow-y:auto}
+  .early-access-dialog {position:relative;width:min(100%,420px);max-height:calc(100dvh - 36px);overflow-y:auto;background:#fffaf7;border-radius:22px;padding:28px 22px 22px;box-shadow:0 20px 65px rgba(36,20,28,.2);color:#3e3034;font-family:Montserrat,sans-serif}
+  .early-access-close {position:absolute;top:8px;right:14px;border:0;background:transparent;color:#806a72;font-size:29px;cursor:pointer}
+  .early-access-kicker {font-size:10px;letter-spacing:2px;color:#ad7587;text-align:center}
+  .early-access-dialog h2 {font-family:'Cormorant Garamond',serif;font-size:31px;font-weight:600;text-align:center;margin:8px 0 5px;line-height:1.1}
+  .early-access-book-name {text-align:center;font-size:12px;margin:0 0 18px}
+  .early-access-facts {background:#f9ecec;border-radius:13px;padding:12px 15px;font-size:12px}
+  .early-access-facts div {display:flex;justify-content:space-between;gap:12px;padding:7px 0}
+  .early-access-facts strong {white-space:nowrap}
+  .early-access-note {font-size:11px;line-height:1.65;margin:16px 0}
+  .early-access-consent {display:flex;gap:10px;align-items:flex-start;font-size:11px;line-height:1.6;margin:12px 0;cursor:pointer}
+  .early-access-consent input {flex:none;width:17px;height:17px;margin:1px 0 0;accent-color:#b5788d}
+  .early-access-consent a {color:#995f78;text-decoration:underline}
+  .early-access-pay {width:100%;border:0;border-radius:12px;background:#b9788d;color:white;font:500 11px Montserrat,sans-serif;letter-spacing:1px;padding:16px 8px;margin-top:14px;cursor:pointer}
+  .early-access-pay:disabled {opacity:.38;cursor:not-allowed}
+  .early-access-hint {font-size:10px;line-height:1.4;text-align:center;color:#8d7c82;margin:10px 0 0}
+</style>
 </head>
 
 <body>
@@ -3171,9 +3190,34 @@
     return todayMoscow < book.earlyAccess.publicFrom;
   }
 
+  function openEarlyAccessModal() {
+    const book = books[currentBookId];
+    if (!isEarlyAccessActive(book)) return;
+    const modal = document.getElementById("earlyAccessModal");
+    document.getElementById("earlyAccessTitle").textContent = book.title;
+    document.getElementById("earlyAccessTermsCheck").checked = false;
+    document.getElementById("earlyAccessPrivacyCheck").checked = false;
+    updateEarlyAccessConsent();
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeEarlyAccessModal() {
+    document.getElementById("earlyAccessModal").hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  function updateEarlyAccessConsent() {
+    document.getElementById("earlyAccessPayButton").disabled = !(
+      document.getElementById("earlyAccessTermsCheck").checked &&
+      document.getElementById("earlyAccessPrivacyCheck").checked
+    );
+  }
+
   function openEarlyAccessPayment() {
     const book = books[currentBookId];
-    if (!book?.earlyAccess?.paymentUrl) return;
+    if (!isEarlyAccessActive(book) ||
+        document.getElementById("earlyAccessPayButton").disabled) return;
     const url = book.earlyAccess.paymentUrl;
     if (window.Telegram?.WebApp?.openLink) {
       window.Telegram.WebApp.openLink(url);
@@ -3208,7 +3252,7 @@
           ` : ""}
 
           <span class="tag">
-            ${isEarlyAccessActive(book) ? "РАННИЙ ДОСТУП · 150 ₽" : (book.earlyAccess ? "НОВИНКА" : book.tag)}
+            ${isEarlyAccessActive(book) ? "РАННИЙ ДОСТУП" : (book.earlyAccess ? "НОВИНКА" : book.tag)}
           </span>
 
         </div>
@@ -3703,8 +3747,8 @@
       document.getElementById("primaryBookButton");
 
     if (isEarlyAccessActive(book)) {
-      primaryBookButton.textContent = "♡ РАННИЙ ДОСТУП · 150 ₽";
-      primaryBookButton.onclick = openEarlyAccessPayment;
+      primaryBookButton.textContent = "♡ РАННИЙ ДОСТУП";
+      primaryBookButton.onclick = openEarlyAccessModal;
     } else {
       primaryBookButton.textContent = "↓ СКАЧАТЬ КНИГУ";
       primaryBookButton.onclick = downloadCurrentBook;
@@ -3823,7 +3867,7 @@
       books[currentBookId];
 
     if (isEarlyAccessActive(book)) {
-      openEarlyAccessPayment();
+      openEarlyAccessModal();
       return;
     }
     openFile(book.file);
@@ -4012,5 +4056,22 @@
 
 </script>
 
+
+  <div id="earlyAccessModal" class="early-access-overlay" hidden onclick="if(event.target===this) closeEarlyAccessModal()" role="presentation">
+    <section class="early-access-dialog" role="dialog" aria-modal="true" aria-labelledby="earlyAccessHeading">
+      <button type="button" class="early-access-close" aria-label="Закрыть" onclick="closeEarlyAccessModal()">×</button>
+      <div class="early-access-kicker">РАННИЙ ДОСТУП</div>
+      <h2 id="earlyAccessHeading">Получить книгу раньше</h2>
+      <p id="earlyAccessTitle" class="early-access-book-name"></p>
+      <div class="early-access-facts">
+        <div>Общий доступ <strong>4 декабря 2026</strong></div>
+      </div>
+      <p class="early-access-note">Разовый платеж, без подписки. Книга предоставляется для личного использования. С 4 декабря она будет доступна для обычного скачивания.</p>
+      <label class="early-access-consent"><input id="earlyAccessTermsCheck" type="checkbox" onchange="updateEarlyAccessConsent()"><span>Я принимаю <a href="usloviya-rannego-dostupa.pdf" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Условия раннего доступа</a></span></label>
+      <label class="early-access-consent"><input id="earlyAccessPrivacyCheck" type="checkbox" onchange="updateEarlyAccessConsent()"><span>Я ознакомилась с <a href="politika-personalnyh-dannyh.pdf" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">Политикой обработки персональных данных</a></span></label>
+      <button type="button" id="earlyAccessPayButton" class="early-access-pay" onclick="openEarlyAccessPayment()" disabled>ПЕРЕЙТИ К ОПЛАТЕ</button>
+      <p class="early-access-hint">Кнопка станет активной после подтверждения обоих пунктов</p>
+    </section>
+  </div>
 </body>
 </html>
